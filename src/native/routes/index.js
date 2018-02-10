@@ -3,7 +3,7 @@ import { Scene, Tabs, Stack } from 'react-native-router-flux';
 import { Icon } from 'native-base';
 
 import DefaultProps from '../constants/navigation';
-import AppConfig from '../../constants/config';
+// import AppConfig from '../../constants/config';
 
 import RecipesContainer from '../../containers/Recipes';
 import RecipesComponent from '../components/Recipes';
@@ -13,6 +13,8 @@ import PersonalitiesContainer from '../../containers/Personalities';
 import PersonalityListComponent from '../components/PersonalityList';
 import PersonalityViewComponent from '../components/PersonalityView';
 import TypeViewComponent from '../components/TypeView';
+
+import QuizList from '../components/QuizList';
 
 import SignUpContainer from '../../containers/SignUp';
 import SignUpComponent from '../components/SignUp';
@@ -29,7 +31,7 @@ import UpdateProfileComponent from '../components/UpdateProfile';
 import MemberContainer from '../../containers/Member';
 import ProfileComponent from '../components/Profile';
 
-import AboutComponent from '../components/About';
+// import AboutComponent from '../components/About';
 
 const Index = (
   <Stack>
@@ -42,12 +44,13 @@ const Index = (
         {...DefaultProps.tabProps}
       >
         <Stack
-          key="home"
-          title={AppConfig.appName.toUpperCase()}
+          key="quizzes"
+          // title={AppConfig.appName.toUpperCase()}
+          title="Quizzes"
           icon={() => <Icon name="planet" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
-          <Scene key="home" component={AboutComponent} />
+          <Scene key="home" component={PersonalitiesContainer} Layout={QuizList} />
         </Stack>
 
         <Stack

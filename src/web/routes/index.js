@@ -6,8 +6,6 @@ import TemplateNothing from '../components/TemplateNothing';
 import TemplateSidebar from '../components/TemplateSidebar';
 
 // Routes
-import Home from '../components/Home';
-
 import RecipesContainer from '../../containers/Recipes';
 import RecipesComponent from '../components/Recipes';
 import RecipeViewComponent from '../components/Recipe';
@@ -16,6 +14,8 @@ import PersonalitiesContainer from '../../containers/Personalities';
 import PersonalityListComponent from '../components/PersonalityList';
 import PersonalityViewComponent from '../components/PersonalityView';
 import TypeViewComponent from '../components/TypeView';
+
+import QuizListComponent from '../components/QuizList';
 
 import SignUpContainer from '../../containers/SignUp';
 import SignUpComponent from '../components/SignUp';
@@ -38,7 +38,7 @@ const Index = () => (
       path="/"
       render={props => (
         <TemplateSidebar>
-          <Home {...props} />
+          <PersonalitiesContainer {...props} Layout={QuizListComponent} />
         </TemplateSidebar>
       )}
     />
