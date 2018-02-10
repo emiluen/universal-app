@@ -9,6 +9,9 @@ import RecipesContainer from '../../containers/Recipes';
 import RecipesComponent from '../components/Recipes';
 import RecipeViewComponent from '../components/Recipe';
 
+import PersonalitiesContainer from '../../containers/Personalities';
+import PersonalityListComponent from '../components/PersonalityList';
+
 import SignUpContainer from '../../containers/SignUp';
 import SignUpComponent from '../components/SignUp';
 
@@ -52,6 +55,19 @@ const Index = (
           {...DefaultProps.navbarProps}
         >
           <Scene key="recipes" component={RecipesContainer} Layout={RecipesComponent} />
+        </Stack>
+
+        <Stack
+          key="personalities"
+          title="PERSONALITY LIST"
+          icon={() => <Icon name="book" {...DefaultProps.icons} />}
+          {...DefaultProps.navbarProps}
+        >
+          <Scene
+            key="personalities"
+            component={PersonalitiesContainer}
+            Layout={PersonalityListComponent}
+          />
         </Stack>
 
         <Stack
