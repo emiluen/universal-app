@@ -15,6 +15,7 @@ import RecipeViewComponent from '../components/Recipe';
 import PersonalitiesContainer from '../../containers/Personalities';
 import PersonalityListComponent from '../components/PersonalityList';
 import PersonalityViewComponent from '../components/PersonalityView';
+import TypeViewComponent from '../components/TypeView';
 
 import SignUpContainer from '../../containers/SignUp';
 import SignUpComponent from '../components/SignUp';
@@ -83,10 +84,20 @@ const Index = () => (
       )}
     />
     <Route
+      exact
       path="/personalities/:personalityId"
       render={props => (
         <TemplateSidebar>
           <PersonalitiesContainer {...props} Layout={PersonalityViewComponent} />
+        </TemplateSidebar>
+      )}
+    />
+    <Route
+      exact
+      path="/personalities/:personalityId/types/:typeId"
+      render={props => (
+        <TemplateSidebar>
+          <PersonalitiesContainer {...props} Layout={TypeViewComponent} />
         </TemplateSidebar>
       )}
     />

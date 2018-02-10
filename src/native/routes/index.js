@@ -12,6 +12,7 @@ import RecipeViewComponent from '../components/Recipe';
 import PersonalitiesContainer from '../../containers/Personalities';
 import PersonalityListComponent from '../components/PersonalityList';
 import PersonalityViewComponent from '../components/PersonalityView';
+import TypeViewComponent from '../components/TypeView';
 
 import SignUpContainer from '../../containers/SignUp';
 import SignUpComponent from '../components/SignUp';
@@ -122,6 +123,15 @@ const Index = (
       {...DefaultProps.navbarProps}
       component={PersonalitiesContainer}
       Layout={PersonalityViewComponent}
+    />
+    <Scene
+      back
+      clone
+      key="types"
+      title="TYPES"
+      {...DefaultProps.navbarProps}
+      component={PersonalitiesContainer}
+      Layout={TypeViewComponent}
     />
     <Scene
       back

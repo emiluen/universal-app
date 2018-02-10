@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Content, Card, CardItem, H3, List, ListItem, Text } from 'native-base';
+import { Container, Content, Card, CardItem, H3, List, ListItem, Text, Button } from 'native-base';
+import { Actions } from 'react-native-router-flux';
 
 import Loading from './Loading';
 import Error from './Error';
@@ -27,9 +28,19 @@ const PersonalityView = ({
   // Personality not found
   if (!personality) return <Error content={ErrorMessages.recipe404} />;
 
+  const onPress = item =>
+    Actions.types({ match: { params: { personalityId, typeId: String(item.id) } } });
+
   const types = personality.types.map(item => (
     <ListItem key={item.id} rightIcon={{ style: { opacity: 0 } }}>
-      <Text>{item.name}</Text>
+      <Button
+        block
+        bordered
+        small
+        onPress={() => onPress(item)}
+      >
+        <Text>{item.name}</Text>
+      </Button>
     </ListItem>
   ));
 
