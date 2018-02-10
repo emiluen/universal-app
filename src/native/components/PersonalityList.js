@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FlatList } from 'react-native';
 import { Container, Content, Card, CardItem, Body, Text, Button } from 'native-base';
+import { Actions } from 'react-native-router-flux';
 
 import Error from './Error';
 import Header from './Header';
@@ -15,7 +16,8 @@ const PersonalityList = ({
 
   const keyExtractor = item => item.id;
 
-  const onPress = () => console.log('onPress');
+  const onPress = item =>
+    Actions.personality({ match: { params: { personalityId: String(item.id) } } });
 
   return (
     <Container>

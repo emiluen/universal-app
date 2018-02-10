@@ -11,6 +11,7 @@ import RecipeViewComponent from '../components/Recipe';
 
 import PersonalitiesContainer from '../../containers/Personalities';
 import PersonalityListComponent from '../components/PersonalityList';
+import PersonalityViewComponent from '../components/PersonalityView';
 
 import SignUpContainer from '../../containers/SignUp';
 import SignUpComponent from '../components/SignUp';
@@ -113,6 +114,15 @@ const Index = (
       </Tabs>
     </Scene>
 
+    <Scene
+      back
+      clone
+      key="personality"
+      title="PERSONALITY"
+      {...DefaultProps.navbarProps}
+      component={PersonalitiesContainer}
+      Layout={PersonalityViewComponent}
+    />
     <Scene
       back
       clone

@@ -41,10 +41,12 @@ class Personalities extends React.Component {
     const {
       Layout, personalities, match,
     } = this.props;
+    console.log('personalities', personalities);
 
     const personalityId = (match && match.params && match.params.personalityId) ?
       match.params.personalityId : null;
     const typeId = (match && match.params && match.params.typeId) ? match.params.typeId : null;
+    console.log(personalityId, typeId);
 
     return (
       <Layout
