@@ -15,6 +15,11 @@ const SidebarNavItems = () => (
         <i className="icon-notebook" /> <span>Recipes</span>
       </Link>
     </NavItem>
+    <NavItem>
+      <Link className={`nav-link ${window.location.pathname.startsWith('/personalities') && 'active'}`} to="/personalities">
+        <i className="icon-notebook" /> <span>Personalities</span>
+      </Link>
+    </NavItem>
   </div>
 );
 
