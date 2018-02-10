@@ -3,3 +3,4 @@ node_modules/
 .expo/
 npm-debug.*
 src/constants/firebase.js
+src/constants/contentful.js
