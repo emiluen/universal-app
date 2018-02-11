@@ -8,6 +8,8 @@ import { PersistGate } from 'redux-persist/es/integration/react';
 import configureStore from '../store/index';
 import registerServiceWorker from './register-service-worker';
 import Routes from './routes/index';
+import { getMemberData } from '../actions/member';
+import { getPersonalities, setError } from '../actions/personalities';
 
 // Components
 import Loading from './components/Loading';
@@ -32,3 +34,13 @@ const Root = () => (
 
 render(<Root />, rootElement);
 registerServiceWorker();
+
+/**
+  * Fetch Data from API, saving to Redux
+  */
+store.dispatch(getMemberData());
+store.dispatch(getPersonalities())
+  .catch((err) => {
+    console.log(`Error: ${err}`);
+    return setError(err);
+  });
