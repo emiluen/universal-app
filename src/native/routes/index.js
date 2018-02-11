@@ -4,17 +4,23 @@ import { Icon } from 'native-base';
 
 import DefaultProps from '../constants/navigation';
 // import AppConfig from '../../constants/config';
+// import AboutComponent from '../components/About';
 
 import RecipesContainer from '../../containers/Recipes';
 import RecipesComponent from '../components/Recipes';
 import RecipeViewComponent from '../components/Recipe';
 
 import PersonalitiesContainer from '../../containers/Personalities';
-import PersonalityListComponent from '../components/PersonalityList';
-import PersonalityViewComponent from '../components/PersonalityView';
-import TypeViewComponent from '../components/TypeView';
+import PersonalitiesComponent from '../components/Personalities';
 
-import QuizList from '../components/QuizList';
+import PersonalityContainer from '../../containers/Personality';
+import PersonalityComponent from '../components/Personality';
+
+import TypeContainer from '../../containers/Type';
+import TypeComponent from '../components/Type';
+
+import QuizzesContainer from '../../containers/Quizzes';
+import QuizzesComponent from '../components/Quizzes';
 
 import SignUpContainer from '../../containers/SignUp';
 import SignUpComponent from '../components/SignUp';
@@ -28,10 +34,8 @@ import ForgotPasswordComponent from '../components/ForgotPassword';
 import UpdateProfileContainer from '../../containers/UpdateProfile';
 import UpdateProfileComponent from '../components/UpdateProfile';
 
-import MemberContainer from '../../containers/Member';
+import ProfileContainer from '../../containers/Profile';
 import ProfileComponent from '../components/Profile';
-
-// import AboutComponent from '../components/About';
 
 const Index = (
   <Stack>
@@ -50,7 +54,7 @@ const Index = (
           icon={() => <Icon name="planet" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
-          <Scene key="home" component={PersonalitiesContainer} Layout={QuizList} />
+          <Scene key="home" component={QuizzesContainer} Layout={QuizzesComponent} />
         </Stack>
 
         <Stack
@@ -71,7 +75,7 @@ const Index = (
           <Scene
             key="personalities"
             component={PersonalitiesContainer}
-            Layout={PersonalityListComponent}
+            Layout={PersonalitiesComponent}
           />
         </Stack>
 
@@ -81,7 +85,7 @@ const Index = (
           icon={() => <Icon name="contact" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
-          <Scene key="profileHome" component={MemberContainer} Layout={ProfileComponent} />
+          <Scene key="profileHome" component={ProfileContainer} Layout={ProfileComponent} />
           <Scene
             back
             key="signUp"
@@ -124,8 +128,8 @@ const Index = (
       key="personality"
       title="PERSONALITY"
       {...DefaultProps.navbarProps}
-      component={PersonalitiesContainer}
-      Layout={PersonalityViewComponent}
+      component={PersonalityContainer}
+      Layout={PersonalityComponent}
     />
     <Scene
       back
@@ -133,8 +137,8 @@ const Index = (
       key="types"
       title="TYPES"
       {...DefaultProps.navbarProps}
-      component={PersonalitiesContainer}
-      Layout={TypeViewComponent}
+      component={TypeContainer}
+      Layout={TypeComponent}
     />
     <Scene
       back

@@ -11,6 +11,8 @@ const QuizList = ({
 }) => {
   if (error) return <Error content={error} />;
 
+  console.log('personalities', personalities);
+
   // Build Cards for Listing
   const quizzes = personalities.map(item => (
     <ListItem key={item.id} rightIcon={{ style: { opacity: 0 } }}>

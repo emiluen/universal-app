@@ -11,11 +11,16 @@ import RecipesComponent from '../components/Recipes';
 import RecipeViewComponent from '../components/Recipe';
 
 import PersonalitiesContainer from '../../containers/Personalities';
-import PersonalityListComponent from '../components/PersonalityList';
-import PersonalityViewComponent from '../components/PersonalityView';
-import TypeViewComponent from '../components/TypeView';
+import PersonalitiesComponent from '../components/Personalities';
 
-import QuizListComponent from '../components/QuizList';
+import PersonalityContainer from '../../containers/Personality';
+import PersonalityComponent from '../components/Personality';
+
+import TypeContainer from '../../containers/Type';
+import TypeComponent from '../components/Type';
+
+import QuizzesContainer from '../../containers/Quizzes';
+import QuizzesComponent from '../components/Quizzes';
 
 import SignUpContainer from '../../containers/SignUp';
 import SignUpComponent from '../components/SignUp';
@@ -25,6 +30,9 @@ import LoginComponent from '../components/Login';
 
 import ForgotPasswordContainer from '../../containers/ForgotPassword';
 import ForgotPasswordComponent from '../components/ForgotPassword';
+
+import ProfileContainer from '../../containers/Profile';
+import ProfileComponent from '../components/Profile';
 
 import UpdateProfileContainer from '../../containers/UpdateProfile';
 import UpdateProfileComponent from '../components/UpdateProfile';
@@ -38,7 +46,7 @@ const Index = () => (
       path="/"
       render={props => (
         <TemplateSidebar>
-          <PersonalitiesContainer {...props} Layout={QuizListComponent} />
+          <QuizzesContainer {...props} Layout={QuizzesComponent} />
         </TemplateSidebar>
       )}
     />
@@ -67,6 +75,14 @@ const Index = () => (
       )}
     />
     <Route
+      path="/profile"
+      render={props => (
+        <TemplateSidebar>
+          <ProfileContainer {...props} Layout={ProfileComponent} />
+        </TemplateSidebar>
+      )}
+    />
+    <Route
       path="/update-profile"
       render={props => (
         <TemplateSidebar>
@@ -79,7 +95,7 @@ const Index = () => (
       path="/personalities"
       render={props => (
         <TemplateSidebar>
-          <PersonalitiesContainer {...props} Layout={PersonalityListComponent} />
+          <PersonalitiesContainer {...props} Layout={PersonalitiesComponent} />
         </TemplateSidebar>
       )}
     />
@@ -88,7 +104,7 @@ const Index = () => (
       path="/personalities/:personalityId"
       render={props => (
         <TemplateSidebar>
-          <PersonalitiesContainer {...props} Layout={PersonalityViewComponent} />
+          <PersonalityContainer {...props} Layout={PersonalityComponent} />
         </TemplateSidebar>
       )}
     />
@@ -97,7 +113,7 @@ const Index = () => (
       path="/personalities/:personalityId/types/:typeId"
       render={props => (
         <TemplateSidebar>
-          <PersonalitiesContainer {...props} Layout={TypeViewComponent} />
+          <TypeContainer {...props} Layout={TypeComponent} />
         </TemplateSidebar>
       )}
     />
