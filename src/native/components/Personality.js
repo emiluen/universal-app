@@ -7,6 +7,8 @@ import Loading from './Loading';
 import Error from './Error';
 import ErrorMessages from '../../constants/errors';
 import Spacer from './Spacer';
+import ArticleContainer from '../../containers/Article';
+import ArticleComponent from '../components/Article';
 
 const PersonalityView = ({
   error,
@@ -56,6 +58,12 @@ const PersonalityView = ({
                 {types}
               </List>
             </Content>
+          </CardItem>
+          <CardItem>
+            <ArticleContainer
+              Layout={ArticleComponent}
+              article={personality.article}
+            />
           </CardItem>
         </Card>
       </Content>

@@ -11,8 +11,8 @@ import { Link } from 'react-router-dom';
 import ErrorMessages from '../../constants/errors';
 import Loading from './Loading';
 import Error from './Error';
-// import ArticleContainer from '../../containers/Article';
-// import ArticleComponent from './Article';
+import ArticleContainer from '../../containers/Article';
+import ArticleComponent from '../components/Article';
 
 const TypeView = ({
   error,
@@ -41,15 +41,10 @@ const TypeView = ({
           <Card>
             <CardHeader>Group</CardHeader>
             <CardBody>
-              {/*
-                <ArticleContainer
-                  Component={ArticleComponent}
-                  group={type}
-                  personalities={personalities}
-                  personalityId={personalityId}
-                  typeId={typeId}
-                />
-              */}
+              <ArticleContainer
+                Layout={ArticleComponent}
+                article={type.article}
+              />
             </CardBody>
           </Card>
         </Col>

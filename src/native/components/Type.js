@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Content, H3, Text } from 'native-base';
+import { Container, Content, H3, Text, Card } from 'native-base';
 
 import ErrorMessages from '../../constants/errors';
 import Loading from './Loading';
 import Error from './Error';
-// import ArticleContainer from '../../containers/Article';
-// import ArticleComponent from './Article';
+import ArticleContainer from '../../containers/Article';
+import ArticleComponent from '../components/Article';
 
 const TypeView = ({
   error,
@@ -28,6 +28,9 @@ const TypeView = ({
       <Content padder>
         <H3>Type name: {type.name}</H3>
         <Text>Personality id: {personality.id}</Text>
+        <Card>
+          <ArticleContainer Layout={ArticleComponent} article={type.article} />
+        </Card>
       </Content>
     </Container>
   );

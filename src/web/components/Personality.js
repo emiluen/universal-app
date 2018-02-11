@@ -14,8 +14,8 @@ import { Link } from 'react-router-dom';
 import ErrorMessages from '../../constants/errors';
 import Loading from './Loading';
 import Error from './Error';
-// import ArticleContainer from '../../containers/Article';
-// import ArticleComponent from '../components/Article';
+import ArticleContainer from '../../containers/Article';
+import ArticleComponent from '../components/Article';
 
 const PersonalityView = ({
   error,
@@ -50,14 +50,10 @@ const PersonalityView = ({
             <CardHeader>Category</CardHeader>
             <CardBody>
               <CardText>{personality.tagline}</CardText>
-              {/*
-                <ArticleContainer
-                  Component={ArticleComponent}
-                  group={{}}
-                  personalities={personalities}
-                  personalityId={personalityId}
-                />
-              */}
+              <ArticleContainer
+                Layout={ArticleComponent}
+                article={personality.article}
+              />
             </CardBody>
           </Card>
         </Col>
