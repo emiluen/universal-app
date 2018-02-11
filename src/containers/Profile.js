@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 
 import MemberContainer from './Member';
-import memberStatus from '../selectors/member-status';
+import getUserPersonalities from '../selectors/get-user-personalities';
 
 class Profile extends Component {
   static propTypes = {
@@ -41,17 +40,7 @@ class Profile extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const memberStatusPersonalities = memberStatus(state.personalities, state.member, true);
-  const userPersonalities = memberStatusPersonalities.personalities
-    .map((personality) => {
-      // Keep all properties except 'types'
-      const { types, ...personalityProps } = personality;
-
-      return {
-        ...personalityProps,
-        type: _.first(personality.types),
-      };
-    });
+  const userPersonalities = getUserPersonalities(state.personalities, state.member);
 
   return {
     member: state.member || {},

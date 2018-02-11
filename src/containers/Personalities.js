@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import memberStatus from '../selectors/member-status';
+import addMemberStatus from '../selectors/add-member-status';
 
 class Personalities extends React.Component {
   static propTypes = {
@@ -47,7 +47,7 @@ class Personalities extends React.Component {
 
 const mapStateToProps = state => ({
   // personalities: state.personalities || {},
-  personalities: state.personalities ? memberStatus(state.personalities, state.member) : {},
+  personalities: state.personalities ? addMemberStatus(state.personalities, state.member) : {},
 });
 
 export default connect(mapStateToProps)(Personalities);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import memberStatus from '../selectors/member-status';
+import addMemberStatus from '../selectors/add-member-status';
 import { addPersonality, removePersonality } from '../actions/member';
 
 class Type extends Component {
@@ -70,7 +70,7 @@ class Type extends Component {
 const mapStateToProps = state => ({
   // personalities: state.personalities || {},
   member: state.member || {},
-  personalities: state.personalities ? memberStatus(state.personalities, state.member) : {},
+  personalities: state.personalities ? addMemberStatus(state.personalities, state.member) : {},
 });
 
 const mapDispatchToProps = {

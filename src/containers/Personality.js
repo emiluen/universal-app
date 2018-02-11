@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import memberStatus from '../selectors/member-status';
+import addMemberStatus from '../selectors/add-member-status';
 
-class PersonalityX extends Component {
+class Personality extends Component {
   static propTypes = {
     Layout: PropTypes.func.isRequired,
     personalities: PropTypes.shape({
@@ -49,7 +49,7 @@ class PersonalityX extends Component {
 
 const mapStateToProps = state => ({
   // personalities: state.personalities || {},
-  personalities: state.personalities ? memberStatus(state.personalities, state.member) : {},
+  personalities: state.personalities ? addMemberStatus(state.personalities, state.member) : {},
 });
 
-export default connect(mapStateToProps)(PersonalityX);
+export default connect(mapStateToProps)(Personality);
