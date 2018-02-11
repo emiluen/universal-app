@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import memberStatus from '../selectors/member-status';
+import { addPersonality, removePersonality } from '../actions/member';
 
 class Type extends Component {
   static propTypes = {
@@ -15,6 +16,12 @@ class Type extends Component {
     match: PropTypes.shape({
       params: PropTypes.shape({}),
     }),
+    member: PropTypes.shape({
+      loading: PropTypes.bool.isRequired,
+      error: PropTypes.string,
+    }).isRequired,
+    addUserPersonality: PropTypes.func.isRequired,
+    removeUserPersonality: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -25,8 +32,10 @@ class Type extends Component {
 
   render = () => {
     const {
-      Layout, personalities, match,
+      Layout, personalities, match, addUserPersonality, removeUserPersonality, member,
     } = this.props;
+
+    const loggedIn = !!(member && member.email);
 
     const personalityId = (match && match.params && match.params.personalityId) ?
       match.params.personalityId : null;
@@ -49,6 +58,10 @@ class Type extends Component {
         error={personalities.error}
         personality={personality}
         type={type}
+        canAddPersonality={loggedIn && !type.typeMember}
+        addPersonality={addUserPersonality}
+        canRemovePersonality={loggedIn && type.typeMember}
+        removePersonality={removeUserPersonality}
       />
     );
   }
@@ -56,7 +69,13 @@ class Type extends Component {
 
 const mapStateToProps = state => ({
   // personalities: state.personalities || {},
+  member: state.member || {},
   personalities: state.personalities ? memberStatus(state.personalities, state.member) : {},
 });
 
-export default connect(mapStateToProps)(Type);
+const mapDispatchToProps = {
+  addUserPersonality: addPersonality,
+  removeUserPersonality: removePersonality,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Type);

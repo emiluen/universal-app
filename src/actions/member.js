@@ -209,6 +209,36 @@ export function updateProfile(formData) {
 }
 
 /**
+  * Add Personality
+  */
+export function addPersonality(personalityId, typeId) {
+  if (Firebase === null) return () => new Promise(resolve => resolve());
+
+  return dispatch => new Promise((resolve, reject) => {
+    const UID = Firebase.auth().currentUser.uid;
+    if (!UID) return reject({ message: ErrorMessages.missingFirstName });
+
+    return FirebaseRef.child(`users/${UID}/personalities/${personalityId}`).update({ typeId })
+      .catch(reject);
+  }).catch(async (err) => { await statusMessage(dispatch, 'error', err.message); throw err.message; });
+}
+
+/**
+  * Remove Personality
+  */
+export function removePersonality(personalityId) {
+  if (Firebase === null) return () => new Promise(resolve => resolve());
+
+  return dispatch => new Promise((resolve, reject) => {
+    const UID = Firebase.auth().currentUser.uid;
+    if (!UID) return reject({ message: ErrorMessages.missingFirstName });
+
+    return FirebaseRef.child(`users/${UID}/personalities/${personalityId}/typeId`).remove()
+      .catch(reject);
+  }).catch(async (err) => { await statusMessage(dispatch, 'error', err.message); throw err.message; });
+}
+
+/**
   * Logout
   */
 export function logout() {
