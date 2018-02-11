@@ -48,7 +48,7 @@ const Index = (
         {...DefaultProps.tabProps}
       >
         <Stack
-          key="quizzes"
+          key="home"
           // title={AppConfig.appName.toUpperCase()}
           title="Quizzes"
           icon={() => <Icon name="planet" {...DefaultProps.icons} />}
