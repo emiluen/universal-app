@@ -19,7 +19,9 @@ class Member extends Component {
   render = () => {
     const { Layout, member, memberLogout } = this.props;
 
-    return <Layout member={member} logout={memberLogout} />;
+    const loggedIn = !!(member && member.email);
+
+    return <Layout member={member} logout={memberLogout} loggedIn={loggedIn} />;
   }
 }
 

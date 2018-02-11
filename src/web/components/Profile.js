@@ -23,6 +23,7 @@ class Profile extends React.Component {
     loading: PropTypes.bool.isRequired,
     userPersonalities: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     logout: PropTypes.func.isRequired,
+    loggedIn: PropTypes.bool.isRequired,
     history: PropTypes.shape({
       push: PropTypes.func.isRequired,
     }).isRequired,
@@ -37,9 +38,8 @@ class Profile extends React.Component {
 
   render() {
     const {
-      member, loading, error, userPersonalities,
+      member, loading, error, userPersonalities, loggedIn,
     } = this.props;
-    const loggedIn = !!(member && member.email);
 
     if (loading) {
       return <Loading />;

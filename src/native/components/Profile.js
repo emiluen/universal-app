@@ -5,11 +5,11 @@ import { Container, Content, List, ListItem, Body, Left, Text, Icon } from 'nati
 import { Actions } from 'react-native-router-flux';
 import Header from './Header';
 
-const Profile = ({ member, logout }) => (
+const Profile = ({ member, logout, loggedIn }) => (
   <Container>
     <Content>
       <List>
-        {(member && member.email) ?
+        {loggedIn ?
           <View>
             <Content padder>
               <Header
@@ -78,6 +78,7 @@ const Profile = ({ member, logout }) => (
 Profile.propTypes = {
   member: PropTypes.shape({}),
   logout: PropTypes.func.isRequired,
+  loggedIn: PropTypes.bool.isRequired,
 };
 
 Profile.defaultProps = {
