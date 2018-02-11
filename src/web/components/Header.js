@@ -76,6 +76,9 @@ class Header extends Component {
                   {loggedIn &&
                     <div>
                       <DropdownItem>
+                        <Link to="/profile">Profile</Link>
+                      </DropdownItem>
+                      <DropdownItem>
                         <Link to="/update-profile">Update Profile</Link>
                       </DropdownItem>
                       <DropdownItem divider />
