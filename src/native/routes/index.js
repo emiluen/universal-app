@@ -38,8 +38,8 @@ import ProfileContainer from '../../containers/Profile';
 import ProfileComponent from '../components/Profile';
 
 const Index = (
-  <Stack>
-    <Scene hideNavBar>
+  <Stack key="root">
+    <Scene hideNavBar key="tabbarRoot">
       <Tabs
         key="tabbar"
         swipeEnabled
