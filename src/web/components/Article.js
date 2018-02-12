@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
+import marked from 'marked';
 
 const ArticleView = ({
   title,
-  markup,
+  markdown,
 }) => {
-  const parsedMarked = { __html: markup };
+  const parsedMarked = { __html: marked(markdown) };
 
   return (
     <Row>
@@ -20,7 +21,7 @@ const ArticleView = ({
 
 ArticleView.propTypes = {
   title: PropTypes.string.isRequired,
-  markup: PropTypes.string.isRequired,
+  markdown: PropTypes.string.isRequired,
 };
 
 export default ArticleView;
