@@ -1,5 +1,5 @@
 export default (personalities, member, filterNonMembers = false) => {
-  if (!personalities || !personalities.personalities || !member || !member.personalities) {
+  if (!personalities || !personalities.personalities) {
     if (filterNonMembers) {
       return {
         ...personalities,
@@ -11,7 +11,10 @@ export default (personalities, member, filterNonMembers = false) => {
   }
 
   const personalitiesProjection = personalities.personalities.map((personality) => {
-    const userPersonality = member.personalities[personality.id];
+    let userPersonality = null;
+    if (member && member.personalities) {
+      userPersonality = member.personalities[personality.id];
+    }
 
     return {
       ...personality,
