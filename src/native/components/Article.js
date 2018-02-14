@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
-import { H3, Text, Button } from 'native-base';
+import { View, H3, Text, Button } from 'native-base';
 import Markdown, { getUniqueID } from 'react-native-markdown-renderer';
 
 const rules = {
