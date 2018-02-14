@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Content, Card, CardItem, H3, List, ListItem, Text, Button } from 'native-base';
+import { Container, Content, List, ListItem, Text, Button } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
 import Loading from './Loading';
 import Error from './Error';
 import ErrorMessages from '../../constants/errors';
-import Spacer from './Spacer';
 import ArticleContainer from '../../containers/Article';
 import ArticleComponent from '../components/Article';
 
@@ -44,28 +43,13 @@ const PersonalityView = ({
   return (
     <Container>
       <Content padder>
-        <H3>{personality.name}</H3>
-        <Text>{personality.tagline}</Text>
-        <Spacer size={15} />
-
-        <Card>
-          <CardItem header bordered>
-            <Text>Types</Text>
-          </CardItem>
-          <CardItem>
-            <Content>
-              <List>
-                {types}
-              </List>
-            </Content>
-          </CardItem>
-          <CardItem>
-            <ArticleContainer
-              Layout={ArticleComponent}
-              article={personality.article}
-            />
-          </CardItem>
-        </Card>
+        <ArticleContainer
+          Layout={ArticleComponent}
+          article={personality.article}
+        />
+        <List>
+          {types}
+        </List>
       </Content>
     </Container>
   );

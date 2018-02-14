@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Content, H3, Text, Card, Button } from 'native-base';
+import { Dimensions, Image } from 'react-native';
+import { Container, Content, Text, Button, View } from 'native-base';
 
 import ErrorMessages from '../../constants/errors';
 import Loading from './Loading';
 import Error from './Error';
 import ArticleContainer from '../../containers/Article';
 import ArticleComponent from '../components/Article';
+import getImageUrl from '../../selectors/get-image-url';
 
 class TypeView extends React.Component {
   onAddPersonality = () => this.props.addPersonality(this.props.personality.id, this.props.type.id);
@@ -16,7 +18,6 @@ class TypeView extends React.Component {
     const {
       error,
       loading,
-      personality,
       type,
       canAddPersonality,
       canRemovePersonality,
@@ -31,26 +32,35 @@ class TypeView extends React.Component {
     // Recipe not found
     if (!type) return <Error content={ErrorMessages.recipe404} />;
 
+    const deviceWidth = Dimensions.get('window').width;
+
     return (
       <Container>
-        <Content padder>
-          <H3>Type name: {type.name}</H3>
-          <Text>Personality id: {personality.id}</Text>
-          {canAddPersonality ?
-            <Button onPress={this.onAddPersonality}>
-              <Text>Add to my profile</Text>
-            </Button>
-            : null
-          }
-          {canRemovePersonality ?
-            <Button onPress={this.onRemovePersonality}>
-              <Text>Remove from my profile</Text>
-            </Button>
-            : null
-          }
-          <Card>
+        <Content>
+          <Image
+            source={{ uri: getImageUrl(type.coverImageUrl, deviceWidth) }}
+            style={{
+              height: 150,
+              width: '100%',
+              flex: 1,
+              alignSelf: 'stretch',
+            }}
+          />
+          <View padder>
             <ArticleContainer Layout={ArticleComponent} article={type.article} />
-          </Card>
+            {canAddPersonality ?
+              <Button onPress={this.onAddPersonality}>
+                <Text>Add to my profile</Text>
+              </Button>
+              : null
+            }
+            {canRemovePersonality ?
+              <Button onPress={this.onRemovePersonality}>
+                <Text>Remove from my profile</Text>
+              </Button>
+              : null
+            }
+          </View>
         </Content>
       </Container>
     );

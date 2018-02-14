@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FlatList } from 'react-native';
+import { FlatList, TouchableOpacity, Image } from 'react-native';
 import { Container, Content, Card, CardItem, Body, Text, Button } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
 import Error from './Error';
 import Header from './Header';
 import Spacer from './Spacer';
+import getImageUrl from '../../selectors/get-image-url';
 
 const PersonalityList = ({
   error,
@@ -33,6 +34,19 @@ const PersonalityList = ({
           renderItem={({ item }) => (
             <Card transparent style={{ paddingHorizontal: 6 }}>
               <CardItem cardBody>
+                <TouchableOpacity onPress={() => onPress(item)} style={{ flex: 1 }}>
+                  <Image
+                    source={{ uri: getImageUrl(item.profileImageUrl, 200, 200) }}
+                    style={{
+                      height: 150,
+                      width: null,
+                      flex: 1,
+                      borderRadius: 5,
+                    }}
+                  />
+                </TouchableOpacity>
+              </CardItem>
+              <CardItem cardBody>
                 <Body>
                   <Spacer size={10} />
                   <Text style={{ fontWeight: '800' }}>{item.name}</Text>
@@ -43,7 +57,7 @@ const PersonalityList = ({
                     small
                     onPress={() => onPress(item)}
                   >
-                    <Text>View Recipe</Text>
+                    <Text>Test Me</Text>
                   </Button>
                   <Spacer size={5} />
                 </Body>

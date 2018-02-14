@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Content, H3, Text } from 'native-base';
+import { View } from 'react-native';
+import { H3, Text, Button } from 'native-base';
 import Markdown, { getUniqueID } from 'react-native-markdown-renderer';
 
 const rules = {
@@ -22,12 +23,13 @@ const ArticleView = ({
   title,
   markdown,
 }) => (
-  <Container>
-    <Content contentContainerStyle={{ flex: 1 }}>
-      <H3>{title}</H3>
-      <Markdown rules={rules} style={styles}>{markdown}</Markdown>
-    </Content>
-  </Container>
+  <View>
+    <H3>{title}</H3>
+    <Markdown rules={rules} style={styles}>{markdown}</Markdown>
+    <Button transparent primary>
+      <Text>Read More</Text>
+    </Button>
+  </View>
 );
 
 ArticleView.propTypes = {

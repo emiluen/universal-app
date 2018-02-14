@@ -12,9 +12,12 @@ export default function personalityReducer(state = initialState, action) {
       if (action.data.items) {
         personalities = _.map(action.data.items, (personality) => {
           const articleP = personality.fields.article;
+          const imageP = personality.fields.profileImage;
 
           const types = _.map(personality.fields.types || [], (type) => {
             const articleT = type.fields.article;
+            const coverImageT = type.fields.coverImage;
+            const profileImageT = type.fields.profileImage;
 
             return {
               id: type.sys.id,
@@ -25,6 +28,8 @@ export default function personalityReducer(state = initialState, action) {
                 title: articleT.fields.title,
                 description: articleT.fields.description,
               } : null,
+              coverImageUrl: coverImageT ? coverImageT.fields.file.url : null,
+              profileImageUrl: profileImageT ? profileImageT.fields.file.url : null,
             };
           });
 
@@ -37,6 +42,7 @@ export default function personalityReducer(state = initialState, action) {
               title: articleP.fields.title,
               description: articleP.fields.description,
             } : null,
+            profileImageUrl: imageP ? imageP.fields.file.url : null,
             types,
           };
         });
