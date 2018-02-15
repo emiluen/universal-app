@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Content, List, ListItem, Text, Button } from 'native-base';
+import { Container, Content, H3, List, ListItem, Thumbnail, Body, Text } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
 import Loading from './Loading';
@@ -8,6 +8,7 @@ import Error from './Error';
 import ErrorMessages from '../../constants/errors';
 import ArticleContainer from '../../containers/Article';
 import ArticleComponent from '../components/Article';
+import getImageUrl from '../../selectors/get-image-url';
 
 const PersonalityView = ({
   error,
@@ -27,19 +28,6 @@ const PersonalityView = ({
       match: { params: { personalityId: String(personality.id), typeId: String(item.id) } },
     });
 
-  const types = personality.types.map(item => (
-    <ListItem key={item.id} rightIcon={{ style: { opacity: 0 } }}>
-      <Button
-        block
-        bordered
-        small
-        onPress={() => onPress(item)}
-      >
-        <Text>{item.name}</Text>
-      </Button>
-    </ListItem>
-  ));
-
   return (
     <Container>
       <Content padder>
@@ -47,9 +35,19 @@ const PersonalityView = ({
           Layout={ArticleComponent}
           article={personality.article}
         />
-        <List>
-          {types}
-        </List>
+        <H3>{personality.name} Personality Types</H3>
+        <List
+          dataArray={personality.types}
+          renderRow={item => (
+            <ListItem button onPress={() => onPress(item)}>
+              <Thumbnail square size={80} source={{ uri: getImageUrl(item.coverImageUrl, 80) }} />
+              <Body>
+                <Text>{item.name} - {item.nickname}</Text>
+                <Text note>This is a tagline.</Text>
+              </Body>
+            </ListItem>
+          )}
+        />
       </Content>
     </Container>
   );

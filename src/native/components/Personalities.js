@@ -22,7 +22,6 @@ const PersonalityList = ({
 
   return (
     <Container>
-      <Text>This is some text</Text>
       <Content padder>
         <Header
           title="Personality List"

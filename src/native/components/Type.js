@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Dimensions, Image } from 'react-native';
-import { Container, Content, Text, Button, View } from 'native-base';
+import { Container, Content, H3, Text, Button, View } from 'native-base';
 
 import ErrorMessages from '../../constants/errors';
 import Loading from './Loading';
@@ -47,6 +47,7 @@ class TypeView extends React.Component {
             }}
           />
           <View padder>
+            <H3>{type.name} - {type.nickname}</H3>
             <ArticleContainer Layout={ArticleComponent} article={type.article} />
             {canAddPersonality ?
               <Button onPress={this.onAddPersonality}>

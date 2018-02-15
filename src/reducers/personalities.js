@@ -22,8 +22,9 @@ export default function personalityReducer(state = initialState, action) {
             return {
               id: type.sys.id,
               name: type.fields.name,
-              articleId: type.fields.article.sys.id,
+              nickname: type.fields.nickname,
               personalityId: personality.sys.id,
+              articleId: type.fields.article.sys.id,
               article: articleT ? {
                 title: articleT.fields.title,
                 description: articleT.fields.description,
