@@ -42,7 +42,7 @@ class TypeView extends React.Component {
       <div>
         <Row>
           <Col sm="12">
-            <h1>{type.name}</h1>
+            <h1>{type.name} - {type.nickname}</h1>
           </Col>
           <Col sm="12">
             {canAddPersonality ?

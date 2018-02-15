@@ -28,26 +28,29 @@ const PersonalityView = ({
       match: { params: { personalityId: String(personality.id), typeId: String(item.id) } },
     });
 
+  const types = personality.types.map(item => (
+    <ListItem key={item.id} button onPress={() => onPress(item)}>
+      <Thumbnail square size={80} source={{ uri: getImageUrl(item.coverImageUrl, 80) }} />
+      <Body>
+        <Text>{item.name} - {item.nickname}</Text>
+        <Text note>This is a tagline.</Text>
+      </Body>
+    </ListItem>
+  ));
+
   return (
     <Container>
       <Content padder>
         <ArticleContainer
+          title
+          readMore
           Layout={ArticleComponent}
           article={personality.article}
         />
         <H3>{personality.name} Personality Types</H3>
-        <List
-          dataArray={personality.types}
-          renderRow={item => (
-            <ListItem button onPress={() => onPress(item)}>
-              <Thumbnail square size={80} source={{ uri: getImageUrl(item.coverImageUrl, 80) }} />
-              <Body>
-                <Text>{item.name} - {item.nickname}</Text>
-                <Text note>This is a tagline.</Text>
-              </Body>
-            </ListItem>
-          )}
-        />
+        <List>
+          {types}
+        </List>
       </Content>
     </Container>
   );
