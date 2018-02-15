@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Content, H3, List, ListItem, Thumbnail, Body, Text } from 'native-base';
+import { Container, Content, H3, List, ListItem, Thumbnail, Body, Text, Row, Right, Button } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
 import Loading from './Loading';
@@ -41,6 +41,13 @@ const PersonalityView = ({
   return (
     <Container>
       <Content padder>
+        <Row>
+          <Right>
+            <Button primary>
+              <Text>Take Test</Text>
+            </Button>
+          </Right>
+        </Row>
         <ArticleContainer
           title
           readMore

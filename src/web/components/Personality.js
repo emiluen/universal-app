@@ -42,6 +42,7 @@ const PersonalityView = ({
       <Row>
         <Col sm="12">
           <h1>{personality.name}</h1>
+          <button>Take Test</button>
         </Col>
       </Row>
       <Row>
