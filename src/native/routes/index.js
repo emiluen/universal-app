@@ -146,7 +146,7 @@ const Index = (
       back
       clone
       key="quiz"
-      title="Quiz"
+      title="QUIZ"
       {...DefaultProps.navbarProps}
       component={QuizContainer}
       Layout={QuizComponent}
