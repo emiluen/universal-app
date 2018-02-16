@@ -23,13 +23,18 @@ const PersonalityView = ({
   // Personality not found
   if (!personality) return <Error content={ErrorMessages.recipe404} />;
 
-  const onPress = item =>
+  const onTypePress = item =>
     Actions.types({
       match: { params: { personalityId: String(personality.id), typeId: String(item.id) } },
     });
 
+  const onQuizPress = () =>
+    Actions.quiz({
+      match: { params: { personalityId: String(personality.id) } },
+    });
+
   const types = personality.types.map(item => (
-    <ListItem key={item.id} button onPress={() => onPress(item)}>
+    <ListItem key={item.id} button onPress={() => onTypePress(item)}>
       <Thumbnail square size={80} source={{ uri: getImageUrl(item.coverImageUrl, 80) }} />
       <Body>
         <Text>{item.name} - {item.nickname}</Text>
@@ -43,8 +48,8 @@ const PersonalityView = ({
       <Content padder>
         <Row>
           <Right>
-            <Button primary>
-              <Text>Take Test</Text>
+            <Button primary onPress={() => onQuizPress()}>
+              <Text>Test Me</Text>
             </Button>
           </Right>
         </Row>

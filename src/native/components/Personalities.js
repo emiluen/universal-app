@@ -17,14 +17,17 @@ const PersonalityList = ({
 
   const keyExtractor = item => item.id;
 
-  const onPress = item =>
+  const onPersonalityPress = item =>
     Actions.personality({ match: { params: { personalityId: String(item.id) } } });
+
+  const onQuizPress = item =>
+    Actions.quiz({ match: { params: { personalityId: String(item.id) } } });
 
   return (
     <Container>
       <Content padder>
         <Header
-          title="Personality List"
+          title="Personality Tests"
           content="This is here to show how you can read and display data from a data source (in our case, Firebase)."
         />
         <FlatList
@@ -33,7 +36,7 @@ const PersonalityList = ({
           renderItem={({ item }) => (
             <Card transparent style={{ paddingHorizontal: 6 }}>
               <CardItem cardBody>
-                <TouchableOpacity onPress={() => onPress(item)} style={{ flex: 1 }}>
+                <TouchableOpacity onPress={() => onPersonalityPress(item)} style={{ flex: 1 }}>
                   <Image
                     source={{ uri: getImageUrl(item.profileImageUrl, 200, 200) }}
                     style={{
@@ -54,7 +57,7 @@ const PersonalityList = ({
                     block
                     bordered
                     small
-                    onPress={() => onPress(item)}
+                    onPress={() => onQuizPress(item)}
                   >
                     <Text>Test Me</Text>
                   </Button>

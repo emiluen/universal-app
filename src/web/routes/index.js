@@ -19,8 +19,8 @@ import PersonalityComponent from '../components/Personality';
 import TypeContainer from '../../containers/Type';
 import TypeComponent from '../components/Type';
 
-import QuizzesContainer from '../../containers/Quizzes';
-import QuizzesComponent from '../components/Quizzes';
+import QuizContainer from '../../containers/Quiz';
+import QuizComponent from '../components/Quiz';
 
 import SignUpContainer from '../../containers/SignUp';
 import SignUpComponent from '../components/SignUp';
@@ -44,9 +44,9 @@ const Index = () => (
     <Route
       exact
       path="/"
-      render={props => (
+      render={() => (
         <TemplateSidebar>
-          <QuizzesContainer {...props} Layout={QuizzesComponent} />
+          <div>Home</div>
         </TemplateSidebar>
       )}
     />
@@ -114,6 +114,15 @@ const Index = () => (
       render={props => (
         <TemplateSidebar>
           <TypeContainer {...props} Layout={TypeComponent} />
+        </TemplateSidebar>
+      )}
+    />
+    <Route
+      exact
+      path="/personalities/:personalityId/quiz"
+      render={props => (
+        <TemplateSidebar>
+          <QuizContainer {...props} Layout={QuizComponent} />
         </TemplateSidebar>
       )}
     />

@@ -7,7 +7,7 @@ import DefaultProps from '../constants/navigation';
 // import AboutComponent from '../components/About';
 
 import RecipesContainer from '../../containers/Recipes';
-import RecipesComponent from '../components/Recipes';
+// import RecipesComponent from '../components/Recipes';
 import RecipeViewComponent from '../components/Recipe';
 
 import PersonalitiesContainer from '../../containers/Personalities';
@@ -19,8 +19,8 @@ import PersonalityComponent from '../components/Personality';
 import TypeContainer from '../../containers/Type';
 import TypeComponent from '../components/Type';
 
-import QuizzesContainer from '../../containers/Quizzes';
-import QuizzesComponent from '../components/Quizzes';
+import QuizContainer from '../../containers/Quiz';
+import QuizComponent from '../components/Quiz';
 
 import SignUpContainer from '../../containers/SignUp';
 import SignUpComponent from '../components/SignUp';
@@ -48,25 +48,6 @@ const Index = (
         {...DefaultProps.tabProps}
       >
         <Stack
-          key="home"
-          // title={AppConfig.appName.toUpperCase()}
-          title="Quizzes"
-          icon={() => <Icon name="planet" {...DefaultProps.icons} />}
-          {...DefaultProps.navbarProps}
-        >
-          <Scene key="home" component={QuizzesContainer} Layout={QuizzesComponent} />
-        </Stack>
-
-        <Stack
-          key="recipes"
-          title="RECIPES"
-          icon={() => <Icon name="book" {...DefaultProps.icons} />}
-          {...DefaultProps.navbarProps}
-        >
-          <Scene key="recipes" component={RecipesContainer} Layout={RecipesComponent} />
-        </Stack>
-
-        <Stack
           key="personalities"
           title="PERSONALITY LIST"
           icon={() => <Icon name="book" {...DefaultProps.icons} />}
@@ -78,6 +59,17 @@ const Index = (
             Layout={PersonalitiesComponent}
           />
         </Stack>
+
+        {/*
+          <Stack
+            key="recipes"
+            title="RECIPES"
+            icon={() => <Icon name="book" {...DefaultProps.icons} />}
+            {...DefaultProps.navbarProps}
+          >
+            <Scene key="recipes" component={RecipesContainer} Layout={RecipesComponent} />
+          </Stack>
+        */}
 
         <Stack
           key="profile"
@@ -140,6 +132,16 @@ const Index = (
       component={TypeContainer}
       Layout={TypeComponent}
     />
+    <Scene
+      back
+      clone
+      key="quiz"
+      title="Quiz"
+      {...DefaultProps.navbarProps}
+      component={QuizContainer}
+      Layout={QuizComponent}
+    />
+
     <Scene
       back
       clone

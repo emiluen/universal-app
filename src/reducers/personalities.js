@@ -13,6 +13,7 @@ export default function personalityReducer(state = initialState, action) {
         personalities = _.map(action.data.items, (personality) => {
           const articleP = personality.fields.article;
           const imageP = personality.fields.profileImage;
+          const quizP = personality.fields.quiz;
 
           const types = _.map(personality.fields.types || [], (type) => {
             const articleT = type.fields.article;
@@ -43,6 +44,7 @@ export default function personalityReducer(state = initialState, action) {
               title: articleP.fields.title,
               description: articleP.fields.description,
             } : null,
+            quiz: quizP ? { title: quizP.fields.title } : null,
             profileImageUrl: imageP ? imageP.fields.file.url : null,
             types,
           };
