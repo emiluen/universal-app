@@ -10,7 +10,8 @@ import getTheme from '../../native-base-theme/components';
 import theme from '../../native-base-theme/variables/commonColor';
 
 import Routes from './routes/index';
-import Loading from './components/Loading';
+// import Loading from './components/Loading';
+import Splash from './components/Splash';
 import { getMemberData } from '../actions/member';
 import { getPersonalities, setError } from '../actions/personalities';
 
@@ -31,7 +32,7 @@ const Root = ({ store, persistor }) => {
   return (
     <Provider store={store}>
       <PersistGate
-        loading={<Loading />}
+        loading={<Splash />}
         persistor={persistor}
       >
         <StyleProvider style={getTheme(theme)}>
