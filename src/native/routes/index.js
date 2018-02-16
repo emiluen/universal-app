@@ -71,7 +71,7 @@ const Index = (
         <Stack
           key="personalities"
           title="PERSONALITY LIST"
-          icon={() => <Icon name="book" {...DefaultProps.icons} />}
+          icon={() => <Icon name="md-aperture" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
           <Scene
@@ -84,7 +84,7 @@ const Index = (
         <Stack
           key="profile"
           title="PROFILE"
-          icon={() => <Icon name="contact" {...DefaultProps.icons} />}
+          icon={() => <Icon ios="ios-body" android="md-body" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
           <Scene key="profileHome" component={ProfileContainer} Layout={ProfileComponent} />

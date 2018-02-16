@@ -70,7 +70,7 @@ const Profile = ({
             <Content padder>
               <Header
                 title={`Hi ${member.firstName},`}
-                content={`You are currently logged in as ${member.email}`}
+                content="This is your Personality Profile."
               />
             </Content>
 
