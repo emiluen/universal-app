@@ -6,6 +6,8 @@ import TemplateNothing from '../components/TemplateNothing';
 import TemplateSidebar from '../components/TemplateSidebar';
 
 // Routes
+import Home from '../components/Home';
+
 import RecipesContainer from '../../containers/Recipes';
 import RecipesComponent from '../components/Recipes';
 import RecipeViewComponent from '../components/Recipe';
@@ -44,9 +46,9 @@ const Index = () => (
     <Route
       exact
       path="/"
-      render={() => (
+      render={props => (
         <TemplateSidebar>
-          <div>Home</div>
+          <Home {...props} />
         </TemplateSidebar>
       )}
     />

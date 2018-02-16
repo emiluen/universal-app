@@ -47,6 +47,27 @@ const Index = (
         showLabel={false}
         {...DefaultProps.tabProps}
       >
+        {/*
+          <Stack
+            key="home"
+            // title={AppConfig.appName.toUpperCase()}
+            title="Quizzes"
+            icon={() => <Icon name="planet" {...DefaultProps.icons} />}
+            {...DefaultProps.navbarProps}
+          >
+            <Scene key="home" component={AboutComponent} />
+          </Stack>
+
+          <Stack
+            key="recipes"
+            title="RECIPES"
+            icon={() => <Icon name="book" {...DefaultProps.icons} />}
+            {...DefaultProps.navbarProps}
+          >
+            <Scene key="recipes" component={RecipesContainer} Layout={RecipesComponent} />
+          </Stack>
+        */}
+
         <Stack
           key="personalities"
           title="PERSONALITY LIST"
@@ -59,17 +80,6 @@ const Index = (
             Layout={PersonalitiesComponent}
           />
         </Stack>
-
-        {/*
-          <Stack
-            key="recipes"
-            title="RECIPES"
-            icon={() => <Icon name="book" {...DefaultProps.icons} />}
-            {...DefaultProps.navbarProps}
-          >
-            <Scene key="recipes" component={RecipesContainer} Layout={RecipesComponent} />
-          </Stack>
-        */}
 
         <Stack
           key="profile"
