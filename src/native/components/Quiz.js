@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Content, H3 } from 'native-base';
+import { Container, Content, H3, Text } from 'native-base';
 
 import Loading from './Loading';
 import Error from './Error';
@@ -24,6 +24,7 @@ const Quiz = ({
     <Container>
       <Content padder>
         <H3>{quiz.title}</H3>
+        <Text>{quiz.description}</Text>
       </Content>
     </Container>
   );

@@ -23,6 +23,7 @@ const Quiz = ({
   return (
     <div>
       <h2>{quiz.title}</h2>
+      <p>{quiz.description}</p>
       <Link className="btn btn-secondary" to={`/personalities/${personality.id}`}><i className="icon-arrow-left" /> Back</Link>
     </div>
   );

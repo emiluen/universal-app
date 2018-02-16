@@ -44,7 +44,10 @@ export default function personalityReducer(state = initialState, action) {
               title: articleP.fields.title,
               description: articleP.fields.description,
             } : null,
-            quiz: quizP ? { title: quizP.fields.title } : null,
+            quiz: quizP ? {
+              title: quizP.fields.title,
+              description: quizP.fields.description,
+            } : null,
             profileImageUrl: imageP ? imageP.fields.file.url : null,
             types,
           };
