@@ -13,6 +13,8 @@ import {
   FormGroup,
   CardHeader,
 } from 'reactstrap';
+
+import TemplateContainer from './TemplateContainer';
 import Loading from './Loading';
 
 class UpdateProfile extends React.Component {
@@ -72,7 +74,7 @@ class UpdateProfile extends React.Component {
     if (loading) return <Loading />;
 
     return (
-      <div>
+      <TemplateContainer>
         <Row>
           <Col lg={{ size: 6, offset: 3 }}>
             <Card>
@@ -173,7 +175,7 @@ class UpdateProfile extends React.Component {
             </Card>
           </Col>
         </Row>
-      </div>
+      </TemplateContainer>
     );
   }
 }

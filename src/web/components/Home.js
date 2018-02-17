@@ -1,8 +1,10 @@
 import React from 'react';
 import { Row, Col, Jumbotron } from 'reactstrap';
 
+import TemplateContainer from './TemplateContainer';
+
 const About = () => (
-  <div>
+  <TemplateContainer>
     <Row>
       <Jumbotron className="bg-primary text-white">
         <h1>Welcome to Emelie's site</h1>
@@ -78,7 +80,7 @@ const About = () => (
         <p>This repo is a great place to start, but if you'd prefer to sit back and have your new project built for you, <a target="_blank" rel="noopener noreferrer" href="https://mcnam.ee">get in touch with me directly</a> and I'll provide a quote.</p>
       </Col>
     </Row>
-  </div>
+  </TemplateContainer>
 );
 
 export default About;

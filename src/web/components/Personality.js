@@ -11,6 +11,8 @@ import {
   ListGroupItem,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+
+import TemplateContainer from './TemplateContainer';
 import ErrorMessages from '../../constants/errors';
 import Loading from './Loading';
 import Error from './Error';
@@ -38,7 +40,7 @@ const PersonalityView = ({
   ));
 
   return (
-    <div>
+    <TemplateContainer>
       <Row>
         <Col sm="12">
           <h1>{personality.name}</h1>
@@ -76,7 +78,7 @@ const PersonalityView = ({
           <Link className="btn btn-secondary" to="/personalities"><i className="icon-arrow-left" /> Back</Link>
         </Col>
       </Row>
-    </div>
+    </TemplateContainer>
   );
 };
 

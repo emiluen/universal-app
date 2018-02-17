@@ -10,6 +10,8 @@ import {
   CardTitle,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+
+import TemplateContainer from './TemplateContainer';
 import Error from './Error';
 
 const RecipeListing = ({ error, loading, recipes }) => {
@@ -32,7 +34,7 @@ const RecipeListing = ({ error, loading, recipes }) => {
 
   // Show Listing
   return (
-    <div>
+    <TemplateContainer>
       <Row>
         <Col sm="12">
           <h1>Recipes</h1>
@@ -44,7 +46,7 @@ const RecipeListing = ({ error, loading, recipes }) => {
           {cards}
         </Col>
       </Row>
-    </div>
+    </TemplateContainer>
   );
 };
 

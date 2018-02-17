@@ -11,6 +11,8 @@ import {
   ListGroupItem,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+
+import TemplateContainer from './TemplateContainer';
 import ErrorMessages from '../../constants/errors';
 import Loading from './Loading';
 import Error from './Error';
@@ -47,7 +49,7 @@ const RecipeView = ({
   ));
 
   return (
-    <div>
+    <TemplateContainer>
       <Row>
         <Col sm="12">
           <h1>{recipe.title}</h1>
@@ -85,7 +87,7 @@ const RecipeView = ({
           <Link className="btn btn-secondary" to="/recipes"><i className="icon-arrow-left" /> Back</Link>
         </Col>
       </Row>
-    </div>
+    </TemplateContainer>
   );
 };
 

@@ -10,6 +10,8 @@ import {
   CardText,
   CardBody,
 } from 'reactstrap';
+
+import TemplateContainer from './TemplateContainer';
 import Error from './Error';
 import Loading from './Loading';
 
@@ -66,7 +68,7 @@ class Profile extends React.Component {
     ));
 
     return (
-      <div>
+      <TemplateContainer>
         {!loggedIn &&
           <div>
             <div>
@@ -92,7 +94,7 @@ class Profile extends React.Component {
             </Row>
           </div>
         }
-      </div>
+      </TemplateContainer>
     );
   }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import TemplateContainer from './TemplateContainer';
 import Loading from './Loading';
 import Error from './Error';
 import ErrorMessages from '../../constants/errors';
@@ -21,11 +22,11 @@ const Quiz = ({
   if (!quiz || !personality) return <Error content={ErrorMessages.recipe404} />;
 
   return (
-    <div>
+    <TemplateContainer>
       <h2>{quiz.title}</h2>
       <p>{quiz.description}</p>
       <Link className="btn btn-secondary" to={`/personalities/${personality.id}`}><i className="icon-arrow-left" /> Back</Link>
-    </div>
+    </TemplateContainer>
   );
 };
 

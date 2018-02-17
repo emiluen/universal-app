@@ -10,9 +10,9 @@ import {
   CardImg,
   CardSubtitle,
   Row,
-  Col,
 } from 'reactstrap';
 
+import TemplateContainer from './TemplateContainer';
 import Error from './Error';
 import getImageUrl from '../../selectors/get-image-url';
 
@@ -32,25 +32,26 @@ const PersonalityList = ({
         <CardTitle><Link to={`/personalities/${item.id}`}>{item.name}</Link></CardTitle>
         <CardSubtitle>{item.tagline}</CardSubtitle>
         <CardText>{item.description}</CardText>
-        <Link className="btn btn-primary" to={`/personalities/${item.id}/quiz`}>Test Me<i className="icon-arrow-right" /></Link>
+        <Link className="btn btn-primary" to={`/personalities/${item.id}/quiz`}>Test Me <i className="icon-arrow-right" /></Link>
       </CardBody>
     </Card>
   ));
 
   return (
-    <div>
+    <TemplateContainer>
       <Row>
-        <Col sm="12">
-          <h1>Personality Tests</h1>
-          <p>The following data is read directly from Firebase.</p>
-        </Col>
+        <h1>Personality Tests</h1>
+        <p>
+          The following data is read directly from Firebase. The following data
+          is read directly from Firebase. The following data is read directly from Firebase.
+        </p>
       </Row>
       <Row className={loading ? 'content-loading' : ''}>
         <CardDeck>
           {cards}
         </CardDeck>
       </Row>
-    </div>
+    </TemplateContainer>
   );
 };
 

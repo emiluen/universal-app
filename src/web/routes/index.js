@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 // Templates
 import TemplateNothing from '../components/TemplateNothing';
-import TemplateSidebar from '../components/TemplateSidebar';
+import TemplateHeader from '../components/TemplateHeader';
 
 // Routes
 import Home from '../components/Home';
@@ -47,9 +47,9 @@ const Index = () => (
       exact
       path="/"
       render={props => (
-        <TemplateSidebar>
+        <TemplateHeader>
           <Home {...props} />
-        </TemplateSidebar>
+        </TemplateHeader>
       )}
     />
     <Route
@@ -79,76 +79,76 @@ const Index = () => (
     <Route
       path="/profile"
       render={props => (
-        <TemplateSidebar>
+        <TemplateHeader>
           <ProfileContainer {...props} Layout={ProfileComponent} />
-        </TemplateSidebar>
+        </TemplateHeader>
       )}
     />
     <Route
       path="/update-profile"
       render={props => (
-        <TemplateSidebar>
+        <TemplateHeader>
           <UpdateProfileContainer {...props} Layout={UpdateProfileComponent} />
-        </TemplateSidebar>
+        </TemplateHeader>
       )}
     />
     <Route
       exact
       path="/personalities"
       render={props => (
-        <TemplateSidebar>
+        <TemplateHeader>
           <PersonalitiesContainer {...props} Layout={PersonalitiesComponent} />
-        </TemplateSidebar>
+        </TemplateHeader>
       )}
     />
     <Route
       exact
       path="/personalities/:personalityId"
       render={props => (
-        <TemplateSidebar>
+        <TemplateHeader>
           <PersonalityContainer {...props} Layout={PersonalityComponent} />
-        </TemplateSidebar>
+        </TemplateHeader>
       )}
     />
     <Route
       exact
       path="/personalities/:personalityId/types/:typeId"
       render={props => (
-        <TemplateSidebar>
+        <TemplateHeader>
           <TypeContainer {...props} Layout={TypeComponent} />
-        </TemplateSidebar>
+        </TemplateHeader>
       )}
     />
     <Route
       exact
       path="/personalities/:personalityId/quiz"
       render={props => (
-        <TemplateSidebar>
+        <TemplateHeader>
           <QuizContainer {...props} Layout={QuizComponent} />
-        </TemplateSidebar>
+        </TemplateHeader>
       )}
     />
     <Route
       path="/recipes"
       render={props => (
-        <TemplateSidebar>
+        <TemplateHeader>
           <RecipesContainer {...props} Layout={RecipesComponent} />
-        </TemplateSidebar>
+        </TemplateHeader>
       )}
     />
     <Route
       path="/recipe/:id"
       render={props => (
-        <TemplateSidebar>
+        <TemplateHeader>
           <RecipesContainer {...props} Layout={RecipeViewComponent} />
-        </TemplateSidebar>
+        </TemplateHeader>
       )}
     />
     <Route
       render={props => (
-        <TemplateSidebar>
+        <TemplateHeader>
           <Error {...props} title="404" content="Sorry, the route you requested does not exist" />
-        </TemplateSidebar>
+        </TemplateHeader>
       )}
     />
   </Switch>

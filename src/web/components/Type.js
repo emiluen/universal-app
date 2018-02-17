@@ -9,6 +9,8 @@ import {
   Button,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+
+import TemplateContainer from './TemplateContainer';
 import ErrorMessages from '../../constants/errors';
 import Loading from './Loading';
 import Error from './Error';
@@ -39,7 +41,7 @@ class TypeView extends React.Component {
     if (!type) return <Error content={ErrorMessages.recipe404} />;
 
     return (
-      <div>
+      <TemplateContainer>
         <Row>
           <Col sm="12">
             <h1>{type.name} - {type.nickname}</h1>
@@ -77,7 +79,7 @@ class TypeView extends React.Component {
             <Link className="btn btn-secondary" to={`/personalities/${personality.id}`}><i className="icon-arrow-left" /> Back</Link>
           </Col>
         </Row>
-      </div>
+      </TemplateContainer>
     );
   }
 }
