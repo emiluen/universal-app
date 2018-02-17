@@ -3,6 +3,18 @@ import React from 'react';
 import { Col, Nav, NavItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
+const HomeNavItem = () => (
+  <Link className={`nav-link ${window.location.pathname.startsWith('/personalities') && 'active'}`} to="/" style={{ color: 'white' }}>
+    <span>Home</span>
+  </Link>
+);
+
+const PersonalitiesNavItem = () => (
+  <Link className={`nav-link ${window.location.pathname.startsWith('/personalities') && 'active'}`} to="/personalities" style={{ color: 'white' }}>
+    <span>Personalities</span>
+  </Link>
+);
+
 const SidebarNavItems = () => (
   <div>
     <NavItem>
@@ -33,4 +45,4 @@ const Sidebar = () => (
   </div>
 );
 
-export { Sidebar, SidebarNavItems };
+export { Sidebar, HomeNavItem, PersonalitiesNavItem, SidebarNavItems };
