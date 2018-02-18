@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import ErrorMessages from '../constants/errors';
 import statusMessage from './status';
 import { Firebase, FirebaseRef } from '../lib/firebase';
@@ -220,6 +222,30 @@ export function addPersonality(personalityId, typeId) {
 
     return FirebaseRef.child(`users/${UID}/personalities/${personalityId}`).update({ typeId })
       .catch(reject);
+  }).catch(async (err) => { await statusMessage(dispatch, 'error', err.message); throw err.message; });
+}
+
+/**
+  * Update Personality Privacy
+  */
+export function updatePrivacy(userPersonalities) {
+  return dispatch => new Promise(async (resolve, reject) => {
+    // Are they a user?
+    const UID = Firebase.auth().currentUser.uid;
+    if (!UID) return reject({ message: ErrorMessages.missingFirstName });
+
+    const data = _.mapKeys(userPersonalities, (value, key) => `${key}/isPrivate`);
+
+    await statusMessage(dispatch, 'loading', true);
+
+    // Go to Firebase
+    return FirebaseRef.child(`users/${UID}/personalities`).update(data)
+      .then(async () => {
+        // Update Redux
+        await getUserData(dispatch);
+        await statusMessage(dispatch, 'success', 'Privacy Updated');
+        resolve();
+      }).catch(reject);
   }).catch(async (err) => { await statusMessage(dispatch, 'error', err.message); throw err.message; });
 }
 

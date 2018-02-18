@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Content, Text, Body, ListItem, Form, Item, Label, Input, CheckBox, Button, View } from 'native-base';
-import Messages from './Messages';
+import { Text, Body, ListItem, Form, Item, Label, Input, CheckBox, Button, View, Container, Content } from 'native-base';
 import Loading from './Loading';
-import Header from './Header';
 import Spacer from './Spacer';
+import Header from './Header';
 
 class UpdateProfile extends React.Component {
   static propTypes = {
-    error: PropTypes.string,
-    success: PropTypes.string,
     loading: PropTypes.bool.isRequired,
     onFormSubmit: PropTypes.func.isRequired,
     member: PropTypes.shape({
@@ -17,11 +14,6 @@ class UpdateProfile extends React.Component {
       lastName: PropTypes.string,
       email: PropTypes.string,
     }).isRequired,
-  }
-
-  static defaultProps = {
-    error: null,
-    success: null,
   }
 
   constructor(props) {
@@ -54,7 +46,7 @@ class UpdateProfile extends React.Component {
   }
 
   render() {
-    const { loading, error, success } = this.props;
+    const { loading } = this.props;
 
     // Loading
     if (loading) return <Loading />;
@@ -66,9 +58,6 @@ class UpdateProfile extends React.Component {
             title="Update my profile"
             content="Thanks for keeping your account up to date!"
           />
-
-          {error && <Messages message={error} />}
-          {success && <Messages message={success} type="success" />}
 
           <Form>
             <Item stackedLabel>

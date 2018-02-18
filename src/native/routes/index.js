@@ -31,8 +31,8 @@ import LoginComponent from '../components/Login';
 import ForgotPasswordContainer from '../../containers/ForgotPassword';
 import ForgotPasswordComponent from '../components/ForgotPassword';
 
-import UpdateProfileContainer from '../../containers/UpdateProfile';
-import UpdateProfileComponent from '../components/UpdateProfile';
+import SettingsContainer from '../../containers/Settings';
+import SettingsComponent from '../components/Settings';
 
 import ProfileContainer from '../../containers/Profile';
 import ProfileComponent from '../components/Profile';
@@ -117,8 +117,8 @@ const Index = (
             key="updateProfile"
             title="UPDATE PROFILE"
             {...DefaultProps.navbarProps}
-            component={UpdateProfileContainer}
-            Layout={UpdateProfileComponent}
+            component={SettingsContainer}
+            Layout={SettingsComponent}
           />
         </Stack>
       </Tabs>
