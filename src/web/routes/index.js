@@ -36,8 +36,8 @@ import ForgotPasswordComponent from '../components/ForgotPassword';
 import ProfileContainer from '../../containers/Profile';
 import ProfileComponent from '../components/Profile';
 
-import UpdateProfileContainer from '../../containers/UpdateProfile';
-import UpdateProfileComponent from '../components/UpdateProfile';
+import SettingsContainer from '../../containers/Settings';
+import SettingsComponent from '../components/Settings';
 
 import Error from '../components/Error';
 
@@ -88,7 +88,7 @@ const Index = () => (
       path="/update-profile"
       render={props => (
         <TemplateHeader>
-          <UpdateProfileContainer {...props} Layout={UpdateProfileComponent} />
+          <SettingsContainer {...props} Layout={SettingsComponent} />
         </TemplateHeader>
       )}
     />
