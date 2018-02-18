@@ -10,7 +10,6 @@ import getImageUrl from '../../selectors/get-image-url';
 
 const Profile = ({
   member,
-  logout,
   loggedIn,
   userPersonalities,
 }) => {
@@ -52,18 +51,6 @@ const Profile = ({
                   }}
                 >
                   <Icon ios="ios-settings" android="md-settings" style={{ fontSize: 30, color: 'white' }} />
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={logout}
-                  style={{
-                    position: 'absolute',
-                    bottom: 0,
-                    right: 0,
-                  }}
-                >
-                  <Text style={{ color: 'white' }} >
-                    Log out
-                  </Text>
                 </TouchableOpacity>
               </Content>
             </View>
@@ -147,7 +134,6 @@ const Profile = ({
 
 Profile.propTypes = {
   member: PropTypes.shape({}),
-  logout: PropTypes.func.isRequired,
   loggedIn: PropTypes.bool.isRequired,
   userPersonalities: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };

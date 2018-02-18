@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, Body, ListItem, Form, Item, Label, Input, CheckBox, Button, View, Container, Content } from 'native-base';
+import { Actions } from 'react-native-router-flux';
+
 import Loading from './Loading';
 import Spacer from './Spacer';
 import Header from './Header';
@@ -14,6 +16,7 @@ class UpdateProfile extends React.Component {
       lastName: PropTypes.string,
       email: PropTypes.string,
     }).isRequired,
+    logout: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -30,6 +33,12 @@ class UpdateProfile extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onLogout = this.onLogout.bind(this);
+  }
+
+  onLogout = () => {
+    Actions.popTo('profileHome');
+    this.props.logout();
   }
 
   handleChange = (name, val) => {
@@ -126,6 +135,12 @@ class UpdateProfile extends React.Component {
 
             <Button block onPress={this.handleSubmit}>
               <Text>Update Profile</Text>
+            </Button>
+
+            <Spacer size={20} />
+
+            <Button block bordered primary onPress={this.onLogout}>
+              <Text>Logout</Text>
             </Button>
           </Form>
         </Content>

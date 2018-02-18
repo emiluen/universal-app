@@ -2,16 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import MemberContainer from './Member';
+
 const Settings = ({
   Layout,
   isLoading,
   errorMessage,
   successMessage,
 }) => (
-  <Layout
-    loading={isLoading}
-    error={errorMessage}
-    success={successMessage}
+  <MemberContainer Layout={props => (
+    <Layout
+      {...props}
+      loading={isLoading}
+      error={errorMessage}
+      success={successMessage}
+    />
+  )}
   />
 );
 
