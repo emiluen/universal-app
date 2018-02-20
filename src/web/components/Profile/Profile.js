@@ -11,9 +11,9 @@ import {
   CardBody,
 } from 'reactstrap';
 
-import TemplateContainer from './TemplateContainer';
-import Error from './Error';
-import Loading from './Loading';
+import TemplateContainer from '../TemplateContainer';
+import Error from '../Error';
+import Loading from '../Loading';
 
 class Profile extends React.Component {
   static propTypes = {

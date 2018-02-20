@@ -34,10 +34,10 @@ import ForgotPasswordContainer from '../../containers/ForgotPassword';
 import ForgotPasswordComponent from '../components/ForgotPassword';
 
 import ProfileContainer from '../../containers/Profile';
-import ProfileComponent from '../components/Profile';
+import ProfileComponent from '../components/Profile/Profile';
 
 import PublicProfileContainer from '../../containers/PublicProfile';
-import PublicProfileComponent from '../components/PublicProfile';
+import PublicProfileComponent from '../components/Profile/PublicProfile';
 
 import SettingsContainer from '../../containers/Settings';
 import SettingsComponent from '../components/Settings';
