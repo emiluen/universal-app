@@ -11,7 +11,7 @@ import {
   CardBody,
 } from 'reactstrap';
 
-import TemplateContainer from '../TemplateContainer';
+import TemplateContainer from '../Templates/TemplateContainer';
 import Error from '../Error';
 import Loading from '../Loading';
 

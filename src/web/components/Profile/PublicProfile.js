@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import TemplateContainer from '../Templates/TemplateContainer';
 import Loading from '../Loading';
 import Error from '../Error';
 
@@ -15,7 +16,7 @@ const PublicProfile = ({
   if (error) return <Error />;
 
   return (
-    <div>
+    <TemplateContainer>
       <h1>{firstName}</h1>
       {userPersonalities.map(item => (
         <div key={item.id}>
@@ -23,7 +24,7 @@ const PublicProfile = ({
         </div>
       ))
       }
-    </div>
+    </TemplateContainer>
   );
 };
 

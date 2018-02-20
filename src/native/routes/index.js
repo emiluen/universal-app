@@ -8,28 +8,28 @@ import DefaultProps from '../constants/navigation';
 
 import RecipesContainer from '../../containers/Recipes';
 // import RecipesComponent from '../components/Recipes';
-import RecipeViewComponent from '../components/Recipe';
+import RecipeViewComponent from '../components/Recipes/Recipe';
 
 import PersonalitiesContainer from '../../containers/Personalities';
-import PersonalitiesComponent from '../components/Personalities';
+import PersonalitiesComponent from '../components/Personalities/Personalities';
 
 import PersonalityContainer from '../../containers/Personality';
-import PersonalityComponent from '../components/Personality';
+import PersonalityComponent from '../components/Personalities/Personality';
 
 import TypeContainer from '../../containers/Type';
-import TypeComponent from '../components/Type';
+import TypeComponent from '../components/Personalities/Type';
 
 import QuizContainer from '../../containers/Quiz';
-import QuizComponent from '../components/Quiz';
+import QuizComponent from '../components/Quiz/Quiz';
 
 import SignUpContainer from '../../containers/SignUp';
-import SignUpComponent from '../components/SignUp';
+import SignUpComponent from '../components/Auth/SignUp';
 
 import LoginContainer from '../../containers/Login';
-import LoginComponent from '../components/Login';
+import LoginComponent from '../components/Auth/Login';
 
 import ForgotPasswordContainer from '../../containers/ForgotPassword';
-import ForgotPasswordComponent from '../components/ForgotPassword';
+import ForgotPasswordComponent from '../components/Auth/ForgotPassword';
 
 import ProfileContainer from '../../containers/Profile';
 import ProfileComponent from '../components/Profile/Profile';
@@ -38,7 +38,7 @@ import PublicProfileContainer from '../../containers/PublicProfile';
 import PublicProfileComponent from '../components/Profile/PublicProfile';
 
 import SettingsContainer from '../../containers/Settings';
-import SettingsComponent from '../components/Settings';
+import SettingsComponent from '../components/Settings/Settings';
 
 const Index = (
   <Stack key="root">
