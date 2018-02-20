@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import TemplateContainer from '../Templates/TemplateContainer';
 import Loading from '../Loading';
 import Error from '../Error';
+import Cover from './Cover';
+import TypeList from './TypeList';
 
 const PublicProfile = ({
   loading,
@@ -17,13 +19,9 @@ const PublicProfile = ({
 
   return (
     <TemplateContainer>
+      <Cover />
       <h1>{firstName}</h1>
-      {userPersonalities.map(item => (
-        <div key={item.id}>
-          <span>{item.name}</span>
-        </div>
-      ))
-      }
+      <TypeList personalities={userPersonalities} />
     </TemplateContainer>
   );
 };

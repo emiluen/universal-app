@@ -6,14 +6,14 @@ import {
   Col,
   Card,
   CardHeader,
-  CardTitle,
-  CardText,
   CardBody,
 } from 'reactstrap';
 
 import TemplateContainer from '../Templates/TemplateContainer';
 import Error from '../Error';
 import Loading from '../Loading';
+import Cover from './Cover';
+import TypeList from './TypeList';
 
 class Profile extends React.Component {
   static propTypes = {
@@ -51,22 +51,6 @@ class Profile extends React.Component {
       return <Error content={error} />;
     }
 
-    const cards = userPersonalities.map(personality => (
-      <div key={`${personality.id}`}>
-        <Card>
-          <CardBody>
-            <CardTitle>
-              <Link to={`/personalities/${personality.id}`}>{personality.name}</Link>
-            </CardTitle>
-            <CardText>{personality.tagline}</CardText>
-            <Card>
-              <Link to={`/personalities/${personality.id}/types/${personality.type.id}`}>{personality.type.name}</Link>
-            </Card>
-          </CardBody>
-        </Card>
-      </div>
-    ));
-
     return (
       <TemplateContainer>
         {!loggedIn &&
@@ -79,6 +63,7 @@ class Profile extends React.Component {
         }
         {loggedIn &&
           <div>
+            <Cover />
             <Row>
               <Col lg={{ size: 6, offset: 3 }}>
                 <Card>
@@ -86,7 +71,7 @@ class Profile extends React.Component {
                   <CardBody>
                     <p>{member.firstName}</p>
                     <p>{member.email}</p>
-                    {cards}
+                    <TypeList personalities={userPersonalities} />
                     <button onClick={this.onLogout}>Log out</button>
                   </CardBody>
                 </Card>
