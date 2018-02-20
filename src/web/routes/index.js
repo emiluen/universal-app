@@ -36,6 +36,9 @@ import ForgotPasswordComponent from '../components/ForgotPassword';
 import ProfileContainer from '../../containers/Profile';
 import ProfileComponent from '../components/Profile';
 
+import PublicProfileContainer from '../../containers/PublicProfile';
+import PublicProfileComponent from '../components/PublicProfile';
+
 import SettingsContainer from '../../containers/Settings';
 import SettingsComponent from '../components/Settings';
 
@@ -77,10 +80,19 @@ const Index = () => (
       )}
     />
     <Route
+      exact
       path="/profile"
       render={props => (
         <TemplateHeader>
           <ProfileContainer {...props} Layout={ProfileComponent} />
+        </TemplateHeader>
+      )}
+    />
+    <Route
+      path="/profile/:id"
+      render={props => (
+        <TemplateHeader>
+          <PublicProfileContainer {...props} Layout={PublicProfileComponent} />
         </TemplateHeader>
       )}
     />
