@@ -1,3 +1,4 @@
+/* global window */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -14,7 +15,18 @@ import {
 import { Link, withRouter } from 'react-router-dom';
 
 import Config from '../../constants/config';
-import { HomeNavItem, PersonalitiesNavItem } from './Sidebar';
+
+const HomeNavItem = () => (
+  <Link className={`nav-link ${window.location.pathname.startsWith('/personalities') && 'active'}`} to="/" style={{ color: 'white' }}>
+    <span>Home</span>
+  </Link>
+);
+
+const PersonalitiesNavItem = () => (
+  <Link className={`nav-link ${window.location.pathname.startsWith('/personalities') && 'active'}`} to="/personalities" style={{ color: 'white' }}>
+    <span>Personalities</span>
+  </Link>
+);
 
 class Header extends Component {
   static propTypes = {
