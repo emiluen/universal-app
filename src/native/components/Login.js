@@ -43,7 +43,7 @@ class Login extends React.Component {
   handleSubmit = () => {
     this.props.onFormSubmit(this.state)
       // .then(() => Actions.tabbar())
-      .then(() => Actions.popTo('profileHome'))
+      .then(() => Actions.pop())
       .catch(e => console.log(`Error: ${e}`));
   }
 
