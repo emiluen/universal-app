@@ -10,15 +10,14 @@ function getName(dispatch, UID) {
 
   const ref = FirebaseRef.child(`users/users/${UID}/publicName`);
 
-  return ref.once('value')
-    .then((snapshot) => {
-      const name = snapshot.val() || '';
+  return ref.on('value', (snapshot) => {
+    const name = snapshot.val() || '';
 
-      return dispatch({
-        type: 'PUBLIC_PROFILE_PUBLICNAME_UPDATE',
-        data: name,
-      });
+    return dispatch({
+      type: 'PUBLIC_PROFILE_PUBLICNAME_UPDATE',
+      data: name,
     });
+  });
 }
 
 /**
@@ -32,8 +31,7 @@ function getPersonalities(dispatch, UID) {
   const ref = FirebaseRef.child(`users/userObjects/personalities/${UID}`);
 
   return ref.orderByChild('isPrivate').equalTo(false) // TODO: false || null
-    .once('value')
-    .then((snapshot) => {
+    .on('value', (snapshot) => {
       const personalities = snapshot.val() || [];
 
       return dispatch({
