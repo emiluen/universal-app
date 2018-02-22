@@ -17,7 +17,7 @@ class PublicProfile extends Component {
     }),
     getPublicProfile: PropTypes.func.isRequired,
     setError: PropTypes.func.isRequired,
-    firstName: PropTypes.string.isRequired,
+    publicName: PropTypes.string.isRequired,
     userPersonalities: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   }
 
@@ -47,7 +47,7 @@ class PublicProfile extends Component {
 
   render = () => {
     const {
-      Layout, loading, error, match, firstName, userPersonalities,
+      Layout, loading, error, match, publicName, userPersonalities,
     } = this.props;
     const id = (match && match.params && match.params.id) ? match.params.id : null;
 
@@ -56,7 +56,7 @@ class PublicProfile extends Component {
         recipeId={id}
         error={error}
         loading={loading}
-        firstName={firstName}
+        publicName={publicName}
         userPersonalities={userPersonalities}
       />
     );
@@ -66,7 +66,7 @@ class PublicProfile extends Component {
 const mapStateToProps = state => ({
   loading: state.publicProfile.loading,
   error: state.publicProfile.error,
-  firstName: state.publicProfile.firstName,
+  publicName: state.publicProfile.publicName,
   userPersonalities: getUserPersonalities(state.personalities, state.publicProfile),
 });
 

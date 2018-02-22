@@ -11,7 +11,7 @@ import TypeList from './TypeList';
 const PublicProfile = ({
   loading,
   error,
-  firstName,
+  publicName,
   userPersonalities,
 }) => {
   if (loading) return <Loading />;
@@ -25,8 +25,8 @@ const PublicProfile = ({
 
         <Content padder>
           <Header
-            title={`${firstName}'s Personality Profile`}
-            content={`These are the personality types ${firstName} has chosen as public.`}
+            title={`${publicName}'s Personality Profile`}
+            content={`These are the personality types ${publicName} has chosen as public.`}
           />
         </Content>
 
@@ -39,7 +39,7 @@ const PublicProfile = ({
 PublicProfile.propTypes = {
   error: PropTypes.string,
   loading: PropTypes.bool.isRequired,
-  firstName: PropTypes.string.isRequired,
+  publicName: PropTypes.string.isRequired,
   userPersonalities: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 

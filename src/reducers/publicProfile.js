@@ -4,13 +4,13 @@ export const initialState = Store;
 
 export default function publicProfileReducer(state = initialState, action) {
   switch (action.type) {
-    case 'PUBLIC_PROFILE_FIRSTNAME_UPDATE': {
+    case 'PUBLIC_PROFILE_PUBLICNAME_UPDATE': {
       if (action.data) {
         return {
           ...state,
           loading: false,
           error: null,
-          firstName: action.data,
+          publicName: action.data,
         };
       }
       return state;

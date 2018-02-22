@@ -8,14 +8,14 @@ function getName(dispatch, UID) {
 
   if (!UID) return false;
 
-  const ref = FirebaseRef.child(`users/${UID}/firstName`);
+  const ref = FirebaseRef.child(`users/users/${UID}/publicName`);
 
   return ref.once('value')
     .then((snapshot) => {
-      const name = snapshot.val() || {};
+      const name = snapshot.val() || '';
 
       return dispatch({
-        type: 'PUBLIC_PROFILE_FIRSTNAME_UPDATE',
+        type: 'PUBLIC_PROFILE_PUBLICNAME_UPDATE',
         data: name,
       });
     });
@@ -29,7 +29,7 @@ function getPersonalities(dispatch, UID) {
 
   if (!UID) return false;
 
-  const ref = FirebaseRef.child(`users/${UID}/personalities`);
+  const ref = FirebaseRef.child(`users/userObjects/personalities/${UID}`);
 
   return ref.orderByChild('isPrivate').equalTo(false) // TODO: false || null
     .once('value')

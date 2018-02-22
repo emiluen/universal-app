@@ -10,7 +10,7 @@ import TypeList from './TypeList';
 const PublicProfile = ({
   loading,
   error,
-  firstName,
+  publicName,
   userPersonalities,
 }) => {
   if (loading) return <Loading />;
@@ -20,7 +20,7 @@ const PublicProfile = ({
   return (
     <TemplateContainer>
       <Cover />
-      <h1>{firstName}</h1>
+      <h1>{publicName}</h1>
       <TypeList personalities={userPersonalities} />
     </TemplateContainer>
   );
@@ -29,7 +29,7 @@ const PublicProfile = ({
 PublicProfile.propTypes = {
   error: PropTypes.string,
   loading: PropTypes.bool.isRequired,
-  firstName: PropTypes.string.isRequired,
+  publicName: PropTypes.string.isRequired,
   userPersonalities: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 

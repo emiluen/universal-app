@@ -1,6 +1,6 @@
 export default {
   loading: false,
   error: null,
-  firstName: '',
+  publicName: '',
   personalities: [],
 };

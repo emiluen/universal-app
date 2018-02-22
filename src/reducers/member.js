@@ -27,11 +27,18 @@ export default function userReducer(state = initialState, action) {
           lastName: action.data.lastName,
           signedUp: action.data.signedUp,
           role: action.data.role,
-          groups: action.data.groups,
-          personalities: action.data.personalities,
         };
       }
       return initialState;
+    }
+    case 'USER_PERSONALITIES_UPDATE': {
+      if (action.data) {
+        return {
+          ...state,
+          personalities: action.data,
+        };
+      }
+      return state;
     }
     case 'USER_ERROR': {
       if (action.data) {
