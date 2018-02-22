@@ -36,6 +36,7 @@ export function signUp(formData) {
           FirebaseRef.child(`users/users/${res.uid}`).set({
             firstName,
             lastName,
+            publicName: firstName,
             signedUp: Firebase.database.ServerValue.TIMESTAMP,
             lastLoggedIn: Firebase.database.ServerValue.TIMESTAMP,
           }).then(() => statusMessage(dispatch, 'loading', false).then(resolve));
@@ -230,7 +231,7 @@ export function updateProfile(formData) {
     await statusMessage(dispatch, 'loading', true);
 
     // Go to Firebase
-    return FirebaseRef.child(`users/users/${UID}`).update({ firstName, lastName })
+    return FirebaseRef.child(`users/users/${UID}`).update({ firstName, lastName, publicName: firstName })
       .then(async () => {
         // Update Email address
         if (changeEmail) {
