@@ -18,7 +18,7 @@ import ArticleContainer from '../../../containers/Article';
 import ArticleComponent from './Article';
 
 class TypeView extends React.Component {
-  onAddPersonality = () => this.props.addPersonality(this.props.personality.id, this.props.type.id);
+  onAddPersonality = () => this.props.addPersonality(this.props.personality, this.props.type.id);
   onRemovePersonality = () => this.props.removePersonality(this.props.personality.id);
 
   render() {
