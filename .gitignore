@@ -4,3 +4,5 @@ node_modules/
 npm-debug.*
 src/constants/firebase.js
 src/constants/contentful.js
+firebase/functions/node-modules/
+firebase/functions/service-account-credentials.json

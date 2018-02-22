@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 import ErrorMessages from '../constants/errors';
 import statusMessage from './status';
-import { Firebase, FirebaseRef } from '../lib/firebase';
+import { Firebase, FirebaseRef, FirebaseStorageRef } from '../lib/firebase';
 
 /**
   * Sign Up to Firebase
@@ -61,6 +61,7 @@ function getUserData(dispatch) {
   const ref = FirebaseRef.child(`users/${UID}`);
 
   return ref.on('value', (snapshot) => {
+    console.log('getUserData on');
     const userData = snapshot.val() || [];
 
     return dispatch({
@@ -71,6 +72,7 @@ function getUserData(dispatch) {
 }
 
 export function getMemberData() {
+  console.log('getMemberData --');
   if (Firebase === null) return () => new Promise(resolve => resolve());
 
   // Ensure token is up to date
@@ -169,6 +171,7 @@ export function updateProfile(formData) {
     changeEmail,
     changePassword,
   } = formData;
+  console.log('update profile func');
 
   return dispatch => new Promise(async (resolve, reject) => {
     // Are they a user?
@@ -275,4 +278,55 @@ export function logout() {
         setTimeout(resolve, 1000); // Resolve after 1s so that user sees a message
       }).catch(reject);
   }).catch(async (err) => { await statusMessage(dispatch, 'error', err.message); throw err.message; });
+}
+
+/**
+  * Upload User Profile Image
+  */
+// Update function to actually download something when blob support is released for RN
+export function uploadImage(blob, UID) {
+  console.log('uploadImage action', blob, UID);
+  /*
+  return FirebaseStorageRef.child(`users/${UID}`).put(blob).then((snapshot) => {
+    console.log('Uploaded a file!', snapshot);
+  });
+  */
+}
+
+/**
+  * Set file loading
+  */
+export const startFileUpload = () => {
+  console.log('action!!');
+  return ({
+    type: 'USER_IMAGE_UPLOAD',
+  });
+};
+
+/**
+  * Upload User Profile Image
+  */
+export function uploadImageFromFile(file) {
+  if (Firebase === null) return () => new Promise(resolve => resolve());
+  console.log('1', file);
+
+  const UID = Firebase.auth().currentUser.uid;
+  console.log('2');
+  console.log('FirebaseStorageRef', FirebaseStorageRef);
+
+  const ref = FirebaseStorageRef.child(`users/${UID}/profilePicture/${UID}`);
+  console.log('3');
+
+  // Firebase Functions must trigger event that client can listen to
+  FirebaseRef.child(`users/${UID}/imageUrl`).on('value', (snap) => {
+    console.log('value!', snap.val());
+    console.log('4');
+  });
+
+  return ref.put(file)
+    .then(() => console.log('success'));
+}
+
+export function uploadImageFromBlob(blob, UID) {
+  console.log('action uploadImageFromBlob', blob, UID);
 }

@@ -5,8 +5,14 @@ import {
   Row,
   Col,
   Card,
+  CardImg,
   CardHeader,
   CardBody,
+  Form,
+  Label,
+  Input,
+  Button,
+  FormGroup,
 } from 'reactstrap';
 
 import TemplateContainer from '../Templates/TemplateContainer';
@@ -18,6 +24,7 @@ import TypeList from './TypeList';
 class Profile extends React.Component {
   static propTypes = {
     member: PropTypes.shape({
+      uid: PropTypes.string,
       firstName: PropTypes.string,
       email: PropTypes.string,
     }),
@@ -29,6 +36,7 @@ class Profile extends React.Component {
     history: PropTypes.shape({
       push: PropTypes.func.isRequired,
     }).isRequired,
+    uploadImageFromFile: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -36,7 +44,27 @@ class Profile extends React.Component {
     error: null,
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: null,
+    };
+  }
+
   onLogout = () => this.props.logout().then(() => this.props.history.push('/login'));
+
+  onFileChange = (event) => {
+    const image = event.target.files[0];
+
+    this.setState({ image });
+  }
+
+  onFileUpload = (event) => {
+    event.preventDefault();
+    this.props.uploadImageFromFile(this.state.image, this.props.member.uid);
+    // .then(() => console.log('Profile updated'))
+    // .catch(e => console.log(`Error: ${e}`));
+  }
 
   render() {
     const {
@@ -64,6 +92,28 @@ class Profile extends React.Component {
         {loggedIn &&
           <div>
             <Cover />
+
+            <Row>
+              <Card style={{ maxWidth: 200 }}>
+                <CardImg top src={member.imageUrl} alt="Alternative title" />
+              </Card>
+            </Row>
+
+            <Row>
+              <Form onSubmit={this.onFileUpload}>
+                <FormGroup style={{ marginTop: 20 }}>
+                  <Label>File name</Label>
+                  <Input
+                    type="file"
+                    name="file"
+                    onChange={this.onFileChange}
+                  />
+                </FormGroup>
+
+                <Button style={{ marginTop: 20 }} color="primary">Upload</Button>
+              </Form>
+            </Row>
+
             <Row>
               <Col lg={{ size: 6, offset: 3 }}>
                 <Card>

@@ -31,6 +31,10 @@ export class Profile extends React.Component {
 
     if (!result.cancelled) {
       this.setState({ imageUrl: result.uri });
+      // blob support coming up in next react native release
+      // https://github.com/facebook/react-native/commit/be56a3efeefefa6dca816ca5149a3dabfa5164e2
+      const blob = null;
+      this.props.uploadImageFromBlob(blob, this.props.member.uid);
     }
   };
 
@@ -125,9 +129,12 @@ export class Profile extends React.Component {
 }
 
 Profile.propTypes = {
-  member: PropTypes.shape({}),
+  member: PropTypes.shape({
+    uid: PropTypes.string.isRequired,
+  }),
   loggedIn: PropTypes.bool.isRequired,
   userPersonalities: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  uploadImageFromBlob: PropTypes.func.isRequired,
 };
 
 Profile.defaultProps = {

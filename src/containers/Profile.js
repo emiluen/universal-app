@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import MemberContainer from './Member';
 import getUserPersonalities from '../selectors/get-user-personalities';
+import { uploadImageFromFile, uploadImageFromBlob } from '../actions/member';
 
 class Profile extends Component {
   static propTypes = {
@@ -32,6 +33,8 @@ class Profile extends Component {
           loading={member.loading || userPersonalities.loading}
           error={member.error || userPersonalities.error}
           userPersonalities={userPersonalities.personalities}
+          uploadImageFromFile={uploadImageFromFile}
+          uploadImageFromBlob={uploadImageFromBlob}
         />
         )}
       />

@@ -19,6 +19,7 @@ export default function userReducer(state = initialState, action) {
     }
     case 'USER_DETAILS_UPDATE': {
       if (action.data) {
+        console.log(action.data);
         return {
           ...state,
           loading: false,
@@ -27,11 +28,20 @@ export default function userReducer(state = initialState, action) {
           lastName: action.data.lastName,
           signedUp: action.data.signedUp,
           role: action.data.role,
+          imageUrl: action.data.imageUrl,
           groups: action.data.groups,
           personalities: action.data.personalities,
+          uploadingFile: !!action.data.imageUrl,
         };
       }
       return initialState;
+    }
+    case 'USER_IMAGE_UPLOAD': {
+      return {
+        ...state,
+        imageUrl: null,
+        uploadingFile: true,
+      };
     }
     case 'USER_ERROR': {
       if (action.data) {

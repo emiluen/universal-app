@@ -30,4 +30,5 @@ if (
 }
 
 export const FirebaseRef = firebaseInitialized ? FirebaseModule.database().ref() : null;
+export const FirebaseStorageRef = firebaseInitialized ? FirebaseModule.storage().ref() : null;
 export const Firebase = firebaseInitialized ? FirebaseModule : null;

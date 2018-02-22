@@ -14,7 +14,12 @@ const config = {
 
 const reducer = persistCombineReducers(config, reducers);
 
-const middleware = [thunk];
+const logger = store => next => (action) => {
+  console.log('Action fired', action);
+  next(action);
+};
+
+const middleware = [thunk, logger];
 
 const configureStore = () => {
   const store = createStore(

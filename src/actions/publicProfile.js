@@ -30,6 +30,13 @@ function getPersonalities(dispatch, UID) {
   if (!UID) return false;
 
   const ref = FirebaseRef.child(`users/${UID}/personalities`);
+  const ref2 = FirebaseRef.child(`userObjects/personalities/${UID}`);
+
+  ref2.orderByChild('isPrivate').equalTo(false).once('value')
+    .then((snap) => {
+      console.log('snap.val()', snap.val());
+    })
+    .catch(err => console.log(err));
 
   return ref.orderByChild('isPrivate').equalTo(false) // TODO: false || null
     .once('value')
