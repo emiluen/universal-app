@@ -25,7 +25,7 @@ const PublicProfile = ({
 
         <Content padder>
           <Header
-            title={`${publicName}'s Personality Profile`}
+            title={`${!!publicName && `${publicName}'s `}Personality Profile`}
             content={`These are the personality types ${publicName} has chosen as public.`}
           />
         </Content>
