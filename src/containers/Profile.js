@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import MemberContainer from './Member';
 import getUserPersonalities from '../selectors/get-user-personalities';
+import baseUrl from '../constants/baseUrl';
 
 class Profile extends Component {
   static propTypes = {
@@ -24,6 +25,8 @@ class Profile extends Component {
   render = () => {
     const { Layout, member, userPersonalities } = this.props;
 
+    const shareProfileUrl = `${baseUrl}profile/${member.uid}`;
+
     return (
       <MemberContainer Layout={props => (
         <Layout
@@ -32,6 +35,7 @@ class Profile extends Component {
           loading={member.loading || userPersonalities.loading}
           error={member.error || userPersonalities.error}
           userPersonalities={userPersonalities.personalities}
+          shareProfileUrl={shareProfileUrl}
         />
         )}
       />

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Platform } from 'react-native';
 import { View, Container, Content, List, ListItem, Body, Left, Text, Icon } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import { ImagePicker } from 'expo';
@@ -18,7 +17,6 @@ export class Profile extends React.Component {
     };
 
     this.onImage = this.onImage.bind(this);
-    this.onShare = this.onShare.bind(this);
   }
 
   onImage = async () => {
@@ -34,31 +32,13 @@ export class Profile extends React.Component {
     }
   };
 
-  onShare = () => {
-    const url = 'https://aftonbladet.se';
-    const title = 'This is a title';
-    const message = 'This is a message';
-    const displayMessage = Platform.OS === 'ios' ? message : `${message} ${url}`;
-
-    Share.share({
-      title,
-      message: displayMessage,
-
-      // iOS
-      url,
-      subject: title,
-
-      // Android
-      dialogTitle: title,
-    });
-  };
-
   render() {
     const { imageUrl } = this.state;
     const {
       member,
       loggedIn,
       userPersonalities,
+      shareProfileUrl,
     } = this.props;
 
     return (
@@ -118,7 +98,7 @@ export class Profile extends React.Component {
           }
         </Content>
 
-        {loggedIn && <Share />}
+        {loggedIn && <Share shareUrl={shareProfileUrl} />}
       </Container>
     );
   }
@@ -128,6 +108,7 @@ Profile.propTypes = {
   member: PropTypes.shape({}),
   loggedIn: PropTypes.bool.isRequired,
   userPersonalities: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  shareProfileUrl: PropTypes.string.isRequired,
 };
 
 Profile.defaultProps = {
