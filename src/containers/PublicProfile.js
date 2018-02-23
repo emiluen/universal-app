@@ -18,6 +18,7 @@ class PublicProfile extends Component {
     getPublicProfile: PropTypes.func.isRequired,
     setError: PropTypes.func.isRequired,
     publicName: PropTypes.string.isRequired,
+    publicImageUrl: PropTypes.string.isRequired,
     userPersonalities: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   }
 
@@ -47,7 +48,7 @@ class PublicProfile extends Component {
 
   render = () => {
     const {
-      Layout, loading, error, match, publicName, userPersonalities,
+      Layout, loading, error, match, publicName, publicImageUrl, userPersonalities,
     } = this.props;
     const id = (match && match.params && match.params.id) ? match.params.id : null;
 
@@ -57,6 +58,7 @@ class PublicProfile extends Component {
         error={error}
         loading={loading}
         publicName={publicName}
+        publicImageUrl={publicImageUrl}
         userPersonalities={userPersonalities}
       />
     );
@@ -67,6 +69,7 @@ const mapStateToProps = state => ({
   loading: state.publicProfile.loading,
   error: state.publicProfile.error,
   publicName: state.publicProfile.publicName,
+  publicImageUrl: state.publicProfile.publicImageUrl,
   userPersonalities: getUserPersonalities(state.personalities, state.publicProfile),
 });
 

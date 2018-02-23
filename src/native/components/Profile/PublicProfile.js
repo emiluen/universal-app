@@ -12,6 +12,7 @@ const PublicProfile = ({
   loading,
   error,
   publicName,
+  publicImageUrl,
   userPersonalities,
 }) => {
   if (loading) return <Loading />;
@@ -21,11 +22,11 @@ const PublicProfile = ({
   return (
     <Container>
       <Content>
-        <Cover />
+        <Cover image={publicImageUrl} />
 
         <Content padder>
           <Header
-            title={`${!!publicName && `${publicName}'s `}Personality Profile`}
+            title={publicName ? `${publicName}'s Personality Profile` : 'Personality Profile'}
             content={`These are the personality types ${publicName} has chosen as public.`}
           />
         </Content>
@@ -40,6 +41,7 @@ PublicProfile.propTypes = {
   error: PropTypes.string,
   loading: PropTypes.bool.isRequired,
   publicName: PropTypes.string.isRequired,
+  publicImageUrl: PropTypes.string.isRequired,
   userPersonalities: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 

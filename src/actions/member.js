@@ -274,24 +274,28 @@ export function addPersonality(personality, typeId) {
 /**
   * Update Personality Privacy
   */
-export function updatePrivacy(userPersonalities) {
+export function updatePrivacy(newPrivacySettings) {
   return dispatch => new Promise(async (resolve, reject) => {
     // Are they a user?
     const UID = Firebase.auth().currentUser.uid;
     if (!UID) return reject({ message: ErrorMessages.missingFirstName });
 
-    const data = _.mapKeys(userPersonalities, (value, key) => `${key}/isPrivate`);
+    const { personalities, ...userData } = newPrivacySettings;
+
+    const personalitiesData = _.mapKeys(personalities, (value, key) => `${key}/isPrivate`);
 
     await statusMessage(dispatch, 'loading', true);
 
     // Go to Firebase
-    return FirebaseRef.child(`users/userObjects/personalities/${UID}`).update(data)
+    return FirebaseRef.child(`users/userObjects/personalities/${UID}`).update(personalitiesData)
+      .then(() => FirebaseRef.child(`users/users/${UID}`).update(userData))
       .then(async () => {
         // Update Redux
         await getUserData(dispatch);
         await statusMessage(dispatch, 'success', 'Privacy Updated');
         resolve();
-      }).catch(reject);
+      })
+      .catch(reject);
   }).catch(async (err) => { await statusMessage(dispatch, 'error', err.message); throw err.message; });
 }
 

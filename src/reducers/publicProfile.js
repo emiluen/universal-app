@@ -15,6 +15,17 @@ export default function publicProfileReducer(state = initialState, action) {
       }
       return state;
     }
+    case 'PUBLIC_PROFILE_PUBLICIMAGE_UPDATE': {
+      if (action.data) {
+        return {
+          ...state,
+          loading: false,
+          error: null,
+          publicImageUrl: action.data,
+        };
+      }
+      return state;
+    }
     case 'PUBLIC_PROFILE_PERSONALITIES_UPDATE': {
       if (action.data) {
         return {

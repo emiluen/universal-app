@@ -5,9 +5,13 @@ import Loading from '../Loading';
 import Spacer from '../Spacer';
 import Header from '../Header';
 
-class UpdateProfile extends React.Component {
+class UpdatePrivacy extends React.Component {
   static propTypes = {
     loading: PropTypes.bool.isRequired,
+    member: PropTypes.shape({
+      publicName: PropTypes.bool,
+      publicImageUrl: PropTypes.bool,
+    }).isRequired,
     onFormSubmit: PropTypes.func.isRequired,
     personalities: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   }
@@ -15,17 +19,28 @@ class UpdateProfile extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      personalities: {},
+      publicName: props.member.publicName,
+      publicImageUrl: props.member.publicImageUrl,
+    };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handlePersonalityChange = this.handlePersonalityChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   getCurrentValue = item => (
-    typeof (this.state[item.id]) !== 'undefined' ? this.state[item.id] : item.isPrivate
+    typeof (this.state.personalities[item.id]) !== 'undefined' ? this.state.personalities[item.id] : item.isPrivate
   );
 
-  handleChange = (name, val) => {
+  handlePersonalityChange = (name, val) => {
+    this.setState({
+      ...this.state,
+      personalities: { ...this.state.personalities, [name]: val },
+    });
+  }
+
+  handleUserChange = (name, val) => {
     this.setState({
       ...this.state,
       [name]: val,
@@ -63,13 +78,33 @@ class UpdateProfile extends React.Component {
                 </Body>
                 <CheckBox
                   checked={this.getCurrentValue(item)}
-                  onPress={() => this.handleChange(
+                  onPress={() => this.handlePersonalityChange(
                     item.id,
                     !this.getCurrentValue(item),
                   )}
                 />
               </ListItem>
             ))}
+
+            <ListItem>
+              <Body>
+                <Text>Make first name public</Text>
+              </Body>
+              <CheckBox
+                checked={this.state.publicName}
+                onPress={() => this.handleUserChange('publicName', !this.state.publicName)}
+              />
+            </ListItem>
+
+            <ListItem>
+              <Body>
+                <Text>Make profile picture public</Text>
+              </Body>
+              <CheckBox
+                checked={this.state.publicImageUrl}
+                onPress={() => this.handleUserChange('publicImageUrl', !this.state.publicImageUrl)}
+              />
+            </ListItem>
 
             <Spacer size={20} />
 
@@ -83,4 +118,4 @@ class UpdateProfile extends React.Component {
   }
 }
 
-export default UpdateProfile;
+export default UpdatePrivacy;

@@ -1,20 +1,40 @@
 import { Firebase, FirebaseRef } from '../lib/firebase';
 
 /**
-  * Get a Public Profile's user details
+  * Get a Public Profile's name if public
   */
 function getName(dispatch, UID) {
   if (Firebase === null) return () => new Promise(resolve => resolve());
 
   if (!UID) return false;
 
-  const ref = FirebaseRef.child(`users/users/${UID}/publicName`);
+  const ref = FirebaseRef.child(`users/users/${UID}/firstName`);
 
   return ref.on('value', (snapshot) => {
     const name = snapshot.val() || '';
 
     return dispatch({
       type: 'PUBLIC_PROFILE_PUBLICNAME_UPDATE',
+      data: name,
+    });
+  });
+}
+
+/**
+  * Get a Public Profile's image if public
+  */
+function getImage(dispatch, UID) {
+  if (Firebase === null) return () => new Promise(resolve => resolve());
+
+  if (!UID) return false;
+
+  const ref = FirebaseRef.child(`users/users/${UID}/imageUrl`);
+
+  return ref.on('value', (snapshot) => {
+    const name = snapshot.val() || '';
+
+    return dispatch({
+      type: 'PUBLIC_PROFILE_PUBLICIMAGE_UPDATE',
       data: name,
     });
   });
@@ -51,6 +71,7 @@ export function getPublicProfile(UID) {
 
   return dispatch => new Promise(async (resolve) => {
     await getName(dispatch, UID);
+    await getImage(dispatch, UID);
     await getPersonalities(dispatch, UID);
     resolve();
   })

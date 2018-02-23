@@ -11,6 +11,7 @@ const PublicProfile = ({
   loading,
   error,
   publicName,
+  publicImageUrl,
   userPersonalities,
 }) => {
   if (loading) return <Loading />;
@@ -21,6 +22,7 @@ const PublicProfile = ({
     <TemplateContainer>
       <Cover />
       <h1>{publicName}</h1>
+      <span>{publicImageUrl}</span>
       <TypeList personalities={userPersonalities} />
     </TemplateContainer>
   );
@@ -30,6 +32,7 @@ PublicProfile.propTypes = {
   error: PropTypes.string,
   loading: PropTypes.bool.isRequired,
   publicName: PropTypes.string.isRequired,
+  publicImageUrl: PropTypes.string.isRequired,
   userPersonalities: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 

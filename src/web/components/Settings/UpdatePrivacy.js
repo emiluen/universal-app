@@ -10,9 +10,13 @@ import {
 
 import Loading from '../Loading';
 
-class UpdateProfile extends React.Component {
+class UpdatePrivacy extends React.Component {
   static propTypes = {
     loading: PropTypes.bool.isRequired,
+    member: PropTypes.shape({
+      publicName: PropTypes.bool,
+      publicImageUrl: PropTypes.bool,
+    }).isRequired,
     onFormSubmit: PropTypes.func.isRequired,
     personalities: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   }
@@ -20,20 +24,31 @@ class UpdateProfile extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      personalities: {},
+      publicName: props.member.publicName,
+      publicImageUrl: props.member.publicImageUrl,
+    };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handlePersonalityChange = this.handlePersonalityChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   getCurrentValue = item => (
-    typeof (this.state[item.id]) !== 'undefined' ? this.state[item.id] : item.isPrivate
+    typeof (this.state.personalities[item.id]) !== 'undefined' ? this.state.personalities[item.id] : item.isPrivate
   );
 
-  handleChange = (name, val) => {
+  handlePersonalityChange = (name, val) => {
     this.setState({
       ...this.state,
-      [name]: val,
+      personalities: { ...this.state.personalities, [name]: val },
+    });
+  }
+
+  handleUserChange = (event) => {
+    this.setState({
+      ...this.state,
+      [event.target.name]: event.target.checked,
     });
   }
 
@@ -61,7 +76,7 @@ class UpdateProfile extends React.Component {
                 type="checkbox"
                 name="changeEmail"
                 checked={this.getCurrentValue(item)}
-                onChange={() => this.handleChange(
+                onChange={() => this.handlePersonalityChange(
                   item.id,
                   !this.getCurrentValue(item),
                 )}
@@ -71,10 +86,34 @@ class UpdateProfile extends React.Component {
           </FormGroup>
         ))}
 
+        <FormGroup check style={{ marginTop: 20 }}>
+          <Label check>
+            <Input
+              type="checkbox"
+              name="publicName"
+              checked={this.state.publicName}
+              onChange={this.handleUserChange}
+            />{' '}
+            Make first name public
+          </Label>
+        </FormGroup>
+
+        <FormGroup check style={{ marginTop: 20 }}>
+          <Label check>
+            <Input
+              type="checkbox"
+              name="publicImageUrl"
+              checked={this.state.publicImageUrl}
+              onChange={this.handleUserChange}
+            />{' '}
+            Make profile picture public
+          </Label>
+        </FormGroup>
+
         <Button style={{ marginTop: 20 }} color="primary">Update</Button>
       </Form>
     );
   }
 }
 
-export default UpdateProfile;
+export default UpdatePrivacy;
