@@ -9,14 +9,10 @@ export function getPersonalities() {
   return dispatch => new Promise(resolve => contentful.getEntries({
     content_type: 'personality',
     include: 3,
-  }).then((response) => {
-    console.log('response', response);
-
-    return resolve(dispatch({
-      type: 'PERSONALITIES_REPLACE',
-      data: response,
-    }));
-  })).catch(e => console.log(e));
+  }).then(response => resolve(dispatch({
+    type: 'PERSONALITIES_REPLACE',
+    data: response,
+  })))).catch(e => console.log(e));
 }
 
 /**

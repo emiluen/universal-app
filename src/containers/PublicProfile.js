@@ -28,9 +28,9 @@ class PublicProfile extends Component {
   }
 
   componentDidMount = () => {
-    const UID = (
-      this.props.match && this.props.match.params && this.props.match.params.id) ?
-      this.props.match.params.id : null;
+    const { match } = this.props;
+
+    const UID = (match && match.params && match.params.id) ? match.params.id : null;
 
     this.fetchPublicProfile(UID);
   };
@@ -48,13 +48,16 @@ class PublicProfile extends Component {
 
   render = () => {
     const {
-      Layout, loading, error, match, publicName, publicImageUrl, userPersonalities,
+      Layout,
+      loading,
+      error,
+      publicName,
+      publicImageUrl,
+      userPersonalities,
     } = this.props;
-    const id = (match && match.params && match.params.id) ? match.params.id : null;
 
     return (
       <Layout
-        recipeId={id}
         error={error}
         loading={loading}
         publicName={publicName}

@@ -1,29 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { logout } from '../actions/member';
 
-class Member extends Component {
-  static propTypes = {
-    Layout: PropTypes.func.isRequired,
-    memberLogout: PropTypes.func.isRequired,
-    member: PropTypes.shape({
-      loading: PropTypes.bool.isRequired,
-      error: PropTypes.string,
-    }).isRequired,
-  }
+const Member = ({ Layout, member, memberLogout }) => {
+  const loggedIn = !!(member && member.email);
 
-  componentDidMount = () => console.log('component mount'); // this.props.getMemberData();
+  return <Layout member={member} logout={memberLogout} loggedIn={loggedIn} />;
+};
 
-  render = () => {
-    const { Layout, member, memberLogout } = this.props;
-
-    const loggedIn = !!(member && member.email);
-
-    return <Layout member={member} logout={memberLogout} loggedIn={loggedIn} />;
-  }
-}
+Member.propTypes = {
+  Layout: PropTypes.func.isRequired,
+  memberLogout: PropTypes.func.isRequired,
+  member: PropTypes.shape({
+    loading: PropTypes.bool.isRequired,
+    error: PropTypes.string,
+  }).isRequired,
+};
 
 const mapStateToProps = state => ({
   member: state.member || {},

@@ -8,10 +8,6 @@ import TemplateHeader from '../components/Templates/TemplateHeader';
 // Routes
 import Home from '../components/Home/Home';
 
-import RecipesContainer from '../../containers/Recipes';
-import RecipesComponent from '../components/Recipes/Recipes';
-import RecipeViewComponent from '../components/Recipes/Recipe';
-
 import PersonalitiesContainer from '../../containers/Personalities';
 import PersonalitiesComponent from '../components/Personalities/Personalities';
 
@@ -137,22 +133,6 @@ const Index = () => (
       render={props => (
         <TemplateHeader>
           <QuizContainer {...props} Layout={QuizComponent} />
-        </TemplateHeader>
-      )}
-    />
-    <Route
-      path="/recipes"
-      render={props => (
-        <TemplateHeader>
-          <RecipesContainer {...props} Layout={RecipesComponent} />
-        </TemplateHeader>
-      )}
-    />
-    <Route
-      path="/recipe/:id"
-      render={props => (
-        <TemplateHeader>
-          <RecipesContainer {...props} Layout={RecipeViewComponent} />
         </TemplateHeader>
       )}
     />

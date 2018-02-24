@@ -29,7 +29,7 @@ class TypeView extends React.Component {
     // Error
     if (error) return <Error content={error} />;
 
-    // Recipe not found
+    // Type not found
     if (!type) return <Error content={ErrorMessages.recipe404} />;
 
     const deviceWidth = Dimensions.get('window').width;

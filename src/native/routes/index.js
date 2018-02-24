@@ -6,10 +6,6 @@ import DefaultProps from '../constants/navigation';
 // import AppConfig from '../../constants/config';
 // import AboutComponent from '../components/About';
 
-import RecipesContainer from '../../containers/Recipes';
-// import RecipesComponent from '../components/Recipes';
-import RecipeViewComponent from '../components/Recipes/Recipe';
-
 import PersonalitiesContainer from '../../containers/Personalities';
 import PersonalitiesComponent from '../components/Personalities/Personalities';
 
@@ -59,15 +55,6 @@ const Index = (
             {...DefaultProps.navbarProps}
           >
             <Scene key="home" component={AboutComponent} />
-          </Stack>
-
-          <Stack
-            key="recipes"
-            title="RECIPES"
-            icon={() => <Icon name="book" {...DefaultProps.icons} />}
-            {...DefaultProps.navbarProps}
-          >
-            <Scene key="recipes" component={RecipesContainer} Layout={RecipesComponent} />
           </Stack>
         */}
 
@@ -169,15 +156,6 @@ const Index = (
       Layout={QuizComponent}
     />
 
-    <Scene
-      back
-      clone
-      key="recipe"
-      title="RECIPE"
-      {...DefaultProps.navbarProps}
-      component={RecipesContainer}
-      Layout={RecipeViewComponent}
-    />
   </Stack>
 );
 

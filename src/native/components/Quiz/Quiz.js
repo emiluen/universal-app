@@ -17,7 +17,7 @@ const Quiz = ({
   // Error
   if (error) return <Error content={error} />;
 
-  // Recipe not found
+  // Quiz not found
   if (!quiz || !personality) return <Error content={ErrorMessages.recipe404} />;
 
   return (

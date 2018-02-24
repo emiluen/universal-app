@@ -1,6 +1,5 @@
 import status from './status';
 import member from './member';
-import recipes from './recipes';
 import personalities from './personalities';
 import publicProfile from './publicProfile';
 
@@ -17,7 +16,6 @@ export default {
   rehydrated,
   status,
   member,
-  recipes,
   personalities,
   publicProfile,
 };
