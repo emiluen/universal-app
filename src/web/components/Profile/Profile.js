@@ -67,17 +67,7 @@ class Profile extends React.Component {
 
             <TemplateContainer>
               <Row>
-                <Col lg={{ size: 6, offset: 3 }}>
-                  <Card>
-                    <CardHeader>Personality Profile</CardHeader>
-                    <CardBody>
-                      <p>{member.firstName}</p>
-                      <p>{member.email}</p>
-                      <TypeList personalities={userPersonalities} />
-                      <button onClick={this.onLogout}>Log out</button>
-                    </CardBody>
-                  </Card>
-                </Col>
+                <TypeList personalities={userPersonalities} />
               </Row>
             </TemplateContainer>
           </div>

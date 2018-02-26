@@ -86,7 +86,8 @@ class Cover extends React.Component {
               </div>
             }
             <div className="cover__container__name">
-              <h2>{name}</h2>
+              <h2>Personality Profile</h2>
+              <span>{name}</span>
             </div>
           </div>
 

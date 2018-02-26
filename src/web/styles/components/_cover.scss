@@ -1,6 +1,6 @@
 @import "../globals";
 
-$_image_size: 130px;
+$_image_size: 110px;
 
 .cover {
   background-color: $purple;
@@ -18,9 +18,8 @@ $_image_size: 130px;
   flex-direction: column;
   justify-content: center;
 
-  h2 {
+  h2, span {
     color: $typeLight;
-    margin-bottom: 0;
   }
 }
 
@@ -29,8 +28,9 @@ $_image_size: 130px;
 }
 
 .cover__image {
+  object-fit: cover;
   height: $_image_size;
   width: $_image_size;
   border-radius: 50%;
-  margin-right: 32px;
+  margin-right: $m-space;
 }
