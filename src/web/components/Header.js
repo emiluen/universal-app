@@ -15,6 +15,7 @@ import {
 import { Link, withRouter } from 'react-router-dom';
 
 import Config from '../../constants/config';
+import ProfilePicture from './ProfilePicture';
 
 const HomeNavItem = () => (
   <Link className={`nav-link ${window.location.pathname.startsWith('/personalities') && 'active'}`} to="/" style={{ color: 'white' }}>
@@ -83,7 +84,11 @@ class Header extends Component {
               </div>
               <UncontrolledDropdown nav>
                 <DropdownToggle nav caret>
-                  {loggedIn ? `Hi, ${member.firstName}` : 'My Account'}
+                  {loggedIn ? (
+                    member.imageUrl ?
+                      <ProfilePicture imageUrl={member.imageUrl} />
+                      : `Hi, ${member.firstName}`
+                  ) : 'My Account'}
                 </DropdownToggle>
                 <DropdownMenu>
                   {!loggedIn &&
