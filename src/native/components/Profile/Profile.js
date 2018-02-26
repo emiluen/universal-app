@@ -49,7 +49,7 @@ export class Profile extends React.Component {
               <Cover
                 image={imageUrl}
                 onImage={this.onImage}
-                onSettings={Actions.updateProfile}
+                onSettings={Actions.settings}
               />
 
               <Content padder>

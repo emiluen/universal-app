@@ -77,16 +77,12 @@ class Settings extends React.Component {
 
             <Nav tabs>
               <NavItem>
-                <NavLink
-                  onClick={() => { this.toggle('1'); }}
-                >
-                  Settings
+                <NavLink onClick={() => { this.toggle('1'); }}>
+                  Profile
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink
-                  onClick={() => { this.toggle('2'); }}
-                >
+                <NavLink onClick={() => { this.toggle('2'); }}>
                   Privacy
                 </NavLink>
               </NavItem>

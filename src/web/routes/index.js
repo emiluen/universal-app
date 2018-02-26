@@ -93,7 +93,7 @@ const Index = () => (
       )}
     />
     <Route
-      path="/update-profile"
+      path="/settings"
       render={props => (
         <TemplateHeader>
           <SettingsContainer {...props} Layout={SettingsComponent} />

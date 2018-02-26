@@ -16,7 +16,7 @@ const Settings = ({ loading, error, success }) => {
 
   return (
     <Tabs transparent initialPage={0}>
-      <Tab heading="Settings">
+      <Tab heading="Profile">
         {error && <Messages message={error} />}
         {success && <Messages message={success} type="success" />}
         <UpdateProfileContainer Layout={UpdateProfileComponent} />

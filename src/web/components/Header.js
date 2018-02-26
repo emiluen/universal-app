@@ -102,7 +102,7 @@ class Header extends Component {
                         <Link to="/profile">Profile</Link>
                       </DropdownItem>
                       <DropdownItem>
-                        <Link to="/update-profile">Update Profile</Link>
+                        <Link to="/settings">Settings</Link>
                       </DropdownItem>
                       <DropdownItem divider />
                       <DropdownItem>

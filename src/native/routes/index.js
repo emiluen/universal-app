@@ -118,8 +118,8 @@ const Index = (
           />
           <Scene
             back
-            key="updateProfile"
-            title="UPDATE PROFILE"
+            key="settings"
+            title="SETTINGS"
             {...DefaultProps.navbarProps}
             component={SettingsContainer}
             Layout={SettingsComponent}
