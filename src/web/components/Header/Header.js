@@ -14,7 +14,7 @@ import {
 } from 'reactstrap';
 import { Link, withRouter } from 'react-router-dom';
 
-import Config from '../../constants/config';
+import Config from '../../../constants/config';
 import ProfilePicture from './ProfilePicture';
 
 const HomeNavItem = () => (
