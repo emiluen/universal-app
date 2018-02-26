@@ -19,12 +19,12 @@ const PublicProfile = ({
   if (error) return <Error />;
 
   return (
-    <TemplateContainer>
-      <Cover />
-      <h1>{publicName}</h1>
-      <span>{publicImageUrl}</span>
-      <TypeList personalities={userPersonalities} />
-    </TemplateContainer>
+    <div>
+      <Cover name={publicName} imageUrl={publicImageUrl} />
+      <TemplateContainer>
+        <TypeList personalities={userPersonalities} />
+      </TemplateContainer>
+    </div>
   );
 };
 

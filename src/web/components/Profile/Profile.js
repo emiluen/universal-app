@@ -52,34 +52,37 @@ class Profile extends React.Component {
     }
 
     return (
-      <TemplateContainer>
+      <div>
         {!loggedIn &&
-          <div>
+          <TemplateContainer>
             <div>
               <span>You are not logged in!</span>
             </div>
             <Link to="/login">Login</Link>
-          </div>
+          </TemplateContainer>
         }
         {loggedIn &&
           <div>
-            <Cover />
-            <Row>
-              <Col lg={{ size: 6, offset: 3 }}>
-                <Card>
-                  <CardHeader>Personality Profile</CardHeader>
-                  <CardBody>
-                    <p>{member.firstName}</p>
-                    <p>{member.email}</p>
-                    <TypeList personalities={userPersonalities} />
-                    <button onClick={this.onLogout}>Log out</button>
-                  </CardBody>
-                </Card>
-              </Col>
-            </Row>
+            <Cover editable name={`${member.firstName} ${member.lastName}`} imageUrl={member.imageUrl} />
+
+            <TemplateContainer>
+              <Row>
+                <Col lg={{ size: 6, offset: 3 }}>
+                  <Card>
+                    <CardHeader>Personality Profile</CardHeader>
+                    <CardBody>
+                      <p>{member.firstName}</p>
+                      <p>{member.email}</p>
+                      <TypeList personalities={userPersonalities} />
+                      <button onClick={this.onLogout}>Log out</button>
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+            </TemplateContainer>
           </div>
         }
-      </TemplateContainer>
+      </div>
     );
   }
 }

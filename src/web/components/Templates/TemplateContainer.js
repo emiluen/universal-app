@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
 
 const Template = ({ children }) => (
-  <Container>
+  <Container fluid>
     <Row>
       <Col md="10" sm="9" className="px-sm-5 py-sm-5 mx-sm-auto">
         {children}

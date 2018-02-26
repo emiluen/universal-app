@@ -9,8 +9,9 @@ import Footer from '../Footer';
 const Template = ({ children }) => (
   <div>
     <Member Layout={Header} />
+    {children}
+
     <Container fluid>
-      {children}
       <Footer />
     </Container>
   </div>

@@ -27,6 +27,7 @@ export default function userReducer(state = initialState, action) {
           lastName: action.data.lastName,
           signedUp: action.data.signedUp,
           role: action.data.role,
+          imageUrl: action.data.imageUrl,
           publicName: !!action.data.publicName,
           publicImageUrl: !!action.data.publicImageUrl,
         };

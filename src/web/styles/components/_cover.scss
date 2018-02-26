@@ -1,0 +1,33 @@
+@import "../globals";
+
+$_image_size: 130px;
+
+.cover {
+  background-color: $purple;
+}
+
+.cover__container {
+  display: flex;
+  flex-direction: row;
+}
+
+.cover__container__name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h2 {
+    margin-bottom: 0;
+  }
+}
+
+.cover__image__link {
+  cursor: pointer;
+}
+
+.cover__image {
+  height: $_image_size;
+  width: $_image_size;
+  border-radius: 50%;
+  margin-right: 32px;
+}

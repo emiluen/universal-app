@@ -1,7 +1,8 @@
 // Override Bootstrap's variables before importing
+@import "globals";
 
 // Colors
-$purple: #473BE7;
+// $purple: #473BE7;
 $primary: $purple;
 $body-bg: #ECF0F3;
 $body-color: #8D8E90;
