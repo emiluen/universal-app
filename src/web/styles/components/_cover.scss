@@ -4,6 +4,8 @@ $_image_size: 130px;
 
 .cover {
   background-color: $purple;
+  padding-top: $m-space;
+  padding-bottom: $m-space;
 }
 
 .cover__container {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Jumbotron } from 'reactstrap';
 
-import TemplateContainer from '../Templates/TemplateContainer';
+import { TemplateContainer } from '../Templates/Templates';
 
 const About = () => (
   <TemplateContainer>

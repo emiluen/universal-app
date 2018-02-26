@@ -12,7 +12,7 @@ import {
   Row,
 } from 'reactstrap';
 
-import TemplateContainer from '../Templates/TemplateContainer';
+import { TemplateContainer } from '../Templates/Templates';
 import Error from '../Error';
 import getImageUrl from '../../../selectors/get-image-url';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import TemplateContainer from '../Templates/TemplateContainer';
+import { TemplateContainer } from '../Templates/Templates';
 import Loading from '../Loading';
 import Error from '../Error';
 import Cover from './Cover';

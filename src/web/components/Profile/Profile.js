@@ -9,7 +9,7 @@ import {
   CardBody,
 } from 'reactstrap';
 
-import TemplateContainer from '../Templates/TemplateContainer';
+import { TemplateContainer } from '../Templates/Templates';
 import Error from '../Error';
 import Loading from '../Loading';
 import Cover from './Cover';

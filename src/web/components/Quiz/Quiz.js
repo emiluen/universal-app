@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import TemplateContainer from '../Templates/TemplateContainer';
+import { TemplateContainer } from '../Templates/Templates';
 import Loading from '../Loading';
 import Error from '../Error';
 import ErrorMessages from '../../../constants/errors';

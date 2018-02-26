@@ -10,7 +10,7 @@ import {
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-import TemplateContainer from '../Templates/TemplateContainer';
+import { TemplateContainer } from '../Templates/Templates';
 import Loading from '../Loading';
 
 import UpdateProfileContainer from '../../../containers/UpdateProfile';

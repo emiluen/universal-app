@@ -9,7 +9,7 @@ import {
   Button,
 } from 'reactstrap';
 
-import TemplateContainer from '../Templates/TemplateContainer';
+import { TemplateWrapper } from '../Templates/Templates';
 import Popup from '../Popup';
 
 class Cover extends React.Component {
@@ -74,7 +74,7 @@ class Cover extends React.Component {
 
     return (
       <div className="cover">
-        <TemplateContainer>
+        <TemplateWrapper>
           <div className="cover__container">
             {editable ?
               <Button color="link" onClick={this.openModal}>
@@ -113,7 +113,7 @@ class Cover extends React.Component {
               </Row>
             </div>
           </Popup>
-        </TemplateContainer>
+        </TemplateWrapper>
       </div>
     );
   }
