@@ -38,7 +38,7 @@ const PersonalityList = ({
               <CardItem cardBody>
                 <TouchableOpacity onPress={() => onPersonalityPress(item)} style={{ flex: 1 }}>
                   <Image
-                    source={{ uri: getImageUrl(item.profileImageUrl, 200, 200) }}
+                    source={{ uri: getImageUrl(item.profileImageUrl, { width: 200, height: 200 }) }}
                     style={{
                       height: 150,
                       width: null,

@@ -19,8 +19,9 @@ const TypeList = ({ personalities }) => (
         <Link to={`/personalities/${personality.id}/types/${personality.type.id}`}>
           <CardImg
             top
-            src={getImageUrl(personality.type.coverImageUrl, 250)}
+            src={getImageUrl(personality.type.coverImageUrl, { height: 180 })}
             alt={personality.type.name}
+            style={{ height: 180, objectFit: 'cover' }}
           />
         </Link>
         <CardBody>

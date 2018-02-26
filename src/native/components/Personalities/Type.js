@@ -38,7 +38,7 @@ class TypeView extends React.Component {
       <Container>
         <Content>
           <Image
-            source={{ uri: getImageUrl(type.coverImageUrl, deviceWidth) }}
+            source={{ uri: getImageUrl(type.coverImageUrl, { width: deviceWidth }) }}
             style={{
               height: 150,
               width: '100%',

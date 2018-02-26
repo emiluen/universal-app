@@ -24,7 +24,7 @@ const TypeList = ({ personalities }) => {
           <CardItem cardBody>
             <TouchableOpacity onPress={() => onPress(item)} style={{ flex: 1 }}>
               <Image
-                source={{ uri: getImageUrl(item.type.coverImageUrl, 200, 200) }}
+                source={{ uri: getImageUrl(item.type.coverImageUrl, { width: 200, height: 200 }) }}
                 style={{
                   height: 150,
                   width: null,

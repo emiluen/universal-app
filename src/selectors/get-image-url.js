@@ -1,5 +1,9 @@
-export default (baseUrl, width, height) => {
+export default (baseUrl, dimensions) => {
   let url = `https:${baseUrl}`;
+
+  if (!dimensions) return url;
+
+  const { width, height } = dimensions;
 
   if (width || height) {
     url += '?';

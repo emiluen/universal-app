@@ -35,7 +35,11 @@ const PersonalityView = ({
 
   const types = personality.types.map(item => (
     <ListItem key={item.id} button onPress={() => onTypePress(item)}>
-      <Thumbnail square size={80} source={{ uri: getImageUrl(item.coverImageUrl, 80) }} />
+      <Thumbnail
+        square
+        size={80}
+        source={{ uri: getImageUrl(item.coverImageUrl, { width: 80 }) }}
+      />
       <Body>
         <Text>{item.name} - {item.nickname}</Text>
         <Text note>This is a tagline.</Text>
