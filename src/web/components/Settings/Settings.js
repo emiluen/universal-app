@@ -9,6 +9,7 @@ import {
   TabPane,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import classnames from 'classnames';
 
 import { TemplateContainer } from '../Templates/Templates';
 import Loading from '../Loading';
@@ -76,19 +77,19 @@ class Settings extends React.Component {
             {!!success && <Alert color="success">{success}</Alert>}
 
             <Nav tabs>
-              <NavItem>
-                <NavLink onClick={() => { this.toggle('1'); }}>
+              <NavItem style={{ cursor: 'pointer' }}>
+                <NavLink className={classnames({ active: this.state.activeTab === '1' })} onClick={() => { this.toggle('1'); }}>
                   Profile
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink onClick={() => { this.toggle('2'); }}>
+              <NavItem style={{ cursor: 'pointer' }}>
+                <NavLink className={classnames({ active: this.state.activeTab === '2' })} onClick={() => { this.toggle('2'); }}>
                   Privacy
                 </NavLink>
               </NavItem>
             </Nav>
 
-            <TabContent activeTab={this.state.activeTab}>
+            <TabContent activeTab={this.state.activeTab} style={{ marginTop: 40 }}>
               <TabPane tabId="1">
                 <UpdateProfileContainer Layout={UpdateProfileComponent} />
               </TabPane>

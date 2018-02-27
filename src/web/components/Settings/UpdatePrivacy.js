@@ -7,6 +7,7 @@ import {
   Button,
   FormGroup,
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 import Loading from '../Loading';
 
@@ -61,6 +62,7 @@ class UpdatePrivacy extends React.Component {
   render() {
     const {
       loading,
+      member,
       personalities,
     } = this.props;
 
@@ -69,22 +71,10 @@ class UpdatePrivacy extends React.Component {
 
     return (
       <Form onSubmit={this.handleSubmit}>
-        {personalities.map(item => (
-          <FormGroup key={item.id} check style={{ marginTop: 20 }}>
-            <Label check>
-              <Input
-                type="checkbox"
-                name="changeEmail"
-                checked={this.getCurrentValue(item)}
-                onChange={() => this.handlePersonalityChange(
-                  item.id,
-                  !this.getCurrentValue(item),
-                )}
-              />{' '}
-              {item.name}
-            </Label>
-          </FormGroup>
-        ))}
+        <legend>Public Profile Privacy</legend>
+        <p>
+          Select what you want to keep private in your Public Personality Profile. You can see how it looks <Link to={`/profile/${member.uid}`}>here</Link>.
+        </p>
 
         <FormGroup check style={{ marginTop: 20 }}>
           <Label check>
@@ -94,7 +84,7 @@ class UpdatePrivacy extends React.Component {
               checked={this.state.publicName}
               onChange={this.handleUserChange}
             />{' '}
-            Make first name public
+            First Name
           </Label>
         </FormGroup>
 
@@ -106,9 +96,40 @@ class UpdatePrivacy extends React.Component {
               checked={this.state.publicImageUrl}
               onChange={this.handleUserChange}
             />{' '}
-            Make profile picture public
+            Profile Picture
           </Label>
         </FormGroup>
+
+        <div style={{ marginTop: 40 }}>
+          {personalities.length ?
+            <div>
+              <p>
+                You have these Personality Types in your Personality Profile.
+                Do you want any of them to be private?
+              </p>
+              {personalities.map(item => (
+                <FormGroup key={item.id} check style={{ marginTop: 20 }}>
+                  <Label check>
+                    <Input
+                      type="checkbox"
+                      checked={this.getCurrentValue(item)}
+                      onChange={() => this.handlePersonalityChange(
+                        item.id,
+                        !this.getCurrentValue(item),
+                      )}
+                    />{' '}
+                    {item.name}
+                  </Label>
+                </FormGroup>
+              ))}
+            </div>
+            :
+            <p>
+              You don't have any Personality Types in your Personality Profile.
+              When you do, you can set their privacy here.
+            </p>
+          }
+        </div>
 
         <Button style={{ marginTop: 20 }} color="primary">Update</Button>
       </Form>
