@@ -74,7 +74,7 @@ const Index = (
 
         <Stack
           key="personalities"
-          title="PERSONALITY LIST"
+          title="PERSONALITY TESTS"
           icon={() => <Icon name="md-aperture" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >

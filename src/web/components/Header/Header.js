@@ -25,7 +25,7 @@ const HomeNavItem = () => (
 
 const PersonalitiesNavItem = () => (
   <Link className={`nav-link ${window.location.pathname.startsWith('/personalities') && 'active'}`} to="/personalities" style={{ color: 'white' }}>
-    <span>Personalities</span>
+    <span>Personality Tests</span>
   </Link>
 );
 
