@@ -66,7 +66,6 @@ const PersonalityView = ({
             <CardBody>
               <ArticleContainer
                 title
-                readMore
                 Layout={ArticleComponent}
                 article={personality.article}
               />
