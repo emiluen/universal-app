@@ -231,7 +231,7 @@ export function updateProfile(formData) {
     await statusMessage(dispatch, 'loading', true);
 
     // Go to Firebase
-    return FirebaseRef.child(`users/users/${UID}`).update({ firstName, lastName, publicName: firstName })
+    return FirebaseRef.child(`users/users/${UID}`).update({ firstName, lastName })
       .then(async () => {
         // Update Email address
         if (changeEmail) {
