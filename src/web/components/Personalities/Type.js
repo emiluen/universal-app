@@ -5,12 +5,11 @@ import {
   Col,
   Card,
   CardBody,
-  CardHeader,
   Button,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-import { TemplateWrapper, TemplateContainer } from '../Templates/Templates';
+import { TemplateContainer } from '../Templates/Templates';
 import ErrorMessages from '../../../constants/errors';
 import Loading from '../Loading';
 import Error from '../Error';
@@ -44,7 +43,11 @@ class TypeView extends React.Component {
     return (
       <div>
         <div style={{ height: 200 }}>
-          <img src={getImageUrl(type.coverImageUrl, { width: 1200 })} style={{ height: 200, width: '100%', objectFit: 'cover' }} />
+          <img
+            src={getImageUrl(type.coverImageUrl, { width: 1200 })}
+            style={{ height: 200, width: '100%', objectFit: 'cover' }}
+            alt="Type"
+          />
         </div>
         <TemplateContainer>
           <Row>
