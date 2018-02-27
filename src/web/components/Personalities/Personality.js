@@ -4,7 +4,7 @@ import {
   Row,
   Col,
   Card,
-  CardText,
+  CardImg,
   CardBody,
   CardHeader,
   ListGroup,
@@ -18,6 +18,7 @@ import Loading from '../Loading';
 import Error from '../Error';
 import ArticleContainer from '../../../containers/Article';
 import ArticleComponent from './Article';
+import getImageUrl from '../../../selectors/get-image-url';
 
 const PersonalityView = ({
   error,
@@ -35,26 +36,34 @@ const PersonalityView = ({
 
   const typeCards = personality.types.map(type => (
     <ListGroupItem key={`${type.id}`}>
-      <Link to={`/personalities/${personality.id}/types/${type.id}`}>{type.name}</Link>
+      <div style={{ display: 'inline-block', marginRight: 12 }}>
+        <img src={getImageUrl(type.coverImageUrl, { width: 80, height: 60 })} style={{ width: 80, height: 60 }} alt="Type" />
+      </div>
+      <Link to={`/personalities/${personality.id}/types/${type.id}`}>{type.name} - {type.nickname}</Link>
     </ListGroupItem>
   ));
 
   return (
     <TemplateContainer>
       <Row>
-        <Col sm="12">
-          <h1>{personality.name}</h1>
-          <Link to={`/personalities/${personality.id}/quiz`}>
-            <span>Test Me</span>
+        <Col xs="12" md="8">
+          <h1>{personality.name} - Personality Test</h1>
+          <Link className="btn btn-primary" to={`/personalities/${personality.id}/quiz`}>
+            Test Me <i className="icon-arrow-right" />
           </Link>
         </Col>
+        <Col>
+          <Card style={{ maxWidth: 200, marginBottom: 12 }} className="float-md-right">
+            <CardImg
+              src={getImageUrl(personality.profileImageUrl, { width: 200 })}
+            />
+          </Card>
+        </Col>
       </Row>
-      <Row>
-        <Col lg="4" className="recipe-view-card">
+      <Row style={{ marginTop: 40 }}>
+        <Col lg="8" className="recipe-view-card">
           <Card>
-            <CardHeader>Category</CardHeader>
             <CardBody>
-              <CardText>{personality.tagline}</CardText>
               <ArticleContainer
                 title
                 readMore
@@ -66,7 +75,7 @@ const PersonalityView = ({
         </Col>
         <Col lg="4" className="recipe-view-card">
           <Card>
-            <CardHeader>Category Groups</CardHeader>
+            <CardHeader>{personality.name} Personality Types</CardHeader>
             <ListGroup className="list-group-flush">
               {typeCards}
             </ListGroup>
