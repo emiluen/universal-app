@@ -2,17 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 
-const customStyles = {
-  overlay: {
-    zIndex: 99999,
-  },
-};
-
-const buttonStyle = {
-  position: 'absolute',
-  right: 0,
-  top: 0,
-};
+import { TemplateContainer } from './Templates/Templates';
 
 class Popup extends React.Component {
   static propTypes = {
@@ -29,10 +19,16 @@ class Popup extends React.Component {
     const { onRequestClose } = this.props;
 
     return (
-      <Modal {...this.props} style={customStyles}>
-        <button onClick={onRequestClose} style={buttonStyle}>Close</button>
+      <Modal {...this.props} overlayClassName="popup__overlay" className="popup__container">
+        <a onClick={onRequestClose} className="popup__close">
+          <i className="icon-close" />
+        </a>
 
-        {this.props.children}
+        <TemplateContainer>
+          <div className="popup__content">
+            {this.props.children}
+          </div>
+        </TemplateContainer>
       </Modal>
     );
   }

@@ -1,13 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
-import {
-  Row,
-  Col,
-  Card,
-  CardHeader,
-  CardBody,
-} from 'reactstrap';
+import { Row } from 'reactstrap';
 
 import { TemplateContainer } from '../Templates/Templates';
 import Error from '../Error';

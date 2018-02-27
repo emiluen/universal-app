@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Row,
   Form,
   FormGroup,
-  Label,
   Input,
   Button,
 } from 'reactstrap';
@@ -96,23 +94,29 @@ class Cover extends React.Component {
             onRequestClose={this.closeModal}
             contentLabel="Example Modal"
           >
-            <div>
-              <Row>
-                <Form onSubmit={this.onFileUpload}>
-                  <FormGroup style={{ marginTop: 20 }}>
-                    <Label>File name</Label>
-                    <Input
-                      id="file-picker"
-                      type="file"
-                      name="file"
-                      onChange={this.onFileChange}
-                    />
-                  </FormGroup>
+            <h2>Upload File</h2>
+            <div style={{
+              backgroundColor: 'gray',
+              height: 120,
+              width: 120,
+              borderRadius: 60,
+              }}
+            />
+            <Form onSubmit={this.onFileUpload} style={{ marginTop: 20 }}>
+              <FormGroup>
+                <Input
+                  id="file-picker"
+                  className="btn btn-default btn-choose"
+                  type="file"
+                  name="file"
+                  onChange={this.onFileChange}
+                />
+              </FormGroup>
+            </Form>
 
-                  <Button style={{ marginTop: 20 }} color="primary">Upload</Button>
-                </Form>
-              </Row>
-            </div>
+            <Button style={{ marginTop: 20 }} color="primary" onClick={this.onFileUpload}>
+              Upload
+            </Button>
           </Popup>
         </TemplateWrapper>
       </div>
