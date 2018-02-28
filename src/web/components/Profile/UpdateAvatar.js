@@ -9,7 +9,7 @@ import {
 } from 'reactstrap';
 import AvatarEditor from 'react-avatar-editor';
 
-class ProfilePicturePopup extends React.Component {
+class UpdateAvatar extends React.Component {
   static propTypes = {
     onImageCropped: PropTypes.func.isRequired,
   };
@@ -51,7 +51,7 @@ class ProfilePicturePopup extends React.Component {
     return (
       <div className="text-center">
         {uploadMode ?
-          <div className="profile-picture-popup__file">
+          <div className="update-avatar__file">
             <h2>Upload Profile Picture</h2>
 
             <Form>
@@ -73,7 +73,7 @@ class ProfilePicturePopup extends React.Component {
             </Form>
           </div>
         :
-          <div className="profile-picture-popup__crop">
+          <div className="update-avatar__crop">
             <AvatarEditor
               ref={this.setEditorRef}
               image={this.state.image}
@@ -96,4 +96,4 @@ class ProfilePicturePopup extends React.Component {
   }
 }
 
-export default ProfilePicturePopup;
+export default UpdateAvatar;

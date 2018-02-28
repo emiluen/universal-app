@@ -9,7 +9,7 @@ import Loading from '../Loading';
 import Cover from './Cover';
 import TypeList from './TypeList';
 import Popup from '../Popup';
-import ProfilePicturePopup from './ProfilePicturePopup';
+import UpdateAvatar from './UpdateAvatar';
 
 class Profile extends React.Component {
   static propTypes = {
@@ -95,7 +95,7 @@ class Profile extends React.Component {
               onRequestClose={this.closeModal}
               contentLabel="Upload Profile Picture"
             >
-              <ProfilePicturePopup
+              <UpdateAvatar
                 onImageCropped={this.saveImage}
               />
             </Popup>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 
 import { TemplateWrapper } from '../Templates/Templates';
+import Avatar from '../Avatar';
 
 const Cover = ({
   name,
@@ -10,11 +11,7 @@ const Cover = ({
   onImageClick,
 }) => {
   const image = (
-    <img
-      src={imageUrl}
-      className="cover__image"
-      alt="http://some-placeholder-backup"
-    />
+    <Avatar className="cover__avatar" imageUrl={imageUrl} />
   );
 
   return (

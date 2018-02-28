@@ -1,7 +1,5 @@
 @import "../globals";
 
-$_image_size: 110px;
-
 .cover {
   background-color: $purple;
   padding-top: $m-space;
@@ -23,14 +21,10 @@ $_image_size: 110px;
   }
 }
 
-.cover__image__link {
-  cursor: pointer;
+.cover__avatar {
+  margin-right: $m-space;
 }
 
-.cover__image {
-  object-fit: cover;
-  height: $_image_size;
-  width: $_image_size;
-  border-radius: 50%;
-  margin-right: $m-space;
+.cover__avatar__link {
+  cursor: pointer;
 }
