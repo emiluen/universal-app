@@ -19,6 +19,7 @@ class UpdateAvatar extends React.Component {
 
     this.state = {
       image: null,
+      scale: 1,
       step: 'FILE-UPLOAD',
     };
 
@@ -44,6 +45,11 @@ class UpdateAvatar extends React.Component {
   setEditorRef = (editor) => {
     this.editor = editor;
   };
+
+  handleScale = (event) => {
+    const scale = parseFloat(event.target.value);
+    this.setState({ scale });
+  }
 
   render() {
     const uploadMode = this.state.step === 'FILE-UPLOAD';
@@ -81,7 +87,16 @@ class UpdateAvatar extends React.Component {
               height={250}
               crossOrigin="anonymous"
               border={50}
-              scale={1.2}
+              scale={parseFloat(this.state.scale)}
+            />
+            <Input
+              name="scale"
+              type="range"
+              onChange={this.handleScale}
+              min="1"
+              max="2"
+              step="0.01"
+              defaultValue="1"
             />
             <Button
               color="primary"
