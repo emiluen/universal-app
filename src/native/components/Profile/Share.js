@@ -3,23 +3,18 @@ import PropTypes from 'prop-types';
 import { Platform, Share, TouchableOpacity } from 'react-native';
 import { View, Content, Icon } from 'native-base';
 
-const ShareFab = ({ shareUrl }) => {
+const ShareFab = ({ shareObject }) => {
   const onShare = () => {
-    const url = shareUrl;
-    const title = 'This is a title';
-    const message = 'This is a message';
-    const displayMessage = Platform.OS === 'ios' ? message : `${message} ${url}`;
-
     Share.share({
-      title,
-      message: displayMessage,
+      title: shareObject.title,
+      message: Platform.OS === 'ios' ? shareObject.message : shareObject.messageUrl,
 
       // iOS
-      url,
-      subject: title,
+      url: shareObject.url,
+      subject: shareObject.title,
 
       // Android
-      dialogTitle: title,
+      dialogTitle: shareObject.title,
     });
   };
 
@@ -55,7 +50,14 @@ const ShareFab = ({ shareUrl }) => {
 };
 
 ShareFab.propTypes = {
-  shareUrl: PropTypes.string.isRequired,
+  shareObject: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    messageUrl: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    hashtags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
 };
 
 export default ShareFab;

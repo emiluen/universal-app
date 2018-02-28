@@ -34,7 +34,7 @@ export class Profile extends React.Component {
       member,
       loggedIn,
       userPersonalities,
-      shareProfileUrl,
+      shareProfile,
     } = this.props;
 
     return (
@@ -94,7 +94,7 @@ export class Profile extends React.Component {
           }
         </Content>
 
-        {loggedIn && <Share shareUrl={shareProfileUrl} />}
+        {loggedIn && <Share shareObject={shareProfile} />}
       </Container>
     );
   }
@@ -104,11 +104,12 @@ Profile.propTypes = {
   member: PropTypes.shape({}),
   loggedIn: PropTypes.bool.isRequired,
   userPersonalities: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  shareProfileUrl: PropTypes.string.isRequired,
+  shareProfile: PropTypes.shape({}),
 };
 
 Profile.defaultProps = {
   member: {},
+  shareProfile: null,
 };
 
 export default Profile;

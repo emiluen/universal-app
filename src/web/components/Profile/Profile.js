@@ -10,6 +10,7 @@ import Cover from './Cover';
 import TypeList from './TypeList';
 import Popup from '../Popup';
 import UpdateAvatar from './UpdateAvatar';
+import ShareButtons from './ShareButtons';
 
 class Profile extends React.Component {
   static propTypes = {
@@ -26,11 +27,13 @@ class Profile extends React.Component {
       push: PropTypes.func.isRequired,
     }).isRequired,
     uploadImageFromBlob: PropTypes.func.isRequired,
+    shareProfile: PropTypes.shape({}),
   }
 
   static defaultProps = {
     member: {},
     error: null,
+    shareProfile: null,
   }
 
   constructor(props) {
@@ -55,7 +58,12 @@ class Profile extends React.Component {
 
   render() {
     const {
-      member, loading, error, userPersonalities, loggedIn,
+      member,
+      loading,
+      error,
+      userPersonalities,
+      shareProfile,
+      loggedIn,
     } = this.props;
 
     if (loading) {
@@ -85,6 +93,8 @@ class Profile extends React.Component {
             />
 
             <TemplateContainer>
+              <ShareButtons shareObject={shareProfile} />
+
               <Row>
                 <TypeList personalities={userPersonalities} />
               </Row>
