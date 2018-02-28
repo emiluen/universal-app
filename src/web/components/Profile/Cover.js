@@ -9,33 +9,25 @@ const Cover = ({
   name,
   imageUrl,
   onImageClick,
-}) => {
-  const image = (
-    <Avatar className="cover__avatar" imageUrl={imageUrl} />
-  );
-
-  return (
-    <div className="cover">
-      <TemplateWrapper>
-        <div className="cover__container">
-          {onImageClick ?
-            <Button color="link" onClick={onImageClick}>
-              {image}
-            </Button>
-            :
-            <div>
-              {image}
-            </div>
-          }
-          <div className="cover__container__name">
-            <h2>Personality Profile</h2>
-            <span>{name}</span>
-          </div>
+}) => (
+  <div className="cover">
+    <TemplateWrapper>
+      <div className="cover__container">
+        {onImageClick ?
+          <Button color="link" onClick={onImageClick}>
+            <Avatar className="cover__avatar" imageUrl={imageUrl} />
+          </Button>
+          :
+          <Avatar className="cover__avatar" imageUrl={imageUrl} />
+        }
+        <div className="cover__container__name">
+          <h2>Personality Profile</h2>
+          <span>{name}</span>
         </div>
-      </TemplateWrapper>
-    </div>
-  );
-};
+      </div>
+    </TemplateWrapper>
+  </div>
+);
 
 Cover.propTypes = {
   name: PropTypes.string,
