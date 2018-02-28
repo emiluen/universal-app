@@ -12,9 +12,6 @@ import Share from './Share';
 export class Profile extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      imageUrl: null,
-    };
 
     this.onImageClick = this.onImageClick.bind(this);
   }
@@ -28,12 +25,11 @@ export class Profile extends React.Component {
     console.log(result);
 
     if (!result.cancelled) {
-      this.setState({ imageUrl: result.uri });
+      console.log('avatar to upload', result);
     }
   };
 
   render() {
-    const { imageUrl } = this.state;
     const {
       member,
       loggedIn,
@@ -47,7 +43,7 @@ export class Profile extends React.Component {
           {loggedIn ?
             <View>
               <Cover
-                image={imageUrl}
+                imageUrl={member.imageUrl}
                 onImageClick={this.onImageClick}
                 onSettings={Actions.settings}
               />

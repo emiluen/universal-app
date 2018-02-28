@@ -22,7 +22,7 @@ const PublicProfile = ({
   return (
     <Container>
       <Content>
-        <Cover image={publicImageUrl} />
+        <Cover imageUrl={publicImageUrl} />
 
         <Content padder>
           <Header
