@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   Form,
   FormGroup,
+  Label,
   Input,
   Button,
 } from 'reactstrap';
@@ -48,26 +49,31 @@ class ProfilePicturePopup extends React.Component {
     const uploadMode = this.state.step === 'FILE-UPLOAD';
 
     return (
-      <div>
+      <div className="text-center">
         {uploadMode ?
-          <div>
-            <h2>Upload File</h2>
+          <div className="profile-picture-popup__file">
+            <h2>Upload Profile Picture</h2>
 
-            <Form style={{ marginTop: 20 }}>
+            <Form>
               <FormGroup>
                 <Input
-                  className="btn btn-default btn-choose"
-                  id="file-picker"
+                  id="file"
                   name="file"
                   type="file"
                   accept="image/*"
                   onChange={this.onFileChange}
                 />
+                <Label
+                  className="btn btn-primary"
+                  for="file"
+                >
+                  Choose a file...
+                </Label>
               </FormGroup>
             </Form>
           </div>
         :
-          <div>
+          <div className="profile-picture-popup__crop">
             <AvatarEditor
               ref={this.setEditorRef}
               image={this.state.image}
@@ -77,7 +83,10 @@ class ProfilePicturePopup extends React.Component {
               border={50}
               scale={1.2}
             />
-            <Button color="primary" onClick={this.onClickSave}>
+            <Button
+              color="primary"
+              onClick={this.onClickSave}
+            >
               Save
             </Button>
           </div>
