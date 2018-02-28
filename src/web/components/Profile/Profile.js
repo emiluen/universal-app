@@ -8,6 +8,8 @@ import Error from '../Error';
 import Loading from '../Loading';
 import Cover from './Cover';
 import TypeList from './TypeList';
+import Popup from '../Popup';
+import ProfilePicturePopup from './ProfilePicturePopup';
 
 class Profile extends React.Component {
   static propTypes = {
@@ -23,6 +25,7 @@ class Profile extends React.Component {
     history: PropTypes.shape({
       push: PropTypes.func.isRequired,
     }).isRequired,
+    uploadImageFromBlob: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -30,7 +33,25 @@ class Profile extends React.Component {
     error: null,
   }
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      modalIsOpen: false,
+    };
+
+    this.saveImage = this.saveImage.bind(this);
+  }
+
   onLogout = () => this.props.logout().then(() => this.props.history.push('/login'));
+
+  saveImage = blob => this.props.uploadImageFromBlob(blob);
+  // .then(() => console.log('Success'))
+  // .catch(err => console.log('Error', err));
+
+  openModal = () => this.setState({ modalIsOpen: true });
+
+  closeModal = () => this.setState({ modalIsOpen: false });
 
   render() {
     const {
@@ -57,13 +78,27 @@ class Profile extends React.Component {
         }
         {loggedIn &&
           <div>
-            <Cover editable name={`${member.firstName} ${member.lastName}`} imageUrl={member.imageUrl} />
+            <Cover
+              name={`${member.firstName} ${member.lastName}`}
+              imageUrl={member.imageUrl}
+              onImageClick={this.openModal}
+            />
 
             <TemplateContainer>
               <Row>
                 <TypeList personalities={userPersonalities} />
               </Row>
             </TemplateContainer>
+
+            <Popup
+              isOpen={this.state.modalIsOpen}
+              onRequestClose={this.closeModal}
+              contentLabel="Upload Profile Picture"
+            >
+              <ProfilePicturePopup
+                onImageCropped={this.saveImage}
+              />
+            </Popup>
           </div>
         }
       </div>

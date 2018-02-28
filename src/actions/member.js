@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 import ErrorMessages from '../constants/errors';
 import statusMessage from './status';
-import { Firebase, FirebaseRef } from '../lib/firebase';
+import { Firebase, FirebaseRef, FirebaseStorageRef } from '../lib/firebase';
 
 /**
   * Sign Up to Firebase
@@ -325,4 +325,25 @@ export function logout() {
         setTimeout(resolve, 1000); // Resolve after 1s so that user sees a message
       }).catch(reject);
   }).catch(async (err) => { await statusMessage(dispatch, 'error', err.message); throw err.message; });
+}
+
+/**
+  * Upload User Profile Image
+  */
+export function uploadImageFromBlob(blob) {
+  if (Firebase === null) return () => new Promise(resolve => resolve());
+
+  const UID = Firebase.auth().currentUser.uid;
+
+  const ref = FirebaseStorageRef.child(`users/${UID}/profilePicture/${UID}`);
+
+  // Firebase Functions must trigger event that client can listen to
+  /*
+  FirebaseRef.child(`users/${UID}/imageUrl`).on('value', (snap) => {
+    console.log('value!', snap.val());
+  });
+  */
+
+  return ref.put(blob)
+    .then(() => console.log('success'));
 }

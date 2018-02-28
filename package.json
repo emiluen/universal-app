@@ -65,6 +65,7 @@
     "object-assign": "^4.1.1",
     "prop-types": "^15.6.0",
     "react": "^16.0.0-beta.5",
+    "react-avatar-editor": "^10.3.0",
     "react-dom": "^16.2.0",
     "react-modal": "^3.3.1",
     "react-native": "^0.49.5",

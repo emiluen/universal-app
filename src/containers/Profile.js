@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import MemberContainer from './Member';
 import getUserPersonalities from '../selectors/get-user-personalities';
 import baseUrl from '../constants/baseUrl';
+import { uploadImageFromBlob } from '../actions/member';
 
 const Profile = ({ Layout, member, userPersonalities }) => {
   const shareProfileUrl = `${baseUrl}profile/${member.uid}`;
@@ -18,6 +19,7 @@ const Profile = ({ Layout, member, userPersonalities }) => {
         error={member.error || userPersonalities.error}
         userPersonalities={userPersonalities.personalities}
         shareProfileUrl={shareProfileUrl}
+        uploadImageFromBlob={uploadImageFromBlob}
       />
       )}
     />
