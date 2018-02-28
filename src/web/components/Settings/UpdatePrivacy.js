@@ -73,7 +73,8 @@ class UpdatePrivacy extends React.Component {
       <Form onSubmit={this.handleSubmit}>
         <legend>Public Profile Privacy</legend>
         <p>
-          Select what you want to keep private in your Public Personality Profile. You can see how it looks <Link to={`/profile/${member.uid}`}>here</Link>.
+          Select what you want to keep private in your Public Personality Profile.
+          You can see how it looks <Link target="_blank" to={`/profile/${member.uid}`}>here</Link>.
         </p>
 
         <FormGroup check style={{ marginTop: 20 }}>
