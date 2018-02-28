@@ -1,9 +1,13 @@
 @import "bootstrap";
 @import "components/sidebar";
-@import "components/recipes";
 @import "components/loading";
 @import "components/header";
 @import "components/footer";
+@import "components/cover";
+@import "components/popup";
+@import "components/avatar";
+@import "components/update-avatar";
+@import "components/share-buttons";
 
 body {
   padding-top: 3.5em;

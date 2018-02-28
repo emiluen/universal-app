@@ -6,36 +6,35 @@ import DefaultProps from '../constants/navigation';
 // import AppConfig from '../../constants/config';
 // import AboutComponent from '../components/About';
 
-import RecipesContainer from '../../containers/Recipes';
-// import RecipesComponent from '../components/Recipes';
-import RecipeViewComponent from '../components/Recipe';
-
 import PersonalitiesContainer from '../../containers/Personalities';
-import PersonalitiesComponent from '../components/Personalities';
+import PersonalitiesComponent from '../components/Personalities/Personalities';
 
 import PersonalityContainer from '../../containers/Personality';
-import PersonalityComponent from '../components/Personality';
+import PersonalityComponent from '../components/Personalities/Personality';
 
 import TypeContainer from '../../containers/Type';
-import TypeComponent from '../components/Type';
+import TypeComponent from '../components/Personalities/Type';
 
 import QuizContainer from '../../containers/Quiz';
-import QuizComponent from '../components/Quiz';
+import QuizComponent from '../components/Quiz/Quiz';
 
 import SignUpContainer from '../../containers/SignUp';
-import SignUpComponent from '../components/SignUp';
+import SignUpComponent from '../components/Auth/SignUp';
 
 import LoginContainer from '../../containers/Login';
-import LoginComponent from '../components/Login';
+import LoginComponent from '../components/Auth/Login';
 
 import ForgotPasswordContainer from '../../containers/ForgotPassword';
-import ForgotPasswordComponent from '../components/ForgotPassword';
-
-import UpdateProfileContainer from '../../containers/UpdateProfile';
-import UpdateProfileComponent from '../components/UpdateProfile';
+import ForgotPasswordComponent from '../components/Auth/ForgotPassword';
 
 import ProfileContainer from '../../containers/Profile';
-import ProfileComponent from '../components/Profile';
+import ProfileComponent from '../components/Profile/Profile';
+
+import PublicProfileContainer from '../../containers/PublicProfile';
+import PublicProfileComponent from '../components/Profile/PublicProfile';
+
+import SettingsContainer from '../../containers/Settings';
+import SettingsComponent from '../components/Settings/Settings';
 
 const Index = (
   <Stack key="root">
@@ -57,20 +56,25 @@ const Index = (
           >
             <Scene key="home" component={AboutComponent} />
           </Stack>
-
-          <Stack
-            key="recipes"
-            title="RECIPES"
-            icon={() => <Icon name="book" {...DefaultProps.icons} />}
-            {...DefaultProps.navbarProps}
-          >
-            <Scene key="recipes" component={RecipesContainer} Layout={RecipesComponent} />
-          </Stack>
         */}
 
         <Stack
+          key="publicProfile"
+          title="PUBLIC PROFILE"
+          icon={() => <Icon name="planet" {...DefaultProps.icons} />}
+          {...DefaultProps.navbarProps}
+        >
+          <Scene
+            key="publicProfile"
+            component={PublicProfileContainer}
+            Layout={PublicProfileComponent}
+            match={{ params: { id: 'K3AkxRZ2Z0WGnDujeCvFzogWe7k2' } }}
+          />
+        </Stack>
+
+        <Stack
           key="personalities"
-          title="PERSONALITY LIST"
+          title="PERSONALITY TESTS"
           icon={() => <Icon name="md-aperture" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
@@ -114,11 +118,11 @@ const Index = (
           />
           <Scene
             back
-            key="updateProfile"
-            title="UPDATE PROFILE"
+            key="settings"
+            title="SETTINGS"
             {...DefaultProps.navbarProps}
-            component={UpdateProfileContainer}
-            Layout={UpdateProfileComponent}
+            component={SettingsContainer}
+            Layout={SettingsComponent}
           />
         </Stack>
       </Tabs>
@@ -152,15 +156,6 @@ const Index = (
       Layout={QuizComponent}
     />
 
-    <Scene
-      back
-      clone
-      key="recipe"
-      title="RECIPE"
-      {...DefaultProps.navbarProps}
-      component={RecipesContainer}
-      Layout={RecipeViewComponent}
-    />
   </Stack>
 );
 

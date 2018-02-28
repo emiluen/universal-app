@@ -1,6 +1,8 @@
+import _ from 'lodash';
+
 import ErrorMessages from '../constants/errors';
 import statusMessage from './status';
-import { Firebase, FirebaseRef } from '../lib/firebase';
+import { Firebase, FirebaseRef, FirebaseStorageRef } from '../lib/firebase';
 
 /**
   * Sign Up to Firebase
@@ -31,9 +33,10 @@ export function signUp(formData) {
       .then((res) => {
         // Send user details to Firebase database
         if (res && res.uid) {
-          FirebaseRef.child(`users/${res.uid}`).set({
+          FirebaseRef.child(`users/users/${res.uid}`).set({
             firstName,
             lastName,
+            publicName: firstName,
             signedUp: Firebase.database.ServerValue.TIMESTAMP,
             lastLoggedIn: Firebase.database.ServerValue.TIMESTAMP,
           }).then(() => statusMessage(dispatch, 'loading', false).then(resolve));
@@ -56,7 +59,7 @@ function getUserData(dispatch) {
 
   if (!UID) return false;
 
-  const ref = FirebaseRef.child(`users/${UID}`);
+  const ref = FirebaseRef.child(`users/users/${UID}`);
 
   return ref.on('value', (snapshot) => {
     const userData = snapshot.val() || [];
@@ -68,11 +71,50 @@ function getUserData(dispatch) {
   });
 }
 
+/**
+  * Get this User's Details
+  */
+function getUserPersonalities(dispatch) {
+  const UID = (
+    FirebaseRef
+    && Firebase
+    && Firebase.auth()
+    && Firebase.auth().currentUser
+    && Firebase.auth().currentUser.uid
+  ) ? Firebase.auth().currentUser.uid : null;
+
+  if (!UID) return false;
+
+  const ref = FirebaseRef.child(`users/userObjects/personalities/${UID}`);
+
+  return ref.on('value', (snapshot) => {
+    const userData = snapshot.val() || [];
+
+    return dispatch({
+      type: 'USER_PERSONALITIES_UPDATE',
+      data: userData,
+    });
+  });
+}
+
 export function getMemberData() {
   if (Firebase === null) return () => new Promise(resolve => resolve());
 
   // Ensure token is up to date
   return dispatch => new Promise((resolve) => {
+    Firebase.auth().onAuthStateChanged(async (loggedIn) => {
+      if (loggedIn) {
+        const userData = await getUserData(dispatch);
+        const personalitiesData = await getUserPersonalities(dispatch);
+        return resolve(userData, personalitiesData);
+      }
+
+      return () => new Promise(() => resolve());
+    });
+    /**
+      Before Database Update:
+    */
+    /*
     Firebase.auth().onAuthStateChanged((loggedIn) => {
       if (loggedIn) {
         return resolve(getUserData(dispatch));
@@ -80,6 +122,7 @@ export function getMemberData() {
 
       return () => new Promise(() => resolve());
     });
+    */
   });
 }
 
@@ -108,7 +151,7 @@ export function login(formData) {
           .then(async (res) => {
             if (res && res.uid) {
               // Update last logged in data
-              FirebaseRef.child(`users/${res.uid}`).update({
+              FirebaseRef.child(`users/users/${res.uid}`).update({
                 lastLoggedIn: Firebase.database.ServerValue.TIMESTAMP,
               });
 
@@ -188,7 +231,7 @@ export function updateProfile(formData) {
     await statusMessage(dispatch, 'loading', true);
 
     // Go to Firebase
-    return FirebaseRef.child(`users/${UID}`).update({ firstName, lastName })
+    return FirebaseRef.child(`users/users/${UID}`).update({ firstName, lastName })
       .then(async () => {
         // Update Email address
         if (changeEmail) {
@@ -211,14 +254,47 @@ export function updateProfile(formData) {
 /**
   * Add Personality
   */
-export function addPersonality(personalityId, typeId) {
+export function addPersonality(personality, typeId) {
   if (Firebase === null) return () => new Promise(resolve => resolve());
 
   return dispatch => new Promise((resolve, reject) => {
     const UID = Firebase.auth().currentUser.uid;
     if (!UID) return reject({ message: ErrorMessages.missingFirstName });
 
-    return FirebaseRef.child(`users/${UID}/personalities/${personalityId}`).update({ typeId })
+    const data = {
+      isPrivate: personality.isPrivate || false,
+      typeId,
+    };
+
+    return FirebaseRef.child(`users/userObjects/personalities/${UID}/${personality.id}`).update(data)
+      .catch(reject);
+  }).catch(async (err) => { await statusMessage(dispatch, 'error', err.message); throw err.message; });
+}
+
+/**
+  * Update Personality Privacy
+  */
+export function updatePrivacy(newPrivacySettings) {
+  return dispatch => new Promise(async (resolve, reject) => {
+    // Are they a user?
+    const UID = Firebase.auth().currentUser.uid;
+    if (!UID) return reject({ message: ErrorMessages.missingFirstName });
+
+    const { personalities, ...userData } = newPrivacySettings;
+
+    const personalitiesData = _.mapKeys(personalities, (value, key) => `${key}/isPrivate`);
+
+    await statusMessage(dispatch, 'loading', true);
+
+    // Go to Firebase
+    return FirebaseRef.child(`users/userObjects/personalities/${UID}`).update(personalitiesData)
+      .then(() => FirebaseRef.child(`users/users/${UID}`).update(userData))
+      .then(async () => {
+        // Update Redux
+        await getUserData(dispatch);
+        await statusMessage(dispatch, 'success', 'Privacy Updated');
+        resolve();
+      })
       .catch(reject);
   }).catch(async (err) => { await statusMessage(dispatch, 'error', err.message); throw err.message; });
 }
@@ -233,7 +309,7 @@ export function removePersonality(personalityId) {
     const UID = Firebase.auth().currentUser.uid;
     if (!UID) return reject({ message: ErrorMessages.missingFirstName });
 
-    return FirebaseRef.child(`users/${UID}/personalities/${personalityId}/typeId`).remove()
+    return FirebaseRef.child(`users/userObjects/personalities/${UID}/${personalityId}/typeId`).remove()
       .catch(reject);
   }).catch(async (err) => { await statusMessage(dispatch, 'error', err.message); throw err.message; });
 }
@@ -249,4 +325,25 @@ export function logout() {
         setTimeout(resolve, 1000); // Resolve after 1s so that user sees a message
       }).catch(reject);
   }).catch(async (err) => { await statusMessage(dispatch, 'error', err.message); throw err.message; });
+}
+
+/**
+  * Upload User Profile Image
+  */
+export function uploadImageFromBlob(blob) {
+  if (Firebase === null) return () => new Promise(resolve => resolve());
+
+  const UID = Firebase.auth().currentUser.uid;
+
+  const ref = FirebaseStorageRef.child(`users/${UID}/profilePicture/${UID}`);
+
+  // Firebase Functions must trigger event that client can listen to
+  /*
+  FirebaseRef.child(`users/${UID}/imageUrl`).on('value', (snap) => {
+    console.log('value!', snap.val());
+  });
+  */
+
+  return ref.put(blob)
+    .then(() => console.log('success'));
 }

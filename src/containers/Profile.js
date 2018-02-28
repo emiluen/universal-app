@@ -1,43 +1,49 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import MemberContainer from './Member';
 import getUserPersonalities from '../selectors/get-user-personalities';
+import getShareProfile from '../selectors/get-share-profile';
+import { uploadImageFromBlob } from '../actions/member';
 
-class Profile extends Component {
-  static propTypes = {
-    Layout: PropTypes.func.isRequired,
-    member: PropTypes.shape({
-      loading: PropTypes.bool.isRequired,
-      error: PropTypes.string,
-    }).isRequired,
-    userPersonalities: PropTypes.shape({
-      loading: PropTypes.bool.isRequired,
-      error: PropTypes.string,
-      personalities: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    }).isRequired,
-  }
+const Profile = ({
+  Layout,
+  member,
+  userPersonalities,
+  shareProfile,
+}) => (
+  <MemberContainer Layout={props => (
+    <Layout
+      {...props}
+      member={member}
+      loading={member.loading || userPersonalities.loading}
+      error={member.error || userPersonalities.error}
+      userPersonalities={userPersonalities.personalities}
+      shareProfile={shareProfile}
+      uploadImageFromBlob={uploadImageFromBlob}
+    />
+    )}
+  />
+);
 
-  componentDidMount = () => console.log('component mount');
+Profile.propTypes = {
+  Layout: PropTypes.func.isRequired,
+  member: PropTypes.shape({
+    loading: PropTypes.bool.isRequired,
+    error: PropTypes.string,
+  }).isRequired,
+  userPersonalities: PropTypes.shape({
+    loading: PropTypes.bool.isRequired,
+    error: PropTypes.string,
+    personalities: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  }).isRequired,
+  shareProfile: PropTypes.shape({}),
+};
 
-  render = () => {
-    const { Layout, member, userPersonalities } = this.props;
-
-    return (
-      <MemberContainer Layout={props => (
-        <Layout
-          {...props}
-          member={member}
-          loading={member.loading || userPersonalities.loading}
-          error={member.error || userPersonalities.error}
-          userPersonalities={userPersonalities.personalities}
-        />
-        )}
-      />
-    );
-  }
-}
+Profile.defaultProps = {
+  shareProfile: null,
+};
 
 const mapStateToProps = (state) => {
   const userPersonalities = getUserPersonalities(state.personalities, state.member);
@@ -45,6 +51,7 @@ const mapStateToProps = (state) => {
   return {
     member: state.member || {},
     userPersonalities: { ...state.personalities, personalities: userPersonalities },
+    shareProfile: getShareProfile(state.member),
   };
 };
 

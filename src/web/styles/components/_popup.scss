@@ -1,0 +1,36 @@
+@import "../globals";
+
+$_image_size: 110px;
+$_close_space: 12px;
+
+.popup__overlay {
+  background-color: white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: $header-height;
+}
+
+.popup__container {
+  height: 100%;
+}
+
+.popup__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup__close {
+  position: absolute;
+  top: $_close_space;
+  right: $_close_space;
+  font-size: 24px;
+
+  i {
+    cursor: pointer;
+  }
+}

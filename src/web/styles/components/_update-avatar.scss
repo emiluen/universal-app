@@ -1,0 +1,21 @@
+.update-avatar__file {
+  margin-top: 150px;
+
+  input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+}
+
+.update-avatar__crop {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    margin-top: 20px;
+  }
+}

@@ -23,6 +23,7 @@ export default (personalities, member, filterNonMembers = false) => {
         typeMember: userPersonality ? group.id === userPersonality.typeId : false,
       })).filter(item => (!filterNonMembers || item.typeMember)),
       personalityMember: userPersonality ? !!userPersonality.typeId : false,
+      isPrivate: userPersonality ? !!userPersonality.isPrivate : false,
     };
   }).filter(item => (!filterNonMembers || item.personalityMember));
 

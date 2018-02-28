@@ -1,0 +1,25 @@
+@import "../globals";
+
+.share-buttons {
+  display: flex;
+  flex-direction: row;
+  margin-top: $m-space;
+  margin-bottom: $l-space;
+
+  @include media-breakpoint-up(sm) {
+    justify-content: flex-end;
+    margin-top: 0;
+  }
+}
+
+.share-buttons__button {
+  cursor: pointer;
+
+  + .share-buttons__button {
+    margin-left: $xs-space;
+  }
+
+  &:hover:not(:active) {
+    opacity: 0.75;
+  }
+}

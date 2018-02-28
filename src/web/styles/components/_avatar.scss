@@ -1,0 +1,21 @@
+/**
+ * Styles for the Avatar.js component
+ */
+
+$_image_size_small: 40px;
+$_image_size_large: 110px;
+
+.avatar {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.avatar__small {
+  height: $_image_size_small;
+  width: $_image_size_small;
+}
+
+.avatar__large {
+  height: $_image_size_large;
+  width: $_image_size_large;
+}

@@ -4,46 +4,41 @@ import { connect } from 'react-redux';
 
 import addMemberStatus from '../selectors/add-member-status';
 
-class Personalities extends React.Component {
-  static propTypes = {
-    Layout: PropTypes.func.isRequired,
-    personalities: PropTypes.shape({
-      loading: PropTypes.bool.isRequired,
-      error: PropTypes.string,
-      personalities: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-    }).isRequired,
-    match: PropTypes.shape({
-      params: PropTypes.shape({}),
-    }),
-  }
+const Personalities = ({
+  Layout,
+  personalities,
+  match,
+}) => {
+  const personalityId = (match && match.params && match.params.personalityId) ?
+    match.params.personalityId : null;
+  const typeId = (match && match.params && match.params.typeId) ? match.params.typeId : null;
 
-  static defaultProps = {
-    match: null,
-  }
+  return (
+    <Layout
+      personalityId={personalityId}
+      typeId={typeId}
+      error={personalities.error}
+      loading={personalities.loading}
+      personalities={personalities.personalities}
+    />
+  );
+};
 
-  componentDidMount = () => console.log('personalities container mounted');
+Personalities.propTypes = {
+  Layout: PropTypes.func.isRequired,
+  personalities: PropTypes.shape({
+    loading: PropTypes.bool.isRequired,
+    error: PropTypes.string,
+    personalities: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  }).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({}),
+  }),
+};
 
-  render = () => {
-    const {
-      Layout, personalities, match,
-    } = this.props;
-
-    const personalityId = (match && match.params && match.params.personalityId) ?
-      match.params.personalityId : null;
-    const typeId = (match && match.params && match.params.typeId) ? match.params.typeId : null;
-    console.log(personalityId, typeId);
-
-    return (
-      <Layout
-        personalityId={personalityId}
-        typeId={typeId}
-        error={personalities.error}
-        loading={personalities.loading}
-        personalities={personalities.personalities}
-      />
-    );
-  }
-}
+Personalities.defaultProps = {
+  match: null,
+};
 
 const mapStateToProps = state => ({
   // personalities: state.personalities || {},

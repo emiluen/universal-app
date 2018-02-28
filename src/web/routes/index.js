@@ -2,42 +2,41 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 // Templates
-import TemplateNothing from '../components/TemplateNothing';
-import TemplateHeader from '../components/TemplateHeader';
+import TemplateNothing from '../components/Templates/TemplateNothing';
+import TemplateHeader from '../components/Templates/TemplateHeader';
 
 // Routes
-import Home from '../components/Home';
-
-import RecipesContainer from '../../containers/Recipes';
-import RecipesComponent from '../components/Recipes';
-import RecipeViewComponent from '../components/Recipe';
+import Home from '../components/Home/Home';
 
 import PersonalitiesContainer from '../../containers/Personalities';
-import PersonalitiesComponent from '../components/Personalities';
+import PersonalitiesComponent from '../components/Personalities/Personalities';
 
 import PersonalityContainer from '../../containers/Personality';
-import PersonalityComponent from '../components/Personality';
+import PersonalityComponent from '../components/Personalities/Personality';
 
 import TypeContainer from '../../containers/Type';
-import TypeComponent from '../components/Type';
+import TypeComponent from '../components/Personalities/Type';
 
 import QuizContainer from '../../containers/Quiz';
-import QuizComponent from '../components/Quiz';
+import QuizComponent from '../components/Quiz/Quiz';
 
 import SignUpContainer from '../../containers/SignUp';
-import SignUpComponent from '../components/SignUp';
+import SignUpComponent from '../components/Auth/SignUp';
 
 import LoginContainer from '../../containers/Login';
-import LoginComponent from '../components/Login';
+import LoginComponent from '../components/Auth/Login';
 
 import ForgotPasswordContainer from '../../containers/ForgotPassword';
-import ForgotPasswordComponent from '../components/ForgotPassword';
+import ForgotPasswordComponent from '../components/Auth/ForgotPassword';
 
 import ProfileContainer from '../../containers/Profile';
-import ProfileComponent from '../components/Profile';
+import ProfileComponent from '../components/Profile/Profile';
 
-import UpdateProfileContainer from '../../containers/UpdateProfile';
-import UpdateProfileComponent from '../components/UpdateProfile';
+import PublicProfileContainer from '../../containers/PublicProfile';
+import PublicProfileComponent from '../components/Profile/PublicProfile';
+
+import SettingsContainer from '../../containers/Settings';
+import SettingsComponent from '../components/Settings/Settings';
 
 import Error from '../components/Error';
 
@@ -77,6 +76,7 @@ const Index = () => (
       )}
     />
     <Route
+      exact
       path="/profile"
       render={props => (
         <TemplateHeader>
@@ -85,10 +85,18 @@ const Index = () => (
       )}
     />
     <Route
-      path="/update-profile"
+      path="/profile/:id"
       render={props => (
         <TemplateHeader>
-          <UpdateProfileContainer {...props} Layout={UpdateProfileComponent} />
+          <PublicProfileContainer {...props} Layout={PublicProfileComponent} />
+        </TemplateHeader>
+      )}
+    />
+    <Route
+      path="/settings"
+      render={props => (
+        <TemplateHeader>
+          <SettingsContainer {...props} Layout={SettingsComponent} />
         </TemplateHeader>
       )}
     />
@@ -125,22 +133,6 @@ const Index = () => (
       render={props => (
         <TemplateHeader>
           <QuizContainer {...props} Layout={QuizComponent} />
-        </TemplateHeader>
-      )}
-    />
-    <Route
-      path="/recipes"
-      render={props => (
-        <TemplateHeader>
-          <RecipesContainer {...props} Layout={RecipesComponent} />
-        </TemplateHeader>
-      )}
-    />
-    <Route
-      path="/recipe/:id"
-      render={props => (
-        <TemplateHeader>
-          <RecipesContainer {...props} Layout={RecipeViewComponent} />
         </TemplateHeader>
       )}
     />
