@@ -5,7 +5,7 @@ import { View, Content, Thumbnail, Icon } from 'native-base';
 
 const placeholderImage = 'http://primo.ws/files/Disks/Avatars/Avatar_girl_face3.png';
 
-const Cover = ({ image, onSettings, onImage }) => {
+const Cover = ({ image, onSettings, onImageClick }) => {
   const imageUrl = image || placeholderImage;
 
   return (
@@ -25,8 +25,8 @@ const Cover = ({ image, onSettings, onImage }) => {
           alignItems: 'center',
         }}
       >
-        {onImage ?
-          <TouchableOpacity onPress={onImage}>
+        {onImageClick ?
+          <TouchableOpacity onPress={onImageClick}>
             <Thumbnail large source={{ uri: imageUrl }} />
           </TouchableOpacity>
           :
@@ -53,13 +53,13 @@ const Cover = ({ image, onSettings, onImage }) => {
 Cover.propTypes = {
   image: PropTypes.string,
   onSettings: PropTypes.func,
-  onImage: PropTypes.func,
+  onImageClick: PropTypes.func,
 };
 
 Cover.defaultProps = {
   image: null,
   onSettings: null,
-  onImage: null,
+  onImageClick: null,
 };
 
 export default Cover;

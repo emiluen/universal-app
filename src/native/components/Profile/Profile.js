@@ -16,10 +16,10 @@ export class Profile extends React.Component {
       imageUrl: null,
     };
 
-    this.onImage = this.onImage.bind(this);
+    this.onImageClick = this.onImageClick.bind(this);
   }
 
-  onImage = async () => {
+  onImageClick = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
       aspect: [4, 3],
@@ -48,7 +48,7 @@ export class Profile extends React.Component {
             <View>
               <Cover
                 image={imageUrl}
-                onImage={this.onImage}
+                onImageClick={this.onImageClick}
                 onSettings={Actions.settings}
               />
 
