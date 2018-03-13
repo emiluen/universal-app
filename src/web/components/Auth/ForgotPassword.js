@@ -8,13 +8,14 @@ import {
   Label,
   Alert,
   Input,
-  Button,
   CardBody,
   FormGroup,
   CardHeader,
 } from 'reactstrap';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Loading from '../Loading';
+import Link from '../Link';
+import Button from '../Button';
 
 class ForgotPassword extends React.Component {
   static propTypes = {
@@ -84,17 +85,17 @@ class ForgotPassword extends React.Component {
                       onChange={this.handleChange}
                     />
                   </FormGroup>
-                  <Button color="primary">Reset Password</Button>
+                  <Button button color="primary">Reset Password</Button>
                 </Form>
 
                 <hr />
 
                 <Row>
                   <Col sm="6">
-                    Need an account? <Link to="/sign-up">Sign Up</Link>
+                    Need an account? <Link link color="primary" to="/sign-up">Sign Up</Link>
                   </Col>
                   <Col sm="6" className="text-right">
-                    <Link to="/forgot-password">Login</Link> to your account.
+                    <Link button color="primary" to="/forgot-password">Login</Link> to your account.
                   </Col>
                 </Row>
               </CardBody>

@@ -8,11 +8,11 @@ import {
   TabContent,
   TabPane,
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
 import { TemplateContainer } from '../Templates/Templates';
 import Loading from '../Loading';
+import Link from '../Link';
 
 import UpdateProfileContainer from '../../../containers/UpdateProfile';
 import UpdateProfileComponent from './UpdateProfile';
@@ -68,11 +68,13 @@ class Settings extends React.Component {
             <div>
               <span>You are not logged in!</span>
             </div>
-            <Link to="/login">Login</Link>
+            <Link button color="primary" to="/login">Login</Link>
           </div>
         }
         {loggedIn &&
           <div>
+            <h1>Settings</h1>
+
             {!!error && <Alert color="danger">{error}</Alert>}
             {!!success && <Alert color="success">{success}</Alert>}
 

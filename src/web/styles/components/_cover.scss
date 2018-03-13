@@ -1,7 +1,7 @@
 @import "../globals";
 
 .cover {
-  background-color: $purple;
+  background-color: theme-color("primary");
   padding-top: $m-space;
   padding-bottom: $m-space;
 }
@@ -20,7 +20,7 @@
 
   h2, span {
     text-align: center;
-    color: $typeLight;
+    color: color("white");
   }
 }
 

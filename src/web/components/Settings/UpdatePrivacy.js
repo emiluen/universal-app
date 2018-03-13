@@ -4,12 +4,12 @@ import {
   Form,
   Label,
   Input,
-  Button,
   FormGroup,
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
 
 import Loading from '../Loading';
+import Link from '../Link';
+import Button from '../Button';
 
 class UpdatePrivacy extends React.Component {
   static propTypes = {
@@ -74,7 +74,7 @@ class UpdatePrivacy extends React.Component {
         <legend>Public Profile Privacy</legend>
         <p>
           Select what you want to keep private in your Public Personality Profile.
-          You can see how it looks <Link target="_blank" to={`/profile/${member.uid}`}>here</Link>.
+          You can see how it looks <Link link color="primary" target="_blank" to={`/profile/${member.uid}`}>here</Link>.
         </p>
 
         <FormGroup check style={{ marginTop: 20 }}>
@@ -132,7 +132,7 @@ class UpdatePrivacy extends React.Component {
           }
         </div>
 
-        <Button style={{ marginTop: 20 }} color="primary">Update</Button>
+        <Button button color="primary" style={{ marginTop: 20 }}>Update</Button>
       </Form>
     );
   }

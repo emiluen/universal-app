@@ -3,14 +3,20 @@
 @import "components/loading";
 @import "components/header";
 @import "components/footer";
+@import "components/button";
 @import "components/cover";
 @import "components/popup";
 @import "components/avatar";
 @import "components/update-avatar";
 @import "components/share-buttons";
+@import "globals";
+
+html {
+  font-size: $font-size;
+}
 
 body {
-  padding-top: 3.5em;
+  padding-top: $header-height;
 }
 
 /**
@@ -29,6 +35,10 @@ body {
   i {
     font-size: 0.8rem;
   }
+}
+
+a {
+  cursor: pointer;
 }
 
 /**

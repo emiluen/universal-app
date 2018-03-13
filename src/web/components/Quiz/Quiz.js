@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import { TemplateContainer } from '../Templates/Templates';
 import Loading from '../Loading';
@@ -25,7 +24,6 @@ const Quiz = ({
     <TemplateContainer>
       <h2>{quiz.title}</h2>
       <p>{quiz.description}</p>
-      <Link className="btn btn-secondary" to={`/personalities/${personality.id}`}><i className="icon-arrow-left" /> Back</Link>
     </TemplateContainer>
   );
 };

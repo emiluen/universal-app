@@ -1,18 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
-import { Link } from 'react-router-dom';
+
+import { TemplateContainer } from './Templates/Templates';
+import Link from './Link';
 
 const Error = ({ title, content }) => (
-  <Row>
-    <Col lg="4">
-      <h2>{title}</h2>
-      <p>{content}</p>
-      <p>
-        <Link to="/" className="btn btn-primary">Go Home</Link>
-      </p>
-    </Col>
-  </Row>
+  <TemplateContainer>
+    <Row>
+      <Col lg="4">
+        <h2>{title}</h2>
+        <p>{content}</p>
+        <p>
+          <Link button color="secondary" to="/">Go Home</Link>
+        </p>
+      </Col>
+    </Row>
+  </TemplateContainer>
 );
 
 Error.propTypes = {

@@ -4,11 +4,11 @@ import {
   Form,
   Label,
   Input,
-  Button,
   FormGroup,
 } from 'reactstrap';
 
 import Loading from '../Loading';
+import Button from '../Button';
 
 class UpdateProfile extends React.Component {
   static propTypes = {
@@ -146,7 +146,7 @@ class UpdateProfile extends React.Component {
             </FormGroup>
           </div>
         }
-        <Button style={{ marginTop: 20 }} color="primary">Update</Button>
+        <Button button color="primary" style={{ marginTop: 20 }}>Update</Button>
       </Form>
     );
   }

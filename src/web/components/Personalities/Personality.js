@@ -10,7 +10,6 @@ import {
   ListGroup,
   ListGroupItem,
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
 
 import { TemplateContainer } from '../Templates/Templates';
 import ErrorMessages from '../../../constants/errors';
@@ -18,6 +17,7 @@ import Loading from '../Loading';
 import Error from '../Error';
 import ArticleContainer from '../../../containers/Article';
 import ArticleComponent from './Article';
+import Link from '../Link';
 import getImageUrl from '../../../selectors/get-image-url';
 
 const PersonalityView = ({
@@ -39,7 +39,7 @@ const PersonalityView = ({
       <div style={{ display: 'inline-block', marginRight: 12 }}>
         <img src={getImageUrl(type.coverImageUrl, { width: 80, height: 60 })} style={{ width: 80, height: 60 }} alt="Type" />
       </div>
-      <Link to={`/personalities/${personality.id}/types/${type.id}`}>{type.name} - {type.nickname}</Link>
+      <Link link color="secondary" to={`/personalities/${personality.id}/types/${type.id}`}>{type.name} - {type.nickname}</Link>
     </ListGroupItem>
   ));
 
@@ -48,8 +48,8 @@ const PersonalityView = ({
       <Row>
         <Col xs="12" md="8">
           <h1>{personality.name} - Personality Test</h1>
-          <Link className="btn btn-primary" to={`/personalities/${personality.id}/quiz`}>
-            Test Me <i className="icon-arrow-right" />
+          <Link button color="primary" to={`/personalities/${personality.id}/quiz`}>
+            Take Test <i className="icon-arrow-right" />
           </Link>
         </Col>
         <Col>
@@ -79,11 +79,6 @@ const PersonalityView = ({
               {typeCards}
             </ListGroup>
           </Card>
-        </Col>
-      </Row>
-      <Row className="pb-3">
-        <Col sm="12">
-          <Link className="btn btn-secondary" to="/personalities"><i className="icon-arrow-left" /> Back</Link>
         </Col>
       </Row>
     </TemplateContainer>

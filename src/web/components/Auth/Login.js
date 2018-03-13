@@ -8,13 +8,14 @@ import {
   Label,
   Alert,
   Input,
-  Button,
   CardBody,
   FormGroup,
   CardHeader,
 } from 'reactstrap';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Loading from '../Loading';
+import Link from '../Link';
+import Button from '../Button';
 
 class Login extends React.Component {
   static propTypes = {
@@ -96,17 +97,17 @@ class Login extends React.Component {
                       onChange={this.handleChange}
                     />
                   </FormGroup>
-                  <Button color="primary">Login</Button>
+                  <Button button color="primary">Login</Button>
                 </Form>
 
                 <hr />
 
                 <Row>
                   <Col sm="6">
-                    Need an account? <Link to="/sign-up">Sign Up</Link>
+                    Need an account? <Link link color="primary" to="/sign-up">Sign Up</Link>
                   </Col>
                   <Col sm="6" className="text-right">
-                    <Link to="/forgot-password">Forgot Password?</Link>
+                    <Link button color="primary" to="/forgot-password">Forgot Password?</Link>
                   </Col>
                 </Row>
               </CardBody>

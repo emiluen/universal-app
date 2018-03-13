@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import {
   CardDeck,
   Card,
@@ -10,6 +10,7 @@ import {
   CardBody,
 } from 'reactstrap';
 
+import Link from '../Link';
 import getImageUrl from '../../../selectors/get-image-url';
 
 const TypeList = ({ personalities }) => (
@@ -26,12 +27,12 @@ const TypeList = ({ personalities }) => (
         </Link>
         <CardBody>
           <CardTitle>
-            <Link to={`/personalities/${personality.id}/types/${personality.type.id}`}>
+            <Link link color="secondary" to={`/personalities/${personality.id}/types/${personality.type.id}`}>
               {personality.type.name} - {personality.type.nickname}
             </Link>
           </CardTitle>
           <CardSubtitle>
-            <Link to={`/personalities/${personality.id}`}>
+            <Link link color="secondary" to={`/personalities/${personality.id}`}>
               {personality.name} Personality Type
             </Link>
           </CardSubtitle>

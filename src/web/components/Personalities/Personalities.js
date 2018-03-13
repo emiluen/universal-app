@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import {
   CardDeck,
   Card,
@@ -14,6 +13,7 @@ import {
 
 import { TemplateContainer } from '../Templates/Templates';
 import Error from '../Error';
+import Link from '../Link';
 import getImageUrl from '../../../selectors/get-image-url';
 
 const PersonalityList = ({
@@ -29,10 +29,10 @@ const PersonalityList = ({
         <CardImg top src={getImageUrl(item.profileImageUrl)} alt={item.title} />
       </Link>
       <CardBody>
-        <CardTitle><Link to={`/personalities/${item.id}`}>{item.name}</Link></CardTitle>
+        <CardTitle><Link link color="secondary" to={`/personalities/${item.id}`}>{item.name}</Link></CardTitle>
         <CardSubtitle>{item.tagline}</CardSubtitle>
         <CardText>{item.description}</CardText>
-        <Link className="btn btn-primary" to={`/personalities/${item.id}/quiz`}>Test Me <i className="icon-arrow-right" /></Link>
+        <Link button color="primary" to={`/personalities/${item.id}/quiz`}>Take Test <i className="icon-arrow-right" /></Link>
       </CardBody>
     </Card>
   ));

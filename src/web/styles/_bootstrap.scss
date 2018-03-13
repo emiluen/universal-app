@@ -2,16 +2,16 @@
 @import "globals";
 
 // Colors
-// $purple: #473BE7;
+$colors: (
+  "white": $white
+);
 $primary: $purple;
-$body-bg: #ECF0F3;
-$body-color: #8D8E90;
+$body-bg: $white;
+$body-color: $typeC;
+$link-color: $typeC;
 
 // Jumbotron
 $jumbotron-bg: white;
-
-// Misc
-$border-radius: 0;
 
 // Type
 $font-family-sans-serif: 'Inter UI', sans-serif;

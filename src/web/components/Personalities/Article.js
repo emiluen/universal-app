@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Button } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import marked from 'marked';
+
+import Button from '../Button';
 
 const ArticleView = ({
   title,
@@ -18,7 +20,7 @@ const ArticleView = ({
         { title ? <h5>{title}</h5> : null }
         <div dangerouslySetInnerHTML={parsedMarked} />
         { readMore ? (
-          <Button outline color="primary" onClick={onToggle}>{buttonText}</Button>
+          <Button button outline color="primary" onClick={onToggle}>{buttonText}</Button>
         ) : null }
       </Col>
     </Row>

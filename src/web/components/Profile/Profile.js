@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Row } from 'reactstrap';
 
 import { TemplateContainer } from '../Templates/Templates';
 import Error from '../Error';
 import Loading from '../Loading';
+import Link from '../Link';
 import Cover from './Cover';
 import TypeList from './TypeList';
 import Popup from '../Popup';
@@ -81,7 +82,7 @@ class Profile extends React.Component {
             <div>
               <span>You are not logged in!</span>
             </div>
-            <Link to="/login">Login</Link>
+            <Link button color="primary" to="/login">Login</Link>
           </TemplateContainer>
         }
         {loggedIn &&

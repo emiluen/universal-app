@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
 
 import { TemplateWrapper } from '../Templates/Templates';
 import Avatar from '../Avatar';
+import Link from '../Link';
 
 const Cover = ({
   name,
@@ -14,9 +14,9 @@ const Cover = ({
     <TemplateWrapper>
       <div className="cover__container">
         {onImageClick ?
-          <Button color="link" onClick={onImageClick}>
+          <Link onClick={onImageClick}>
             <Avatar className="cover__avatar" imageUrl={imageUrl} />
-          </Button>
+          </Link>
           :
           <Avatar className="cover__avatar" imageUrl={imageUrl} />
         }

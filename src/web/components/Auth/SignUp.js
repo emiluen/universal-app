@@ -8,13 +8,14 @@ import {
   Label,
   Alert,
   Input,
-  Button,
   CardBody,
   FormGroup,
   CardHeader,
 } from 'reactstrap';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Loading from '../Loading';
+import Link from '../Link';
+import Button from '../Button';
 
 class SignUp extends React.Component {
   static propTypes = {
@@ -129,14 +130,14 @@ class SignUp extends React.Component {
                       onChange={this.handleChange}
                     />
                   </FormGroup>
-                  <Button color="primary">Sign Up!</Button>
+                  <Button button color="primary">Sign Up!</Button>
                 </Form>
 
                 <hr />
 
                 <Row>
                   <Col sm="12">
-                    Already have an account? <Link to="/login">Login</Link>
+                    Already have an account? <Link link color="primary" to="/login">Login</Link>
                   </Col>
                 </Row>
               </CardBody>

@@ -5,9 +5,9 @@ import {
   FormGroup,
   Label,
   Input,
-  Button,
 } from 'reactstrap';
 import AvatarEditor from 'react-avatar-editor';
+import Button from '../Button';
 
 class UpdateAvatar extends React.Component {
   static propTypes = {
@@ -70,7 +70,7 @@ class UpdateAvatar extends React.Component {
                   onChange={this.onFileChange}
                 />
                 <Label
-                  className="btn btn-primary"
+                  className="button btn btn-primary"
                   for="file"
                 >
                   Choose a file...
@@ -99,6 +99,7 @@ class UpdateAvatar extends React.Component {
               defaultValue="1"
             />
             <Button
+              button
               color="primary"
               onClick={this.onClickSave}
             >
