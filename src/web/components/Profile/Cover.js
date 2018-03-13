@@ -21,7 +21,7 @@ const Cover = ({
           <Avatar className="cover__avatar" imageUrl={imageUrl} />
         }
         <div className="cover__container__name">
-          <h2>Personality Profile</h2>
+          <h1>Personality Profile</h1>
           <span>{name}</span>
         </div>
       </div>

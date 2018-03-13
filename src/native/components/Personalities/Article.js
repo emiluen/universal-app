@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, H3, Text, Button, Row, Right } from 'native-base';
+import { View, H2, Text, Button, Row, Right } from 'native-base';
 import Markdown, { getUniqueID } from 'react-native-markdown-renderer';
 
 const rules = {
@@ -26,7 +26,7 @@ const ArticleView = ({
   readMore,
 }) => (
   <View>
-    { title ? <H3>{title}</H3> : null }
+    { title ? <H2>{title}</H2> : null }
     <Markdown rules={rules} style={styles}>{markdown}</Markdown>
     { readMore ? (
       <Row>

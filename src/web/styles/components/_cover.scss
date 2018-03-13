@@ -18,9 +18,13 @@
   align-items: center;
   justify-content: center;
 
-  h2, span {
+  h1, span {
     text-align: center;
     color: color("white");
+  }
+
+  span {
+    font-size: $font-size-lg;
   }
 }
 
@@ -36,7 +40,7 @@
   .cover__container__name {
     align-items: flex-start;
 
-    h2, span {
+    h1, span {
       text-align: left;
     }
   }

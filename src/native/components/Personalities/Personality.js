@@ -5,6 +5,7 @@ import { Actions } from 'react-native-router-flux';
 
 import Loading from '../Loading';
 import Error from '../Error';
+import Spacer from '../Spacer';
 import ErrorMessages from '../../../constants/errors';
 import ArticleContainer from '../../../containers/Article';
 import ArticleComponent from './Article';
@@ -50,19 +51,25 @@ const PersonalityView = ({
   return (
     <Container>
       <Content padder>
-        <Row>
-          <Right>
-            <Button primary onPress={() => onQuizPress()}>
-              <Text>Take Test</Text>
-            </Button>
-          </Right>
-        </Row>
         <ArticleContainer
           title
           readMore
           Layout={ArticleComponent}
           article={personality.article}
         />
+
+        <Spacer size={5} />
+
+        <Row>
+          <Right>
+            <Button block primary onPress={() => onQuizPress()}>
+              <Text>Take Test</Text>
+            </Button>
+          </Right>
+        </Row>
+
+        <Spacer size={40} />
+
         <H3>{personality.name} Personality Types</H3>
         <List>
           {types}
