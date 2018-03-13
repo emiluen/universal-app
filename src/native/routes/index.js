@@ -30,8 +30,8 @@ import ForgotPasswordComponent from '../components/Auth/ForgotPassword';
 import ProfileContainer from '../../containers/Profile';
 import ProfileComponent from '../components/Profile/Profile';
 
-import PublicProfileContainer from '../../containers/PublicProfile';
-import PublicProfileComponent from '../components/Profile/PublicProfile';
+// import PublicProfileContainer from '../../containers/PublicProfile';
+// import PublicProfileComponent from '../components/Profile/PublicProfile';
 
 import SettingsContainer from '../../containers/Settings';
 import SettingsComponent from '../components/Settings/Settings';
@@ -58,19 +58,21 @@ const Index = (
           </Stack>
         */}
 
-        <Stack
-          key="publicProfile"
-          title="PUBLIC PROFILE"
-          icon={() => <Icon name="planet" {...DefaultProps.icons} />}
-          {...DefaultProps.navbarProps}
-        >
-          <Scene
+        {/*
+          <Stack
             key="publicProfile"
-            component={PublicProfileContainer}
-            Layout={PublicProfileComponent}
-            match={{ params: { id: 'K3AkxRZ2Z0WGnDujeCvFzogWe7k2' } }}
-          />
-        </Stack>
+            title="PUBLIC PROFILE"
+            icon={() => <Icon name="planet" {...DefaultProps.icons} />}
+            {...DefaultProps.navbarProps}
+          >
+            <Scene
+              key="publicProfile"
+              component={PublicProfileContainer}
+              Layout={PublicProfileComponent}
+              match={{ params: { id: 'K3AkxRZ2Z0WGnDujeCvFzogWe7k2' } }}
+            />
+          </Stack>
+        */}
 
         <Stack
           key="personalities"
