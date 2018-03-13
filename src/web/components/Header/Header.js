@@ -59,14 +59,14 @@ class Header extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav navbar>
               <NavItem>
-                <Link className={`nav-link ${window.location.pathname.startsWith('/personalities') && 'active'}`} to="/personalities">
+                <Link className={`header__link__left nav-link ${window.location.pathname.startsWith('/personalities') && 'active'}`} to="/personalities">
                   <span>Personality Tests</span>
                 </Link>
               </NavItem>
             </Nav>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <Link className={`nav-link ${window.location.pathname === '/profile' && 'active'}`} to="/profile">
+                <Link className={`header__link__right nav-link ${window.location.pathname === '/profile' && 'active'}`} to="/profile">
                   <span>My Personality Profile</span>
                 </Link>
               </NavItem>

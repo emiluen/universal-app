@@ -4,14 +4,6 @@
  * Styles for the Header.js component
  */
 
-header {
-  svg {
-    position: absolute;
-    right: -20%;
-    top: 2px;
-  }
-}
-
 .navbar {
   min-height: $header-height;
   box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.42), 0 3px 20px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
@@ -46,6 +38,14 @@ header {
   max-width: 100%;
   vertical-align: bottom;
   margin: 0 auto;
+}
+
+.header__link__left {
+  margin-left: 20px;
+}
+
+.header__link__right {
+  margin-right: 20px;
 }
 
 .header__avatar {
