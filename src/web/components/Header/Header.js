@@ -18,24 +18,6 @@ import { withRouter } from 'react-router-dom';
 import Link from '../Link';
 import Avatar from '../Avatar';
 
-const HomeNavItem = () => (
-  <Link className="nav-link" to="/">
-    <span>Home</span>
-  </Link>
-);
-
-const PersonalitiesNavItem = () => (
-  <Link className={`nav-link ${window.location.pathname.startsWith('/personalities') && 'active'}`} to="/personalities">
-    <span>Personality Tests</span>
-  </Link>
-);
-
-const ProfileNavItem = () => (
-  <Link className={`nav-link ${window.location.pathname === '/profile' && 'active'}`} to="/profile">
-    <span>My Personality Profile</span>
-  </Link>
-);
-
 class Header extends Component {
   static propTypes = {
     member: PropTypes.shape({
@@ -69,27 +51,25 @@ class Header extends Component {
 
     return (
       <header>
-        <Navbar light color="white" expand="sm" className="fixed-top">
+        <Navbar light color="white" expand="md" className="fixed-top">
           <Link to="/" className="navbar-brand">
             <img className="header__logo" src="/logo.png" alt="Logo" />
           </Link>
-          <Nav className="justify-content-center" style={{ marginLeft: 50 }}>
-            <NavItem className="d-none d-sm-block">
-              {PersonalitiesNavItem()}
-            </NavItem>
-          </Nav>
-          <Nav className="justify-content-right" style={{ marginLeft: 50 }}>
-            <NavItem className="d-none d-sm-block">
-              {ProfileNavItem()}
-            </NavItem>
-          </Nav>
           <NavbarToggler onClick={this.toggleDropDown} />
           <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav navbar>
+              <NavItem>
+                <Link className={`nav-link ${window.location.pathname.startsWith('/personalities') && 'active'}`} to="/personalities">
+                  <span>Personality Tests</span>
+                </Link>
+              </NavItem>
+            </Nav>
             <Nav className="ml-auto" navbar>
-              <div className="d-block d-sm-none">
-                {HomeNavItem()}
-                {PersonalitiesNavItem()}
-              </div>
+              <NavItem>
+                <Link className={`nav-link ${window.location.pathname === '/profile' && 'active'}`} to="/profile">
+                  <span>My Personality Profile</span>
+                </Link>
+              </NavItem>
               <UncontrolledDropdown nav>
                 <DropdownToggle nav caret>
                   {loggedIn ? (
@@ -111,9 +91,6 @@ class Header extends Component {
                   }
                   {loggedIn &&
                     <div>
-                      <DropdownItem>
-                        <Link link color="secondary" to="/profile">Personality Profile</Link>
-                      </DropdownItem>
                       <DropdownItem>
                         <Link link color="secondary" to="/settings">Settings</Link>
                       </DropdownItem>

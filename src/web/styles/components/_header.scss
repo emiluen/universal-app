@@ -17,11 +17,9 @@ header {
   box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.42), 0 3px 20px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
-.navbar-brand {
-  position: relative;
-  text-transform: uppercase;
-  letter-spacing: 6px;
-  font-size: 0.9rem;
+.nav-item {
+  display: flex;
+  align-items: center;
 }
 
 .nav-link {
