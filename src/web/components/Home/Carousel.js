@@ -11,12 +11,12 @@ import Link from '../Link';
 
 const items = [
   {
-    src: 'https://myfullself.com/wp-content/uploads/2017/09/pexels-photo-157023.jpeg',
+    src: 'https://images.contentful.com/adbfifosu0wp/6euT0Kz7POi4KiCEc6Yc6e/342924a60635fb8cd8fd05aa3f88291f/pexels-photo-157023.jpeg',
     altText: 'Slide 1',
     caption: 'Slide 1'
   },
   {
-    src: 'https://myfullself.com/wp-content/uploads/2017/08/pexels-photo-502724-1040x400.jpeg',
+    src: 'https://images.contentful.com/adbfifosu0wp/5N5nxrRWF20e4OksK0448c/9b2b0af65c5081ed4f215597cd78e99d/pexels-photo-502724-1040x400.jpeg',
     altText: 'Slide 2',
     caption: 'Slide 2'
   },
