@@ -59,7 +59,7 @@ const PersonalityList = ({
                     small
                     onPress={() => onQuizPress(item)}
                   >
-                    <Text>Test Me</Text>
+                    <Text>Take Test</Text>
                   </Button>
                   <Spacer size={5} />
                 </Body>

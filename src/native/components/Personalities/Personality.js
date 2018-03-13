@@ -53,7 +53,7 @@ const PersonalityView = ({
         <Row>
           <Right>
             <Button primary onPress={() => onQuizPress()}>
-              <Text>Test Me</Text>
+              <Text>Take Test</Text>
             </Button>
           </Right>
         </Row>
