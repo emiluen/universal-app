@@ -65,7 +65,7 @@ class Header extends Component {
       <header>
         <Navbar light color="white" expand="sm" className="fixed-top">
           <Link to="/" className="navbar-brand">
-            <img className="header__logo" src="https://images.contentful.com/adbfifosu0wp/a2EkNMLLH2oamq0McU80c/399dcea973b78c79d6ce1962a02fedfa/logo.png" alt="Logo" />
+            <img className="header__logo" src="/logo.png" alt="Logo" />
           </Link>
           <Nav className="justify-content-center" style={{ marginLeft: 50 }}>
             <NavItem className="d-none d-sm-block">

@@ -11,7 +11,7 @@ import theme from '../../native-base-theme/variables/commonColor';
 
 import Routes from './routes/index';
 // import Loading from './components/Loading';
-import Splash from './components/Splash';
+import Splash from './components/Splash/Splash';
 import { getMemberData } from '../actions/member';
 import { getPersonalities, setError } from '../actions/personalities';
 
