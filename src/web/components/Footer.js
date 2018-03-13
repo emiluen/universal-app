@@ -7,7 +7,7 @@ const Footer = () => (
     <Row>
       <Col sm="12" className="text-right pt-3">
         <p>
-          Copyright © 2018 <Link link color="primary" target="_blank" rel="noopener noreferrer" href="https://emeliejavelind.com">Emelie Javelind</Link> · All Rights Reserved
+          Copyright © 2018 <Link link color="primary" target="_blank" rel="noopener noreferrer" href="https://myfullself.com">My Full Self</Link> · By <Link link color="primary" target="_blank" rel="noopener noreferrer" href="https://emeliejavelind.com">Emelie Javelind</Link> · All Rights Reserved
         </p>
       </Col>
     </Row>
