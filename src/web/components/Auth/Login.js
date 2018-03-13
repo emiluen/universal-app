@@ -107,7 +107,7 @@ class Login extends React.Component {
                     Need an account? <Link link color="primary" to="/sign-up">Sign Up</Link>
                   </Col>
                   <Col sm="6" className="text-right">
-                    <Link button color="primary" to="/forgot-password">Forgot Password?</Link>
+                    <Link link color="primary" to="/forgot-password">Forgot Password?</Link>
                   </Col>
                 </Row>
               </CardBody>

@@ -78,12 +78,23 @@ class Profile extends React.Component {
     return (
       <div>
         {!loggedIn &&
-          <TemplateContainer>
-            <div>
-              <span>You are not logged in!</span>
-            </div>
-            <Link button color="primary" to="/login">Login</Link>
-          </TemplateContainer>
+          <div>
+            <Cover />
+
+            <TemplateContainer>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <h2>Start your Personality Profile</h2>
+                <p>Learn more about yourself. Share your results with friends and family.</p>
+                <Row>
+                  <Link button color="primary" to="/personalities">Take Test</Link>
+                </Row>
+
+                <Row style={{ marginTop: 50 }}>
+                  <span>Already have an account?</span>&nbsp;<Link link color="primary" to="/login">Login here</Link>.
+                </Row>
+              </div>
+            </TemplateContainer>
+          </div>
         }
         {loggedIn &&
           <div>

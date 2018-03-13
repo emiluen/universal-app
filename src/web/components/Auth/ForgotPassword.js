@@ -95,7 +95,7 @@ class ForgotPassword extends React.Component {
                     Need an account? <Link link color="primary" to="/sign-up">Sign Up</Link>
                   </Col>
                   <Col sm="6" className="text-right">
-                    <Link button color="primary" to="/forgot-password">Login</Link> to your account.
+                    <Link button color="primary" to="/login">Login</Link> to your account.
                   </Col>
                 </Row>
               </CardBody>

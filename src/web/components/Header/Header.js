@@ -30,6 +30,12 @@ const PersonalitiesNavItem = () => (
   </Link>
 );
 
+const ProfileNavItem = () => (
+  <Link className={`nav-link ${window.location.pathname === '/profile' && 'active'}`} to="/profile">
+    <span>My Personality Profile</span>
+  </Link>
+);
+
 class Header extends Component {
   static propTypes = {
     member: PropTypes.shape({
@@ -69,10 +75,12 @@ class Header extends Component {
           </Link>
           <Nav className="justify-content-center" style={{ marginLeft: 50 }}>
             <NavItem className="d-none d-sm-block">
-              {HomeNavItem()}
-            </NavItem>
-            <NavItem className="d-none d-sm-block">
               {PersonalitiesNavItem()}
+            </NavItem>
+          </Nav>
+          <Nav className="justify-content-right" style={{ marginLeft: 50 }}>
+            <NavItem className="d-none d-sm-block">
+              {ProfileNavItem()}
             </NavItem>
           </Nav>
           <NavbarToggler onClick={this.toggleDropDown} />
