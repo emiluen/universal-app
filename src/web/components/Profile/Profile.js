@@ -104,9 +104,7 @@ class Profile extends React.Component {
               <ShareButtons shareObject={shareProfile} />
 
               {userPersonalities.length ?
-                <Row>
-                  <TypeList personalities={userPersonalities} />
-                </Row>
+                <TypeList personalities={userPersonalities} />
                 :
                 <EmptyState
                   title="Start your Personality Profile"

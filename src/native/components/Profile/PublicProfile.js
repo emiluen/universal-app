@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Content } from 'native-base';
+import { Actions } from 'react-native-router-flux';
 
 import Loading from '../Loading';
 import Error from '../Error';

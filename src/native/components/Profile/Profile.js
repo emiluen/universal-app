@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Container, Content, List, ListItem, Body, Left, Text, Icon } from 'native-base';
+import { View, Container, Content, List, ListItem, Body, Left, Text, Icon, Button } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import { ImagePicker } from 'expo';
 
@@ -55,7 +55,15 @@ export class Profile extends React.Component {
                 />
               </Content>
 
-              <TypeList personalities={userPersonalities} />
+              {userPersonalities.length ?
+                <TypeList personalities={userPersonalities} />
+                :
+                <Content padder>
+                  <Button block primary onPress={Actions.personalities} to="/personalities">
+                    <Text>Take Test</Text>
+                  </Button>
+                </Content>
+              }
             </View>
           :
             <List>
