@@ -42,9 +42,30 @@ class Header extends Component {
     this.state = { isOpen: false };
   }
 
-  onLogout = () => this.props.logout().then(() => this.props.history.push('/login'));
+  onLogout = () => {
+    this.resetDropDown();
+    this.props.logout().then(() => this.props.history.push('/login'));
+  }
 
   toggleDropDown = () => this.setState({ isOpen: !this.state.isOpen });
+
+  resetDropDown = () => this.setState({ isOpen: false });
+
+  PersonalitiesLink = () => (
+    <Link className={`nav-link ml-md-4 ${window.location.pathname.startsWith('/personalities') && 'active'}`} to="/personalities">
+      <Flag
+        name="quizzes"
+        render={() => <span>Personality Tests</span>}
+        fallbackRender={() => <span>Personality Typologies</span>}
+      />
+    </Link>
+  );
+
+  ProfileLink = () => (
+    <Link className={`nav-link mr-md-4 ${window.location.pathname === '/profile' && 'active'}`} to="/profile">
+      <span>My Personality Profile</span>
+    </Link>
+  );
 
   render() {
     const { member } = this.props;
@@ -59,21 +80,13 @@ class Header extends Component {
           <NavbarToggler onClick={this.toggleDropDown} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav navbar>
-              <NavItem>
-                <Link className={`nav-link ml-md-4 ${window.location.pathname.startsWith('/personalities') && 'active'}`} to="/personalities">
-                  <Flag
-                    name="quizzes"
-                    render={() => <span>Personality Tests</span>}
-                    fallbackRender={() => <span>Personality Typologies</span>}
-                  />
-                </Link>
+              <NavItem onClick={this.resetDropDown}>
+                {this.PersonalitiesLink()}
               </NavItem>
             </Nav>
             <Nav className="ml-auto" navbar>
-              <NavItem>
-                <Link className={`nav-link mr-md-4 ${window.location.pathname === '/profile' && 'active'}`} to="/profile">
-                  <span>My Personality Profile</span>
-                </Link>
+              <NavItem onClick={this.resetDropDown}>
+                {this.ProfileLink()}
               </NavItem>
               <UncontrolledDropdown nav>
                 <DropdownToggle nav caret>
@@ -86,17 +99,17 @@ class Header extends Component {
                 <DropdownMenu>
                   {!loggedIn &&
                     <div>
-                      <DropdownItem>
+                      <DropdownItem onClick={this.resetDropDown}>
                         <Link link color="secondary" to="/login">Login</Link>
                       </DropdownItem>
-                      <DropdownItem>
+                      <DropdownItem onClick={this.resetDropDown}>
                         <Link link color="secondary" to="/sign-up">Sign Up</Link>
                       </DropdownItem>
                     </div>
                   }
                   {loggedIn &&
                     <div>
-                      <DropdownItem>
+                      <DropdownItem onClick={this.resetDropDown}>
                         <Link link color="secondary" to="/settings">Settings</Link>
                       </DropdownItem>
                       <DropdownItem divider />
