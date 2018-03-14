@@ -10,6 +10,7 @@ import {
   ListGroup,
   ListGroupItem,
 } from 'reactstrap';
+import { Flag } from 'flag';
 
 import { TemplateContainer } from '../Templates/Templates';
 import ErrorMessages from '../../../constants/errors';
@@ -47,10 +48,19 @@ const PersonalityView = ({
     <TemplateContainer>
       <Row>
         <Col xs="12" md="8">
-          <h1>{personality.name} - Personality Test</h1>
-          <Link button color="primary" to={`/personalities/${personality.id}/quiz`}>
-            Take Test <i className="icon-arrow-right" />
-          </Link>
+          <Flag
+            name="quizzes"
+            render={() => <h1>{personality.name} - Personality Test</h1>}
+            fallbackRender={() => <h1>{personality.name} - Personality Typology</h1>}
+          />
+          <Flag
+            name="quizzes"
+            render={() => (
+              <Link button color="primary" to={`/personalities/${personality.id}/quiz`}>
+                Take Test <i className="icon-arrow-right" />
+              </Link>
+            )}
+          />
         </Col>
         <Col>
           <Card style={{ maxWidth: 200, marginBottom: 12 }} className="float-md-right">

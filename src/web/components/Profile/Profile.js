@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Row } from 'reactstrap';
+import { Flag } from 'flag';
 
 import { TemplateContainer } from '../Templates/Templates';
 import Error from '../Error';
@@ -76,6 +77,16 @@ class Profile extends React.Component {
       return <Error content={error} />;
     }
 
+    const emptyStateButton = () => (
+      <Link button color="primary" to="/personalities">
+        <Flag
+          name="quizzes"
+          render={() => <span>Take Test</span>}
+          fallbackRender={() => <span>Learn More</span>}
+        />
+      </Link>
+    );
+
     return (
       <div>
         {!loggedIn &&
@@ -108,8 +119,8 @@ class Profile extends React.Component {
                 :
                 <EmptyState
                   title="Start your Personality Profile"
-                  message="Learn more about yourself. Share your results with friends and family."
-                  button={<Link button color="primary" to="/personalities">Take Test</Link>}
+                  message="Learn more about yourself. Share your profile with friends and family."
+                  button={emptyStateButton()}
                 />
               }
             </TemplateContainer>

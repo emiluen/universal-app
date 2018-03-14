@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Content, H3, List, ListItem, Thumbnail, Body, Text, Row, Right, Button } from 'native-base';
+import { View, Container, Content, H3, List, ListItem, Thumbnail, Body, Text, Row, Right, Button } from 'native-base';
 import { Actions } from 'react-native-router-flux';
+import { Flag } from 'flag';
 
 import Loading from '../Loading';
 import Error from '../Error';
@@ -58,15 +59,22 @@ const PersonalityView = ({
           article={personality.article}
         />
 
-        <Spacer size={5} />
+        <Flag
+          name="quizzes"
+          render={() => (
+            <View>
+              <Spacer size={5} />
 
-        <Row>
-          <Right>
-            <Button block primary onPress={() => onQuizPress()}>
-              <Text>Take Test</Text>
-            </Button>
-          </Right>
-        </Row>
+              <Row>
+                <Right>
+                  <Button block primary onPress={() => onQuizPress()}>
+                    <Text>Take Test</Text>
+                  </Button>
+                </Right>
+              </Row>
+            </View>
+          )}
+        />
 
         <Spacer size={40} />
 

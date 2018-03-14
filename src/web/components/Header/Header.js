@@ -13,6 +13,7 @@ import {
   UncontrolledDropdown,
 } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
+import { Flag } from 'flag';
 
 // import Config from '../../../constants/config';
 import Link from '../Link';
@@ -60,7 +61,11 @@ class Header extends Component {
             <Nav navbar>
               <NavItem>
                 <Link className={`nav-link ml-md-4 ${window.location.pathname.startsWith('/personalities') && 'active'}`} to="/personalities">
-                  <span>Personality Tests</span>
+                  <Flag
+                    name="quizzes"
+                    render={() => <span>Personality Tests</span>}
+                    fallbackRender={() => <span>Personality Typologies</span>}
+                  />
                 </Link>
               </NavItem>
             </Nav>

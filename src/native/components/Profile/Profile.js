@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { View, Container, Content, List, ListItem, Body, Left, Text, Icon, Button } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import { ImagePicker } from 'expo';
+import { Flag } from 'flag';
 
 import Header from '../Header';
 import Cover from './Cover';
@@ -60,7 +61,11 @@ export class Profile extends React.Component {
                 :
                 <Content padder>
                   <Button block primary onPress={Actions.personalities} to="/personalities">
-                    <Text>Take Test</Text>
+                    <Flag
+                      name="quizzes"
+                      render={() => <Text>Take Test</Text>}
+                      fallbackRender={() => <Text>Learn More</Text>}
+                    />
                   </Button>
                 </Content>
               }

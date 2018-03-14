@@ -4,10 +4,12 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { Router, Stack } from 'react-native-router-flux';
 import { PersistGate } from 'redux-persist/es/integration/react';
+import { FlagsProvider } from 'flag';
 
 import { StyleProvider } from 'native-base';
 import getTheme from '../../native-base-theme/components';
 import theme from '../../native-base-theme/variables/commonColor';
+import flags from '../constants/featureFlags';
 
 import Routes from './routes/index';
 // import Loading from './components/Loading';
@@ -36,11 +38,13 @@ const Root = ({ store, persistor }) => {
         persistor={persistor}
       >
         <StyleProvider style={getTheme(theme)}>
-          <Router>
-            <Stack key="root">
-              {Routes}
-            </Stack>
-          </Router>
+          <FlagsProvider flags={flags}>
+            <Router>
+              <Stack key="root">
+                {Routes}
+              </Stack>
+            </Router>
+          </FlagsProvider>
         </StyleProvider>
       </PersistGate>
     </Provider>

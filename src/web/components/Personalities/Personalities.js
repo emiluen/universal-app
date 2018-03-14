@@ -10,6 +10,7 @@ import {
   CardSubtitle,
   Row,
 } from 'reactstrap';
+import { Flag } from 'flag';
 
 import { TemplateContainer } from '../Templates/Templates';
 import Error from '../Error';
@@ -32,7 +33,19 @@ const PersonalityList = ({
         <CardTitle><Link link color="secondary" to={`/personalities/${item.id}`}>{item.name}</Link></CardTitle>
         <CardSubtitle>{item.tagline}</CardSubtitle>
         <CardText>{item.description}</CardText>
-        <Link button color="primary" to={`/personalities/${item.id}/quiz`}>Take Test <i className="icon-arrow-right" /></Link>
+        <Flag
+          name="quizzes"
+          render={() => (
+            <Link button color="primary" to={`/personalities/${item.id}/quiz`}>
+              Take Test <i className="icon-arrow-right" />
+            </Link>
+          )}
+          fallbackRender={() => (
+            <Link button color="primary" to={`/personalities/${item.id}`}>
+              Learn More <i className="icon-arrow-right" />
+            </Link>
+          )}
+        />
       </CardBody>
     </Card>
   ));
@@ -40,7 +53,11 @@ const PersonalityList = ({
   return (
     <TemplateContainer>
       <Row>
-        <h1>Personality Tests</h1>
+        <Flag name="quizzes"
+          render={() => <h1>Personality Tests</h1>}
+          fallbackRender={() => <h1>Personality Typologies</h1>}
+        />
+
         <p>
           The following data is read directly from Firebase. The following data
           is read directly from Firebase. The following data is read directly from Firebase.
