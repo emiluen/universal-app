@@ -6,6 +6,7 @@ import Loading from '../Loading';
 import Error from '../Error';
 import Cover from './Cover';
 import TypeList from './TypeList';
+import EmptyState from '../EmptyState';
 
 const PublicProfile = ({
   loading,
@@ -22,7 +23,14 @@ const PublicProfile = ({
     <div>
       <Cover name={publicName} imageUrl={publicImageUrl} />
       <TemplateContainer>
-        <TypeList personalities={userPersonalities} />
+        {userPersonalities.length ?
+          <TypeList personalities={userPersonalities} />
+          :
+          <EmptyState
+            title="Uh oh..."
+            message="This user does not have any public personality types."
+          />
+        }
       </TemplateContainer>
     </div>
   );

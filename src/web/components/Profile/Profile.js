@@ -12,7 +12,7 @@ import TypeList from './TypeList';
 import Popup from '../Popup';
 import UpdateAvatar from './UpdateAvatar';
 import ShareButtons from './ShareButtons';
-import EmptyState from './EmptyState';
+import EmptyState from '../EmptyState';
 
 class Profile extends React.Component {
   static propTypes = {
@@ -83,7 +83,12 @@ class Profile extends React.Component {
             <Cover />
 
             <TemplateContainer>
-              <EmptyState logInOption />
+              <EmptyState
+                title="Start your Personality Profile"
+                message="Learn more about yourself. Share your results with friends and family."
+                button={<Link button color="primary" to="/sign-up">Sign Up</Link>}
+                footer={<p>Already have an account? <Link link color="primary" to="/login">Login here</Link>.</p>}
+              />
             </TemplateContainer>
           </div>
         }
@@ -103,7 +108,11 @@ class Profile extends React.Component {
                   <TypeList personalities={userPersonalities} />
                 </Row>
                 :
-                <EmptyState />
+                <EmptyState
+                  title="Start your Personality Profile"
+                  message="Learn more about yourself. Share your results with friends and family."
+                  button={<Link button color="primary" to="/personalities">Take Test</Link>}
+                />
               }
             </TemplateContainer>
 
